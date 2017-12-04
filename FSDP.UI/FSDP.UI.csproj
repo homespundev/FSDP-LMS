@@ -690,6 +690,12 @@
     <Content Include="_Archive\EduHarvard\package-eduharvard\VestaThemes.com.url" />
     <Content Include="_Archive\EduHarvard\VestaThemes.com.url" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FSDP.DATA\FSDP.DATA.csproj">
+      <Project>{7c3064f5-dfbe-45b5-b9f6-8efbe7641712}</Project>
+      <Name>FSDP.DATA</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
