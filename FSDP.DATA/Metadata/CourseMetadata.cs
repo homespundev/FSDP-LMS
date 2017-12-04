@@ -17,6 +17,7 @@ namespace FSDP.DATA
         [DisplayFormat(NullDisplayText = "N/A")]
         [UIHint("MultilineText")]
         [Display(Name = "Description")]
+        [StringLength(500, ErrorMessage = "* Not to exceed 500 characters")]
         public string CourseDescription { get; set; }
 
         [Display(Name = "Active?")]
