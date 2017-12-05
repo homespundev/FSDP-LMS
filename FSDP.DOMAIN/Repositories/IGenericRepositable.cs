@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FSDP.DOMAIN.Repositories
 {
-    public interface IGenericRepository<TEntity> where TEntity : class
+    public interface IGenericRepositable<TEntity> where TEntity : class
     {
         List<TEntity> Get(string includeProperties = "");
         TEntity Find(object id);

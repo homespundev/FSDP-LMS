@@ -10,7 +10,7 @@ using LinqKit;
 
 namespace FSDP.DOMAIN.Repositories
 {
-    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
+    public class GenericRepository<TEntity> : IGenericRepositable<TEntity> where TEntity : class
     {
         internal DbContext db;
         public GenericRepository(DbContext context)
