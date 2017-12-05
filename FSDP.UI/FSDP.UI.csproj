@@ -188,8 +188,11 @@
     <Content Include="Content\Fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Fonts\Linearicons-Free.svg" />
     <Content Include="Content\Fonts\Simple-Line-Icons.svg" />
+    <Content Include="Content\Images\fountain-pen-1854169_1280.jpg" />
+    <Content Include="Content\Images\fountain-pen-1854169_640.jpg" />
     <Content Include="Content\Images\apple-touch-icon-32-precomposed.png" />
     <Content Include="Content\Images\apple-touch-icon-48-precomposed.png" />
+    <Content Include="Content\Images\fountain-pen-1854169_1920.jpg" />
     <Content Include="Content\Images\icon.png" />
     <Content Include="Content\Images\images\11.jpg" />
     <Content Include="Content\Images\images\404.png" />

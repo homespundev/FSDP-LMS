@@ -1020,10 +1020,10 @@ h4 { font-size: 14px; line-height: 18px; }
     font-weight: 500;
     color: #0C383B;
     display: inline-block;
-    padding: 68px 33px 67px 33px;
+    padding: 33px;
 }
 
-#mainnav > ul > li > a::after {
+/*#mainnav > ul > li > a::after {
 	position: absolute;
 	right: 15px;
 	top: 67px;
@@ -1036,7 +1036,7 @@ h4 { font-size: 14px; line-height: 18px; }
 	    -ms-transition: all 0.3s ease-in-out;
 	     -o-transition: all 0.3s ease-in-out;
 	        transition: all 0.3s ease-in-out;
-}
+}*/
 
 #mainnav > ul > li > a:hover:after {
 	color:#E1B753;

@@ -1,8 +1,4 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
+﻿
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -39,4 +35,20 @@ input[type="checkbox"].input-validation-error {
 
 .validation-summary-valid {
     display: none;
+}
+#home-img{
+    padding:0;
+}
+#topnav{
+    padding:.25%;
+}
+.rev_slider_wrapper{
+    border-top: 10px solid #E1B753;
+    max-height:100%;
+}
+.tp-bullets, .tp-rightarrow, .tp-leftarrow{
+    visibility:hidden;
+}
+.tp-fullwidth-forcer{
+    height:700px!important;
 }

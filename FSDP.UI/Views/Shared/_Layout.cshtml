@@ -32,24 +32,16 @@
 
     <!-- Favicon and touch icons  -->
     <link href="~/Content/Images/icon/icon.png" rel="shortcut icon">
-
+    <link href="~/Content/Site.css" rel="stylesheet" />
     <!--[if lt IE 9]>
         <script src="javascript/html5shiv.js"></script>
         <script src="javascript/respond.min.js"></script>
     <![endif]-->
 </head>
 <body>
-    <!-- Preloader -->
-    @*<section class="loading-overlay">
-            <div class="Loading-Page">
-                <h2 class="loader">Loading</h2>
-            </div>
-        </section>*@
-
-    <!-- Boxed -->
     <div class="boxed position_form position_style3 ">
         <div class="wrap-header">
-            <div class="top top-style3">
+            <div class="top top-style3" id="topnav">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8">
@@ -77,18 +69,19 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="logo">
+                            @*<div class="logo">
                                 <a href="index.html"><img src="~/Content/Images/images/logo.png" alt="image"></a>
-                            </div><!-- /logo -->
-                            <div class="flat-search">
+                            </div>*@<!-- /logo -->
+                            @*<div class="flat-search">
                                 <ul>
                                     <li class="show-search"><a href=""><i class="lnr lnr-magnifier"></i></a></li>
                                     <li><a href="#"><i class="lnr lnr-cart"></i></a></li>
                                 </ul>
                                 <div class="btn-menu">
                                     <span></span>
-                                </div><!-- //mobile menu button -->
-                            </div><!-- /wrap-search -->
+                                </div>*@<!-- //mobile menu button -->
+                            @*</div>*@
+                        <!-- /wrap-search -->
                             <div class="wrap-nav">
                                 <nav id="mainnav" class="mainnav">
                                     <ul class="menu">
@@ -104,14 +97,14 @@
                                         }
                                     </ul>
                                 </nav>
-                                <div class="top-search">
+                                @*<div class="top-search">
                                     <form action="#" id="searchform-all" method="get">
                                         <div>
                                             <input type="text" id="s" class="sss" placeholder="Search...">
                                             <input type="submit" value="" id="searchsubmit">
                                         </div>
                                     </form>
-                                </div><!-- /top-search -->
+                                </div>*@<!-- /top-search -->
                             </div><!-- /wrap-nav -->
                         </div><!-- /col-md-12 -->
                     </div><!-- /row -->
