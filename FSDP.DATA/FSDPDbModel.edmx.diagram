@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c9f829e4f5b741d8a17c73e2e58d59db" Name="Diagram1">
+      <Diagram DiagramId="42375e35939a48aeb78c012d5a4ae536" Name="Diagram1">
         <EntityTypeShape EntityType="FSDPDbModel.AspNetUser" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FSDPDbModel.ClassDate" Width="1.5" PointX="10" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="FSDPDbModel.ClassSignUp" Width="1.5" PointX="10" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="FSDPDbModel.ClassDate" Width="1.5" PointX="8" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FSDPDbModel.ClassSignUp" Width="1.5" PointX="8" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="FSDPDbModel.CourseCompletion" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FSDPDbModel.Course" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FSDPDbModel.Lesson" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="FSDPDbModel.Quiz" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="FSDPDbModel.StoreClass" Width="1.5" PointX="7.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="FSDPDbModel.LessonView" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FSDPDbModel.LessonView" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FSDPDbModel.Quiz" Width="1.5" PointX="5.25" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FSDPDbModel.StoreClass" Width="1.5" PointX="5.75" PointY="5.25" IsExpanded="true" />
         <AssociationConnector Association="FSDPDbModel.FK_ClassSignUps_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="FSDPDbModel.FK_CourseCompletions_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="FSDPDbModel.FK_LessonViews_AspNetUsers" ManuallyRouted="false" />

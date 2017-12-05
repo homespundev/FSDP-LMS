@@ -75,6 +75,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="LessonViews">
+      <EntityTypeMapping TypeName="FSDPDbModel.LessonView">
+        <MappingFragment StoreEntitySet="LessonViews">
+          <ScalarProperty Name="LessonViewID" ColumnName="LessonViewID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="LessonID" ColumnName="LessonID" />
+          <ScalarProperty Name="DateViewed" ColumnName="DateViewed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Quizs">
       <EntityTypeMapping TypeName="FSDPDbModel.Quiz">
         <MappingFragment StoreEntitySet="Quizzes">
@@ -91,16 +101,6 @@
           <ScalarProperty Name="ClassName" ColumnName="ClassName" />
           <ScalarProperty Name="ClassDescription" ColumnName="ClassDescription" />
           <ScalarProperty Name="ClassLimit" ColumnName="ClassLimit" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="LessonViews">
-      <EntityTypeMapping TypeName="FSDPDbModel.LessonView">
-        <MappingFragment StoreEntitySet="LessonViews">
-          <ScalarProperty Name="LessonViewID" ColumnName="LessonViewID" />
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
-          <ScalarProperty Name="LessonID" ColumnName="LessonID" />
-          <ScalarProperty Name="DateViewed" ColumnName="DateViewed" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

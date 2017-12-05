@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="FSDPDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="FSDPDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AspNetUsers">
           <Key>
             <PropertyRef Name="Id" />
@@ -286,7 +286,8 @@ warning 6002: The table/view 'FSDPDb.dbo.LessonsQuizzes' does not have a primary
             <End Role="LessonViews" EntitySet="LessonViews" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FSDPDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -371,6 +372,17 @@ warning 6002: The table/view 'FSDPDb.dbo.LessonsQuizzes' does not have a primary
           <NavigationProperty Name="LessonViews" Relationship="Self.FK_LessonViews_Lessons" FromRole="Lessons" ToRole="LessonViews" />
           <NavigationProperty Name="Quizzes" Relationship="Self.LessonsQuizzes" FromRole="Lessons" ToRole="Quizzes" />
         </EntityType>
+        <EntityType Name="LessonView">
+          <Key>
+            <PropertyRef Name="LessonViewID" />
+          </Key>
+          <Property Name="LessonViewID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LessonID" Type="Int32" Nullable="false" />
+          <Property Name="DateViewed" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_LessonViews_AspNetUsers" FromRole="LessonViews" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Lesson" Relationship="Self.FK_LessonViews_Lessons" FromRole="LessonViews" ToRole="Lessons" />
+        </EntityType>
         <EntityType Name="Quiz">
           <Key>
             <PropertyRef Name="QuizID" />
@@ -390,20 +402,6 @@ warning 6002: The table/view 'FSDPDb.dbo.LessonsQuizzes' does not have a primary
           <Property Name="ClassLimit" Type="Byte" Nullable="false" />
           <NavigationProperty Name="ClassDates" Relationship="Self.FK_ClassDates_StoreClasses" FromRole="StoreClasses" ToRole="ClassDates" />
           <NavigationProperty Name="ClassSignUps" Relationship="Self.FK_ClassSignUps_StoreClasses" FromRole="StoreClasses" ToRole="ClassSignUps" />
-        </EntityType>
-        <EntityType Name="LessonView">
-          <Key>
-            <PropertyRef Name="LessonViewID" />
-            <PropertyRef Name="UserID" />
-            <PropertyRef Name="LessonID" />
-            <PropertyRef Name="DateViewed" />
-          </Key>
-          <Property Name="LessonViewID" Type="Int32" Nullable="false" />
-          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LessonID" Type="Int32" Nullable="false" />
-          <Property Name="DateViewed" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_LessonViews_AspNetUsers" FromRole="LessonViews" ToRole="AspNetUsers" />
-          <NavigationProperty Name="Lesson" Relationship="Self.FK_LessonViews_Lessons" FromRole="LessonViews" ToRole="Lessons" />
         </EntityType>
         <Association Name="FK_ClassSignUps_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
@@ -512,9 +510,9 @@ warning 6002: The table/view 'FSDPDb.dbo.LessonsQuizzes' does not have a primary
           <EntitySet Name="CourseCompletions" EntityType="Self.CourseCompletion" />
           <EntitySet Name="Courses" EntityType="FSDPDbModel.Course" />
           <EntitySet Name="Lessons" EntityType="Self.Lesson" />
+          <EntitySet Name="LessonViews" EntityType="Self.LessonView" />
           <EntitySet Name="Quizs" EntityType="FSDPDbModel.Quiz" />
           <EntitySet Name="StoreClasses" EntityType="Self.StoreClass" />
-          <EntitySet Name="LessonViews" EntityType="Self.LessonView" />
           <AssociationSet Name="FK_ClassSignUps_AspNetUsers" Association="Self.FK_ClassSignUps_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="ClassSignUps" EntitySet="ClassSignUps" />
@@ -632,6 +630,16 @@ warning 6002: The table/view 'FSDPDb.dbo.LessonsQuizzes' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="LessonViews">
+            <EntityTypeMapping TypeName="FSDPDbModel.LessonView">
+              <MappingFragment StoreEntitySet="LessonViews">
+                <ScalarProperty Name="LessonViewID" ColumnName="LessonViewID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="LessonID" ColumnName="LessonID" />
+                <ScalarProperty Name="DateViewed" ColumnName="DateViewed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Quizs">
             <EntityTypeMapping TypeName="FSDPDbModel.Quiz">
               <MappingFragment StoreEntitySet="Quizzes">
@@ -648,16 +656,6 @@ warning 6002: The table/view 'FSDPDb.dbo.LessonsQuizzes' does not have a primary
                 <ScalarProperty Name="ClassName" ColumnName="ClassName" />
                 <ScalarProperty Name="ClassDescription" ColumnName="ClassDescription" />
                 <ScalarProperty Name="ClassLimit" ColumnName="ClassLimit" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LessonViews">
-            <EntityTypeMapping TypeName="FSDPDbModel.LessonView">
-              <MappingFragment StoreEntitySet="LessonViews">
-                <ScalarProperty Name="LessonViewID" ColumnName="LessonViewID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="LessonID" ColumnName="LessonID" />
-                <ScalarProperty Name="DateViewed" ColumnName="DateViewed" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
