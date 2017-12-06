@@ -1,0 +1,30 @@
+﻿@model FSDP.UI.Models.ContactViewModel
+@{
+    ViewBag.Title = "Contact";
+}
+
+<section class="flat-row bg-theme pd-top-100 contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-4 col-md-4">
+                <h2>Thank you for contacting us, @Model.Name! <br/>We will get back to you as soon as possible.</h2>
+            </div>
+
+        </div>
+    </div>
+</section>
+@section scripts{
+   <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+    <script>
+        function myMap() {
+            var mapOptions = {
+                center: new google.maps.LatLng(51.5, -0.12),
+                zoom: 10,
+                mapTypeId: google.maps.MapTypeId.HYBRID
+            }
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        }
+    </script>
+    <script type="text/javascript" src="javascript/gmap3.min.js"></script>
+}
+

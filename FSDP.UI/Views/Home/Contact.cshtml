@@ -1,4 +1,4 @@
-﻿
+﻿@model FSDP.UI.Models.ContactViewModel
 @{
     ViewBag.Title = "Contact";
 }
@@ -6,36 +6,92 @@
 <section class="flat-row bg-theme pd-top-100 contact">
     <div class="container">
         <div class="row">
-            <div class="col-md-offset-4 col-md-4">
-                <form id="formcontact" class="form-contact" method="post" action="./contact/contact-process.php">
+            <div class="col-md-4">
+
+                <div class="form-contact">
                     <div class="form-contact-title">
                         <h6 class="contact-title">CONTACT US BY EMAIL!</h6>
-                        <p>At vero eos et accusamus et iusto odios un<br>dignissimos ducimus qui blan ditiis prasixer<br>esentium voluptatum.</p>
                     </div>
-                    <div class="info-contact">
-                        <p class="wrap-input-name">
-                            <input type="text" id="name" name="name" value="" tabindex="1" required="required" placeholder="Full Name">
-                        </p>
-                        <p class="wrap-input-phone">
-                            <input type="text" id="phone" name="phone" value="" tabindex="2" required="required" placeholder="Phone number">
-                        </p>
-                        <p class="wrap-input-email">
-                            <input type="text" id="email" name="email" value="" tabindex="3" required="required" placeholder="Email-address">
-                        </p>
-                        <p class="wrap-input-messages">
-                            <textarea id="messages-contact" name="messages" tabindex="4" placeholder="Messages" required></textarea>
-                        </p>
-                        <div class="wrap-btn">
-                            <button class="flat-btn bg-color">SUBMIT FORM</button>
-                        </div>
+                    <div class="status alert alert-success" style="display: none"></div>
+                    <div id="main-contact-form" class="contact-form row" name="contact-form" method="get" action="#" onsubmit="validateForm()">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="info-contact">
+                                <p class="wrap-input-name">
+                                    @Html.TextBoxFor(x => x.Name, new
+                               {
+                                   @placeholder = "Name",
+                                   id = "name",
+                                   name = "name",
+                                   @tabindex = "1"
+                               })
+                                    @Html.ValidationMessageFor(x => x.Name)
+                                </p>
+                                <p class="wrap-input-name">
+                                    @Html.TextBoxFor(x => x.Email, new
+                               {
+                                   @placeholder = "Email",
+                                   id = "email",
+                                   name = "email",
+                                   @tabindex = "2"
+                               })
+                                    @Html.ValidationMessageFor(x => x.Email)
+
+                                </p>
+                                <p class="wrap-input-name">
+                                    @Html.TextBoxFor(x => x.Subject, new
+                               {
+                                   @placeholder = "Subject",
+                                   id = "subject",
+                                   name = "subject",
+                                   @tabindex = "3"
+                               })
+                                    @Html.ValidationMessageFor(x => x.Subject)
+
+                                </p>
+                                <p class="wrap-input-name">
+                                    @Html.TextAreaFor(x => x.Message, new
+                               {
+                                   @placeholder = "Message",
+                                   id = "messages-contact",
+                                   name = "messages",
+                                   @tabindex = "4"
+                               })
+                                    @Html.ValidationMessageFor(x => x.Message)
+
+                                </p>
+                                <div class="wrap-btn">
+                                    <input type="submit" name="submit" class="flat-btn" value="Submit">
+
+                                </div>
+                            </div>
+                        }
                     </div>
-                </form>
+                </div>
             </div>
+            <div class="col-md-8">
+                <div class="wrap-maps">
+                    <div id="map" style="width:400px;height:400px"></div>
+                </div>
+            </div>
+
+
         </div>
     </div>
 </section>
 @section scripts{
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA70nPW8DtM0hF3NVt37AcJM8q6R0X_Ir4&region=GB"></script>
-<script type="text/javascript" src="javascript/gmap3.min.js"></script>
-    }
+    <script type="text/javascript" src="javascript/gmap3.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+<script>
+        function myMap() {
+            var mapOptions = {
+                center: new google.maps.LatLng(51.5, -0.12),
+                zoom: 10,
+                mapTypeId: google.maps.MapTypeId.HYBRID
+            }
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        }
+</script>
+}
 
