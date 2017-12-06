@@ -21,8 +21,8 @@ textarea {
     display: none;
 }
 
-input.input-validation-error {
-    border: 1px solid #b94a48;
+input.input-validation-error, #messages-contact {
+    border-bottom: 1px solid #b94a48;
 }
 
 input[type="checkbox"].input-validation-error {
@@ -56,4 +56,8 @@ input[type="checkbox"].input-validation-error {
 
 #header {
     background-color: #E1B753;
+}
+#conSub{
+    background-color: #E1B753;
+    color:#0c383b;
 }

@@ -355,6 +355,7 @@
     <Content Include="Content\Scripts\bootstrap.min.js" />
     <Content Include="Content\Scripts\contact.html" />
     <Content Include="Content\Scripts\countdown.js" />
+    <Content Include="Content\Scripts\formvalidation.js" />
     <Content Include="Content\Scripts\gmap3.min.js" />
     <Content Include="Content\Scripts\html5shiv.js" />
     <Content Include="Content\Scripts\imagesloaded.min.js" />
