@@ -193,12 +193,32 @@
     <Content Include="Content\Fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Fonts\Linearicons-Free.svg" />
     <Content Include="Content\Fonts\Simple-Line-Icons.svg" />
-    <Content Include="Content\Images\fountain-pen-1854169_1280.jpg" />
-    <Content Include="Content\Images\fountain-pen-1854169_640.jpg" />
+    <Content Include="Content\Fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Fonts\FontAwesome.otf" />
+    <Content Include="Content\Fonts\Linearicons-Free.eot" />
+    <Content Include="Content\Fonts\Linearicons-Free.ttf" />
+    <Content Include="Content\Fonts\Linearicons-Free.woff" />
+    <Content Include="Content\Fonts\Linearicons-Free.woff2" />
+    <Content Include="Content\Fonts\Simple-Line-Icons.eot" />
+    <Content Include="Content\Fonts\Simple-Line-Icons.ttf" />
+    <Content Include="Content\Fonts\Simple-Line-Icons.woff" />
+    <Content Include="Content\Fonts\Simple-Line-Icons.woff2" />
     <Content Include="Content\Images\apple-touch-icon-32-precomposed.png" />
     <Content Include="Content\Images\apple-touch-icon-48-precomposed.png" />
+    <Content Include="Content\Images\Biggerlogo-edit.png" />
+    <Content Include="Content\Images\footerlogo.png" />
+    <Content Include="Content\Images\fountain-pen-1854169_1280.jpg" />
     <Content Include="Content\Images\fountain-pen-1854169_1920.jpg" />
+    <Content Include="Content\Images\fountain-pen-1854169_640.jpg" />
+    <Content Include="Content\Images\goldfooter.png" />
+    <Content Include="Content\Images\greenlogo.png" />
     <Content Include="Content\Images\icon.png" />
+    <Content Include="Content\Images\icon\apple-touch-icon-32-precomposed.png" />
+    <Content Include="Content\Images\icon\apple-touch-icon-48-precomposed.png" />
+    <Content Include="Content\Images\icon\icon.png" />
     <Content Include="Content\Images\images\11.jpg" />
     <Content Include="Content\Images\images\404.png" />
     <Content Include="Content\Images\images\aboutus\1.jpg" />
@@ -313,19 +333,8 @@
     <Content Include="Content\Images\images\team\2.jpg" />
     <Content Include="Content\Images\images\team\3.jpg" />
     <Content Include="Content\Images\images\team\4.jpg" />
-    <Content Include="Content\Fonts\fontawesome-webfont.eot" />
-    <Content Include="Content\Fonts\fontawesome-webfont.ttf" />
-    <Content Include="Content\Fonts\fontawesome-webfont.woff" />
-    <Content Include="Content\Fonts\fontawesome-webfont.woff2" />
-    <Content Include="Content\Fonts\FontAwesome.otf" />
-    <Content Include="Content\Fonts\Linearicons-Free.eot" />
-    <Content Include="Content\Fonts\Linearicons-Free.ttf" />
-    <Content Include="Content\Fonts\Linearicons-Free.woff" />
-    <Content Include="Content\Fonts\Linearicons-Free.woff2" />
-    <Content Include="Content\Fonts\Simple-Line-Icons.eot" />
-    <Content Include="Content\Fonts\Simple-Line-Icons.ttf" />
-    <Content Include="Content\Fonts\Simple-Line-Icons.woff" />
-    <Content Include="Content\Fonts\Simple-Line-Icons.woff2" />
+    <Content Include="Content\Images\noimage.jpg" />
+    <Content Include="Content\Images\whitelogo.png" />
     <Content Include="Content\revolution\css\layers.css" />
     <Content Include="Content\revolution\css\settings.css" />
     <Content Include="Content\revolution\fonts\revicons\revicons.svg" />
@@ -451,9 +460,6 @@
     <Content Include="_Archive\EduHarvard\package-eduharvard\eduharvard\gallery-grid01.html" />
     <Content Include="_Archive\EduHarvard\package-eduharvard\eduharvard\gallery-grid02.html" />
     <Content Include="_Archive\EduHarvard\package-eduharvard\eduharvard\gallery-masonry.html" />
-    <Content Include="Content\Images\icon\apple-touch-icon-32-precomposed.png" />
-    <Content Include="Content\Images\icon\apple-touch-icon-48-precomposed.png" />
-    <Content Include="Content\Images\icon\icon.png" />
     <Content Include="_Archive\EduHarvard\package-eduharvard\eduharvard\images\11.jpg" />
     <Content Include="_Archive\EduHarvard\package-eduharvard\eduharvard\images\404.png" />
     <Content Include="_Archive\EduHarvard\package-eduharvard\eduharvard\images\aboutus\1.jpg" />
@@ -719,6 +725,10 @@
     <ProjectReference Include="..\FSDP.DATA\FSDP.DATA.csproj">
       <Project>{7c3064f5-dfbe-45b5-b9f6-8efbe7641712}</Project>
       <Name>FSDP.DATA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FSDP.DOMAIN\FSDP.DOMAIN.csproj">
+      <Project>{bba51993-fe42-44a3-9f43-f5280e48ddd6}</Project>
+      <Name>FSDP.DOMAIN</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

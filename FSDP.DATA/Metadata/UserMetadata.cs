@@ -28,6 +28,7 @@ namespace FSDP.DATA
     [MetadataType(typeof(UserMetadata))]
     public partial class AspNetUser
     {
-
+        [Display(Name = "Name")]
+        public string FullName { get { return FirstName + " " + LastName; } }
     }
 }

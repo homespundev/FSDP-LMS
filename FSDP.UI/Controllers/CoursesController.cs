@@ -7,12 +7,16 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FSDP.DATA;
+using System.Drawing;
+using FSDP.DOMAIN.Services;
+using FSDP.DOMAIN.Repositories;
 
 namespace FSDP.UI.Controllers
 {
     public class CoursesController : Controller
     {
         private FSDPDbEntities db = new FSDPDbEntities();
+        private UnitOfWork uow = new UnitOfWork();
 
         // GET: Courses
         public ActionResult Index()
@@ -46,12 +50,35 @@ namespace FSDP.UI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CourseID,CourseName,CourseDescription,IsActive,CourseImage")] Course course)
+        public ActionResult Create([Bind(Include = "CourseID,CourseName,CourseDescription,IsActive,CourseImage")] Course course, HttpPostedFileBase courseImg)
         {
             if (ModelState.IsValid)
             {
-                db.Courses.Add(course);
-                db.SaveChanges();
+                string imageName = "noimage.jpg";
+                if (courseImg != null)
+                {
+                    imageName = courseImg.FileName;
+                    string ext = imageName.Substring(imageName.LastIndexOf('.'));
+                    string[] goodExts = { ".jpeg", ".jpg", ".png", ".gif" };
+                    if (goodExts.Contains(ext.ToLower()))
+                    {
+                        imageName = Guid.NewGuid() + ext;
+                        string pathForTheSaving = Server.MapPath("~/Content/Image/Courses/");
+                        courseImg.SaveAs(pathForTheSaving +  imageName);
+                        Image convertedImage = Image.FromStream(courseImg.InputStream);
+                        int maxImageSize = 500;
+                        int maxThumbSize = 100;
+                        ImageService.ResizeImage(pathForTheSaving, imageName, convertedImage, maxImageSize, maxThumbSize);
+                    }
+                }
+                else
+                {
+                    imageName = "noimage.jpg";
+                }
+                course.CourseImage = imageName;
+                uow.CourseRepository.Add(course);
+                //db.Courses.Add(course);
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -78,12 +105,23 @@ namespace FSDP.UI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CourseID,CourseName,CourseDescription,IsActive,CourseImage")] Course course)
+        public ActionResult Edit([Bind(Include = "CourseID,CourseName,CourseDescription,IsActive,CourseImage")] Course course, HttpPostedFileBase courseImage)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(course).State = EntityState.Modified;
-                db.SaveChanges();
+                if (courseImage != null)
+                {
+                    string imageName = courseImage.FileName;
+                    string ext = imageName.Substring(imageName.LastIndexOf('.'));
+                    string [] goodExts = { ".jpeg", ".jpg", ".png", ".gif" };
+                    if (goodExts.Contains(ext.ToLower()))
+                    {
+                        imageName = Guid.NewGuid() + ext;
+                        courseImage.SaveAs(Server.MapPath("~/Content/Image/Courses/" + imageName));
+                        course.CourseImage = imageName;
+                    }
+                }
+                uow.CourseRepository.Update(course);
                 return RedirectToAction("Index");
             }
             return View(course);
