@@ -17,6 +17,7 @@ namespace FSDP.DATA
         public int ClassDateID { get; set; }
         public int StoreClassID { get; set; }
         public System.DateTime DateTime { get; set; }
+        public Nullable<byte> ClassLimit { get; set; }
     
         public virtual StoreClass StoreClass { get; set; }
     }

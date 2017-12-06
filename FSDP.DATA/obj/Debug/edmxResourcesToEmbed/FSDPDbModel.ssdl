@@ -26,6 +26,7 @@
     <Property Name="ClassDateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="StoreClassID" Type="int" Nullable="false" />
     <Property Name="DateTime" Type="datetime" Nullable="false" />
+    <Property Name="ClassLimit" Type="tinyint" />
   </EntityType>
   <EntityType Name="ClassSignUps">
     <Key>
@@ -93,7 +94,10 @@ warning 6002: The table/view 'FSDPDb.dbo.LessonsQuizzes' does not have a primary
     </Key>
     <Property Name="QuizID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Question" Type="varchar" MaxLength="200" Nullable="false" />
-    <Property Name="Answer" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CorrectAnswer" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="WrongAnswer1" Type="varchar" MaxLength="50" />
+    <Property Name="WrongAnswer2" Type="varchar" MaxLength="50" />
+    <Property Name="WrongAnswer3" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="StoreClasses">
     <Key>
@@ -102,7 +106,6 @@ warning 6002: The table/view 'FSDPDb.dbo.LessonsQuizzes' does not have a primary
     <Property Name="StoreClassID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ClassName" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ClassDescription" Type="varchar" MaxLength="500" />
-    <Property Name="ClassLimit" Type="tinyint" Nullable="false" />
   </EntityType>
   <Association Name="FK_ClassDates_StoreClasses">
     <End Role="StoreClasses" Type="Self.StoreClasses" Multiplicity="1" />

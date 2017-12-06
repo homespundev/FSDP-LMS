@@ -1,0 +1,14 @@
+C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.DOMAIN\bin\Debug\FSDP.DOMAIN.dll.config
+C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.DOMAIN\bin\Debug\FSDP.DOMAIN.dll
+C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.DOMAIN\bin\Debug\FSDP.DOMAIN.pdb
+C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.DOMAIN\bin\Debug\EntityFramework.dll
+C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.DOMAIN\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.DOMAIN\bin\Debug\FSDP.DATA.dll
+C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.DOMAIN\bin\Debug\LinqKit.dll
+C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.DOMAIN\bin\Debug\FSDP.DATA.pdb
+C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.DOMAIN\bin\Debug\EntityFramework.xml
+C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.DOMAIN\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.DOMAIN\bin\Debug\LinqKit.xml
+C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.DOMAIN\obj\Debug\FSDP.DOMAIN.csprojResolveAssemblyReference.cache
+C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.DOMAIN\obj\Debug\FSDP.DOMAIN.dll
+C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.DOMAIN\obj\Debug\FSDP.DOMAIN.pdb

@@ -30,6 +30,7 @@
     <Property Name="StoreClassID" Type="Int32" Nullable="false" />
     <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="StoreClass" Relationship="Self.FK_ClassDates_StoreClasses" FromRole="ClassDates" ToRole="StoreClasses" />
+    <Property Name="ClassLimit" Type="Byte" />
   </EntityType>
   <EntityType Name="ClassSignUp">
     <Key>
@@ -98,8 +99,11 @@
     </Key>
     <Property Name="QuizID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Question" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Answer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Lessons" Relationship="Self.LessonsQuizzes" FromRole="Quizzes" ToRole="Lessons" />
+    <Property Name="CorrectAnswer" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="WrongAnswer1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="WrongAnswer2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="WrongAnswer3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="StoreClass">
     <Key>
@@ -108,7 +112,6 @@
     <Property Name="StoreClassID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ClassName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ClassDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="ClassLimit" Type="Byte" Nullable="false" />
     <NavigationProperty Name="ClassDates" Relationship="Self.FK_ClassDates_StoreClasses" FromRole="StoreClasses" ToRole="ClassDates" />
     <NavigationProperty Name="ClassSignUps" Relationship="Self.FK_ClassSignUps_StoreClasses" FromRole="StoreClasses" ToRole="ClassSignUps" />
   </EntityType>

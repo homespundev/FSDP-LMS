@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FSDPDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FSDPDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AspNetUsers">
           <Key>
             <PropertyRef Name="Id" />
@@ -31,6 +31,7 @@
           <Property Name="ClassDateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StoreClassID" Type="int" Nullable="false" />
           <Property Name="DateTime" Type="datetime" Nullable="false" />
+          <Property Name="ClassLimit" Type="tinyint" />
         </EntityType>
         <EntityType Name="ClassSignUps">
           <Key>
@@ -98,7 +99,10 @@ warning 6002: The table/view 'FSDPDb.dbo.LessonsQuizzes' does not have a primary
           </Key>
           <Property Name="QuizID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Question" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="Answer" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CorrectAnswer" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="WrongAnswer1" Type="varchar" MaxLength="50" />
+          <Property Name="WrongAnswer2" Type="varchar" MaxLength="50" />
+          <Property Name="WrongAnswer3" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="StoreClasses">
           <Key>
@@ -107,7 +111,6 @@ warning 6002: The table/view 'FSDPDb.dbo.LessonsQuizzes' does not have a primary
           <Property Name="StoreClassID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ClassName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ClassDescription" Type="varchar" MaxLength="500" />
-          <Property Name="ClassLimit" Type="tinyint" Nullable="false" />
         </EntityType>
         <Association Name="FK_ClassDates_StoreClasses">
           <End Role="StoreClasses" Type="Self.StoreClasses" Multiplicity="1" />
@@ -286,8 +289,7 @@ warning 6002: The table/view 'FSDPDb.dbo.LessonsQuizzes' does not have a primary
             <End Role="LessonViews" EntitySet="LessonViews" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FSDPDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -321,6 +323,7 @@ warning 6002: The table/view 'FSDPDb.dbo.LessonsQuizzes' does not have a primary
           <Property Name="StoreClassID" Type="Int32" Nullable="false" />
           <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="StoreClass" Relationship="Self.FK_ClassDates_StoreClasses" FromRole="ClassDates" ToRole="StoreClasses" />
+          <Property Name="ClassLimit" Type="Byte" />
         </EntityType>
         <EntityType Name="ClassSignUp">
           <Key>
@@ -389,8 +392,11 @@ warning 6002: The table/view 'FSDPDb.dbo.LessonsQuizzes' does not have a primary
           </Key>
           <Property Name="QuizID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Question" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Answer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Lessons" Relationship="Self.LessonsQuizzes" FromRole="Quizzes" ToRole="Lessons" />
+          <Property Name="CorrectAnswer" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WrongAnswer1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WrongAnswer2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WrongAnswer3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="StoreClass">
           <Key>
@@ -399,7 +405,6 @@ warning 6002: The table/view 'FSDPDb.dbo.LessonsQuizzes' does not have a primary
           <Property Name="StoreClassID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ClassName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ClassDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="ClassLimit" Type="Byte" Nullable="false" />
           <NavigationProperty Name="ClassDates" Relationship="Self.FK_ClassDates_StoreClasses" FromRole="StoreClasses" ToRole="ClassDates" />
           <NavigationProperty Name="ClassSignUps" Relationship="Self.FK_ClassSignUps_StoreClasses" FromRole="StoreClasses" ToRole="ClassSignUps" />
         </EntityType>
@@ -579,6 +584,7 @@ warning 6002: The table/view 'FSDPDb.dbo.LessonsQuizzes' does not have a primary
           <EntitySetMapping Name="ClassDates">
             <EntityTypeMapping TypeName="FSDPDbModel.ClassDate">
               <MappingFragment StoreEntitySet="ClassDates">
+                <ScalarProperty Name="ClassLimit" ColumnName="ClassLimit" />
                 <ScalarProperty Name="ClassDateID" ColumnName="ClassDateID" />
                 <ScalarProperty Name="StoreClassID" ColumnName="StoreClassID" />
                 <ScalarProperty Name="DateTime" ColumnName="DateTime" />
@@ -643,9 +649,12 @@ warning 6002: The table/view 'FSDPDb.dbo.LessonsQuizzes' does not have a primary
           <EntitySetMapping Name="Quizs">
             <EntityTypeMapping TypeName="FSDPDbModel.Quiz">
               <MappingFragment StoreEntitySet="Quizzes">
+                <ScalarProperty Name="WrongAnswer3" ColumnName="WrongAnswer3" />
+                <ScalarProperty Name="WrongAnswer2" ColumnName="WrongAnswer2" />
+                <ScalarProperty Name="WrongAnswer1" ColumnName="WrongAnswer1" />
+                <ScalarProperty Name="CorrectAnswer" ColumnName="CorrectAnswer" />
                 <ScalarProperty Name="QuizID" ColumnName="QuizID" />
                 <ScalarProperty Name="Question" ColumnName="Question" />
-                <ScalarProperty Name="Answer" ColumnName="Answer" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -655,7 +664,6 @@ warning 6002: The table/view 'FSDPDb.dbo.LessonsQuizzes' does not have a primary
                 <ScalarProperty Name="StoreClassID" ColumnName="StoreClassID" />
                 <ScalarProperty Name="ClassName" ColumnName="ClassName" />
                 <ScalarProperty Name="ClassDescription" ColumnName="ClassDescription" />
-                <ScalarProperty Name="ClassLimit" ColumnName="ClassLimit" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

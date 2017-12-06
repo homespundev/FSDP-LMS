@@ -24,7 +24,6 @@ namespace FSDP.DATA
         public int StoreClassID { get; set; }
         public string ClassName { get; set; }
         public string ClassDescription { get; set; }
-        public byte ClassLimit { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClassDate> ClassDates { get; set; }

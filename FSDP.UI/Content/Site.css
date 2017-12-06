@@ -36,19 +36,28 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
-#home-img{
-    padding:0;
+
+#home-img {
+    padding: 0;
 }
-#topnav{
-    padding:.25%;
+
+#topnav {
+    padding: .25% 33px;
+    border: white 1px solid; 
 }
-.rev_slider_wrapper{
-    border-top: 10px solid #E1B753;
-    max-height:100%;
+
+.rev_slider_wrapper {
+    max-height: 100%;
 }
-.tp-bullets, .tp-rightarrow, .tp-leftarrow{
-    visibility:hidden;
+
+.tp-bullets, .tp-rightarrow, .tp-leftarrow {
+    visibility: hidden;
 }
-.tp-fullwidth-forcer{
-    height:700px!important;
+
+.tp-fullwidth-forcer {
+    height: 700px !important;
+}
+
+#header {
+    background-color: #E1B753;
 }

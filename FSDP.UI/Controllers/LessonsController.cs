@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FSDP.DATA;
+using Microsoft.AspNet.Identity;
 
 namespace FSDP.UI.Controllers
 {
@@ -33,9 +34,58 @@ namespace FSDP.UI.Controllers
             {
                 return HttpNotFound();
             }
+            if (User.IsInRole("Employee"))
+            {
+                string userID = User.Identity.GetUserId();
+                var lessonViews = db.LessonViews.Where(x => x.LessonID == id && x.UserID == userID && x.Lesson.IsActive);
+                int lessonViewsCount = lessonViews.Count();
+                if (lessonViewsCount == 0)
+                {
+                    LessonView lessonView = new LessonView()
+                    {
+                        UserID = userID,
+                        LessonID = (int)id,
+                        DateViewed = DateTime.Now
+                    };
+                    db.LessonViews.Add(lessonView);
+                    db.SaveChanges();
+                    var courseCompletion = db.CourseCompletions.Where(x => x.UserID == userID && x.CourseID == lesson.CourseID);
+                    if (courseCompletion.Count() == 0)
+                    {
+                        var lessonsCompleted = db.LessonViews.Where(x => x.UserID == userID && x.Lesson.CourseID == lesson.CourseID).Count();
+                        var courseLessons = db.Lessons.Where(x => x.CourseID == lesson.CourseID).Count();
+                        if (lessonsCompleted == courseLessons)
+                        {
+                            CourseCompletion userCourseCompletion = new CourseCompletion()
+                            {
+                                UserID = userID,
+                                CourseID = lesson.CourseID,
+                                DateCompleted = DateTime.Now
+                            };
+                            db.CourseCompletions.Add(userCourseCompletion);
+                            db.SaveChanges();
+                        }
+                    }
+                    
+                }
+               
+            }
             return View(lesson);
         }
 
+        public ActionResult Quiz(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Quiz quiz = db.Quizs.Find(id);
+            if (quiz == null)
+            {
+                return HttpNotFound();
+            }
+            return View(quiz);
+        }
         // GET: Lessons/Create
         public ActionResult Create()
         {

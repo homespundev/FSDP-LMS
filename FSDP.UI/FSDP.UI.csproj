@@ -168,10 +168,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClassDatesController.cs" />
+    <Compile Include="Controllers\ClassSignUpsController.cs" />
+    <Compile Include="Controllers\CourseCompletionsController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LessonsController.cs" />
+    <Compile Include="Controllers\LessonViewsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\QuizsController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
@@ -684,6 +689,31 @@
     <Content Include="_Archive\EduHarvard\package-eduharvard\VestaThemes.com.url" />
     <Content Include="_Archive\EduHarvard\VestaThemes.com.url" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\CourseCompletions\Create.cshtml" />
+    <Content Include="Views\CourseCompletions\Delete.cshtml" />
+    <Content Include="Views\CourseCompletions\Details.cshtml" />
+    <Content Include="Views\CourseCompletions\Edit.cshtml" />
+    <Content Include="Views\CourseCompletions\Index.cshtml" />
+    <Content Include="Views\LessonViews\Create.cshtml" />
+    <Content Include="Views\LessonViews\Delete.cshtml" />
+    <Content Include="Views\LessonViews\Details.cshtml" />
+    <Content Include="Views\LessonViews\Edit.cshtml" />
+    <Content Include="Views\LessonViews\Index.cshtml" />
+    <Content Include="Views\ClassDates\Create.cshtml" />
+    <Content Include="Views\ClassDates\Delete.cshtml" />
+    <Content Include="Views\ClassDates\Details.cshtml" />
+    <Content Include="Views\ClassDates\Edit.cshtml" />
+    <Content Include="Views\ClassDates\Index.cshtml" />
+    <Content Include="Views\ClassSignUps\Create.cshtml" />
+    <Content Include="Views\ClassSignUps\Delete.cshtml" />
+    <Content Include="Views\ClassSignUps\Details.cshtml" />
+    <Content Include="Views\ClassSignUps\Edit.cshtml" />
+    <Content Include="Views\ClassSignUps\Index.cshtml" />
+    <Content Include="Views\Quizs\Create.cshtml" />
+    <Content Include="Views\Quizs\Delete.cshtml" />
+    <Content Include="Views\Quizs\Details.cshtml" />
+    <Content Include="Views\Quizs\Edit.cshtml" />
+    <Content Include="Views\Quizs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FSDP.DATA\FSDP.DATA.csproj">

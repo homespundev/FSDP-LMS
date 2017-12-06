@@ -1040,15 +1040,18 @@ h4 { font-size: 14px; line-height: 18px; }
 
 #mainnav > ul > li > a:hover:after {
 	color:#E1B753;
+    background-color:#0C383B;
 }
 
 #mainnav > ul > li.active > a, #mainnav > ul > li > a:hover,
 #mainnav > ul > li.active > a::after  {
 	color:#E1B753;
+    background-color:#0C383B;
 }
 
 #mainnav > ul > li > a:hover, #mainnav > ul > li.home > a {
 	color:#E1B753;
+    background-color:#0C383B;
 }
 
 /* Sub-menu*/

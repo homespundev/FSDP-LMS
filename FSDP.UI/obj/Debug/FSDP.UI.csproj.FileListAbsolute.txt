@@ -16,6 +16,7 @@ C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.UI\bin\FSDP
 C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.UI\bin\Antlr3.Runtime.dll
 C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.UI\bin\EntityFramework.dll
 C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.UI\bin\EntityFramework.SqlServer.dll
+C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.UI\bin\FSDP.DATA.dll
 C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.UI\bin\Microsoft.AspNet.Identity.Core.dll
 C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.UI\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.UI\bin\Microsoft.AspNet.Identity.Owin.dll
@@ -40,6 +41,7 @@ C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.UI\bin\Syst
 C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.UI\bin\System.Web.WebPages.dll
 C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.UI\bin\System.Web.WebPages.Razor.dll
 C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.UI\bin\WebGrease.dll
+C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.UI\bin\FSDP.DATA.pdb
 C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.UI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.UI\bin\System.Web.Helpers.xml
 C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.UI\bin\System.Web.Mvc.xml
@@ -67,5 +69,3 @@ C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.UI\bin\Micr
 C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.UI\obj\Debug\FSDP.UI.csprojResolveAssemblyReference.cache
 C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.UI\obj\Debug\FSDP.UI.dll
 C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.UI\obj\Debug\FSDP.UI.pdb
-C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.UI\bin\FSDP.DATA.dll
-C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.UI\bin\FSDP.DATA.pdb

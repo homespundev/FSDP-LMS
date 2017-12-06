@@ -24,6 +24,7 @@
     <EntitySetMapping Name="ClassDates">
       <EntityTypeMapping TypeName="FSDPDbModel.ClassDate">
         <MappingFragment StoreEntitySet="ClassDates">
+          <ScalarProperty Name="ClassLimit" ColumnName="ClassLimit" />
           <ScalarProperty Name="ClassDateID" ColumnName="ClassDateID" />
           <ScalarProperty Name="StoreClassID" ColumnName="StoreClassID" />
           <ScalarProperty Name="DateTime" ColumnName="DateTime" />
@@ -88,9 +89,12 @@
     <EntitySetMapping Name="Quizs">
       <EntityTypeMapping TypeName="FSDPDbModel.Quiz">
         <MappingFragment StoreEntitySet="Quizzes">
+          <ScalarProperty Name="WrongAnswer3" ColumnName="WrongAnswer3" />
+          <ScalarProperty Name="WrongAnswer2" ColumnName="WrongAnswer2" />
+          <ScalarProperty Name="WrongAnswer1" ColumnName="WrongAnswer1" />
+          <ScalarProperty Name="CorrectAnswer" ColumnName="CorrectAnswer" />
           <ScalarProperty Name="QuizID" ColumnName="QuizID" />
           <ScalarProperty Name="Question" ColumnName="Question" />
-          <ScalarProperty Name="Answer" ColumnName="Answer" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -100,7 +104,6 @@
           <ScalarProperty Name="StoreClassID" ColumnName="StoreClassID" />
           <ScalarProperty Name="ClassName" ColumnName="ClassName" />
           <ScalarProperty Name="ClassDescription" ColumnName="ClassDescription" />
-          <ScalarProperty Name="ClassLimit" ColumnName="ClassLimit" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

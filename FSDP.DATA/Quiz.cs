@@ -22,7 +22,10 @@ namespace FSDP.DATA
     
         public int QuizID { get; set; }
         public string Question { get; set; }
-        public string Answer { get; set; }
+        public string CorrectAnswer { get; set; }
+        public string WrongAnswer1 { get; set; }
+        public string WrongAnswer2 { get; set; }
+        public string WrongAnswer3 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Lesson> Lessons { get; set; }
