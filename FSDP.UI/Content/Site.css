@@ -46,10 +46,6 @@ input[type="checkbox"].input-validation-error {
     border: white 1px solid; 
 }
 
-.rev_slider_wrapper {
-    max-height: 100%;
-}
-
 .tp-bullets, .tp-rightarrow, .tp-leftarrow {
     visibility: hidden;
 }
