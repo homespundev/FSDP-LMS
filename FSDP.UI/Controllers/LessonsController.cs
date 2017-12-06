@@ -25,11 +25,27 @@ namespace FSDP.UI.Controllers
         // GET: Lessons/Details/5
         public ActionResult Details(int? id)
         {
+            Lesson lesson = db.Lessons.Find(id);
+            var CompleteYouTubeURL = lesson.VideoUrl;
+            var v = CompleteYouTubeURL.IndexOf("v=");
+            var amp = CompleteYouTubeURL.IndexOf("&", v);
+            string vid;
+            // if the video id is the last value in the url
+            if (amp == -1)
+            {
+                vid = CompleteYouTubeURL.Substring(v + 2);
+                // if there are other parameters after the video id in the url
+            }
+            else
+            {
+                vid = CompleteYouTubeURL.Substring(v + 2, amp - (v + 2));
+            }
+            ViewBag.VideoID = vid;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Lesson lesson = db.Lessons.Find(id);
+            
             if (lesson == null)
             {
                 return HttpNotFound();

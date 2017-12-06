@@ -33,6 +33,7 @@
     <!-- Favicon and touch icons  -->
     <link href="~/Content/Images/icon/icon.png" rel="shortcut icon">
     <link href="~/Content/Site.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
     <!--[if lt IE 9]>
         <script src="javascript/html5shiv.js"></script>
         <script src="javascript/respond.min.js"></script>
@@ -42,64 +43,75 @@
     <div class="boxed position_form position_style3 ">
         <div class="wrap-header">
             <div class="top top-style3" id="topnav">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <ul class="flat-information">
-                                <li>Mon - Sat: 8.00 - 6:00</li>
-                                <li><span>P:</span><a href=""> 1-800-456-7890</a></li>
-                                <li><span>E:</span><a href="">  info@nibinc.com</a></li>
+                <div class="row">
+                    <div class="col-md-8">
+                        <ul class="flat-information">
+                            <li>Mon - Sat: 8.00 - 6:00</li>
+                            <li><span>P:</span><a href=""> 1-800-456-7890</a></li>
+                            <li><span>E:</span><a href="">  info@nibinc.com</a></li>
+                        </ul>
+                    </div><!-- col-md-8 -->
+                    <div class="col-md-4">
+                        <div class="wrap-flat">
+                            @Html.Partial("_LoginPartial")
+                            <ul class="flat-socials">
+                                <li><a href=""><i class="fa fa-facebook"></i></a></li>
+                                <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                                <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href=""><i class="fa fa-pinterest"></i></a></li>
                             </ul>
-                        </div><!-- col-md-8 -->
-                        <div class="col-md-4">
-                            <div class="wrap-flat">
-                                @Html.Partial("_LoginPartial")
-                                <ul class="flat-socials">
-                                    <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href=""><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href=""><i class="fa fa-pinterest"></i></a></li>
-                                </ul>
-                            </div><!-- wrap-flat -->
-                        </div><!-- col-md-4 -->
-                    </div><!-- row -->
+                        </div><!-- wrap-flat -->
+                    </div><!-- col-md-4 -->
+                </div><!-- row -->
             </div><!-- top -->
             <header id="header" class="header header-style3 clearfix">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="logo">
-                                <a href="@Url.Action("Index", "Home" )"><img src="~/Content/Images/greenlogo.png" alt="image"></a>
-                            </div><!-- /logo -->
-                            @*<div class="flat-search">
-                                <ul>
-                                    <li class="show-search"><a href=""><i class="lnr lnr-magnifier"></i></a></li>
-                                    <li><a href="#"><i class="lnr lnr-cart"></i></a></li>
-                                </ul>
-                                <div class="btn-menu">
-                                    <span></span>
-                                </div>*@<!-- //mobile menu button -->
-                            @*</div>*@
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="logo">
+                            <a href="@Url.Action("Index", "Home" )"><img src="~/Content/Images/greenlogo.png" alt="image"></a>
+                        </div><!-- /logo -->
+                        @*<div class="flat-search">
+                            <ul>
+                                <li class="show-search"><a href=""><i class="lnr lnr-magnifier"></i></a></li>
+                                <li><a href="#"><i class="lnr lnr-cart"></i></a></li>
+                            </ul>
+                            <div class="btn-menu">
+                                <span></span>
+                            </div>*@<!-- //mobile menu button -->
+                        @*</div>*@
                         <!-- /wrap-search -->
-                            <div class="wrap-nav">
-                                <nav id="mainnav" class="mainnav">
-                                    <ul class="menu">
-                                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                                        <li>
-                                            @Html.ActionLink("Contact", "Contact", "Home")
-                                        </li>
-                                        <li>@Html.ActionLink("Class Sign-up", "Create", "ClassSignUps")</li>
-                                        @if (Request.IsAuthenticated && !User.IsInRole("Customer"))
-                                        {
+                        <div class="wrap-nav">
+                            <nav id="mainnav" class="mainnav">
+                                <ul class="menu">
+                                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                                    <li>
+                                        @Html.ActionLink("Contact", "Contact", "Home")
+                                    </li>
+                                    <li id="dashboard">
+                                        <a href="@Url.Action("Index","Courses")">Dashboard</a>
+                                        <ul class="submenu">
                                             <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
-                                        }
-                                        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-                                        {
-                                            <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
+                                            <li>@Html.ActionLink("Course Completions", "Index", "CourseCompletions")</li>
+                                            <li>@Html.ActionLink("Lessons", "Index", "Lessons")</li>
+                                            <li>@Html.ActionLink("Lesson Views", "Index", "LessonViews")</li>
+                                        </ul>
+                                    </li>
+                                    <li>@Html.ActionLink("Class Sign-up", "Create", "ClassSignUps")</li>
+                                    
+                                    @if (Request.IsAuthenticated && !User.IsInRole("Customer"))
+                                    {
+                                        <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
+                                    }
+                                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                                    {
+                                        <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
                                             <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
-                                        }
-                                    </ul>
-                                </nav>
-                                @*<div class="top-search">
+                                    }
+
+                                </ul>
+                            </nav>
+                            @*<div class="top-search">
                                     <form action="#" id="searchform-all" method="get">
                                         <div>
                                             <input type="text" id="s" class="sss" placeholder="Search...">
@@ -107,13 +119,13 @@
                                         </div>
                                     </form>
                                 </div>*@<!-- /top-search -->
-                            </div><!-- /wrap-nav -->
-                        </div><!-- /col-md-12 -->
-                    </div><!-- /row -->
+                        </div><!-- /wrap-nav -->
+                    </div><!-- /col-md-12 -->
+                </div><!-- /row -->
             </header><!-- /header -->
         </div><!-- /header3 -->
-            @RenderBody()
-            <!-- Footer -->
+        @RenderBody()
+        <!-- Footer -->
         <footer id="footer" class="footer">
             <div class="container">
                 <div class="footer-information">
@@ -214,7 +226,7 @@
     <script type="text/javascript" src="~/Content/Scripts/owl.carousel.js"></script>
     <script type="text/javascript" src="~/Content/Scripts/jquery.easing.js"></script>
     <script type="text/javascript" src="~/Content/Scripts/jquery.flexslider.js"></script>
-
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <!-- Revolution Slider -->
     <script type="text/javascript" src="~/Content/revolution/js/jquery.themepunch.tools.min.js"></script>
     <script type="text/javascript" src="~/Content/revolution/js/jquery.themepunch.revolution.min.js"></script>
@@ -230,6 +242,13 @@
     <script src="~/_Archive/EduHarvard/package-eduharvard/eduharvard/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
     <script src="~/_Archive/EduHarvard/package-eduharvard/eduharvard/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
     <script src="~/_Archive/EduHarvard/package-eduharvard/eduharvard/revolution/js/extensions/revolution.extension.video.min.js"></script>
+    <script src="http://www.youtube.com/player_api"></script>
+
+    <script>
+        //$(document).ready(function () {
+        //    $('.table').DataTable();
+        //});
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

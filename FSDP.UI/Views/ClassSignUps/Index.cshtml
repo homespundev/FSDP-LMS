@@ -1,45 +1,51 @@
 ﻿@model IEnumerable<FSDP.DATA.ClassSignUp>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Class Sign Ups";
 }
 
-<h2>Index</h2>
+<div class="container">
+    <h2>@ViewBag.Title</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ClassDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AspNetUser.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StoreClass.ClassName)
-        </th>
-        <th></th>
-    </tr>
+    <p>
+        @Html.ActionLink("Add New Class Sign Up", "Create")
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ClassDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AspNetUser.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StoreClass.ClassName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClassDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AspNetUser.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StoreClass.ClassName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ClassSignUpID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ClassSignUpID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ClassSignUpID })
+                    </td>
+                </tr>
+            }
+        </tbody>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClassDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AspNetUser.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StoreClass.ClassName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ClassSignUpID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ClassSignUpID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ClassSignUpID })
-        </td>
-    </tr>
-}
-
-</table>
+    </table>
+</div>

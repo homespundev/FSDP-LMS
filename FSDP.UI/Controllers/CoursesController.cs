@@ -63,7 +63,7 @@ namespace FSDP.UI.Controllers
                     if (goodExts.Contains(ext.ToLower()))
                     {
                         imageName = Guid.NewGuid() + ext;
-                        string pathForTheSaving = Server.MapPath("~/Content/Image/Courses/");
+                        string pathForTheSaving = Server.MapPath("~/Content/Images/Courses/");
                         courseImg.SaveAs(pathForTheSaving +  imageName);
                         Image convertedImage = Image.FromStream(courseImg.InputStream);
                         int maxImageSize = 500;
@@ -76,9 +76,9 @@ namespace FSDP.UI.Controllers
                     imageName = "noimage.jpg";
                 }
                 course.CourseImage = imageName;
-                uow.CourseRepository.Add(course);
-                //db.Courses.Add(course);
-                //db.SaveChanges();
+                //uow.CourseRepository.Add(course);
+                db.Courses.Add(course);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -117,11 +117,12 @@ namespace FSDP.UI.Controllers
                     if (goodExts.Contains(ext.ToLower()))
                     {
                         imageName = Guid.NewGuid() + ext;
-                        courseImage.SaveAs(Server.MapPath("~/Content/Image/Courses/" + imageName));
+                        courseImage.SaveAs(Server.MapPath("~/Content/Images/Courses/" + imageName));
                         course.CourseImage = imageName;
                     }
                 }
-                uow.CourseRepository.Update(course);
+                db.Entry(course).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(course);
