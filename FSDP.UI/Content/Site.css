@@ -67,3 +67,12 @@ input[type="checkbox"].input-validation-error {
     font-style:italic;
     color:rgb(12, 55, 58);
 }
+#player{
+    width:auto;
+    max-width:50%;
+    height:auto;
+    max-height:100%;
+}
+.ytp-icon-watermark{
+    visibility:hidden;
+}

@@ -20,6 +20,7 @@ namespace FSDP.DATA
             this.ClassSignUps = new HashSet<ClassSignUp>();
             this.CourseCompletions = new HashSet<CourseCompletion>();
             this.LessonViews = new HashSet<LessonView>();
+            this.AspNetRoles = new HashSet<AspNetRole>();
         }
     
         public string Id { get; set; }
@@ -43,5 +44,7 @@ namespace FSDP.DATA
         public virtual ICollection<CourseCompletion> CourseCompletions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LessonView> LessonViews { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
     }
 }

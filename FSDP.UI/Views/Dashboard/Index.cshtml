@@ -1,7 +1,21 @@
-﻿
+﻿@using FSDP.DATA
 @{
-    ViewBag.Title = User.Identity.AuthenticationType + "Dashboard";
+    ViewBag.Title = "Dashboard";
+    FSDPDbEntities db = new FSDPDbEntities();
 }
 
-<h2>@ViewBag.Title</h2>
+<div class="container">
+    <h2>@ViewBag.Title</h2>
+    <div class="row">
+        <div class="col-md-4" id="course-completions">
+            Course Completions will go here
+            %of total completion for all employees for admin/manager?
+            x/6 for employee
+        </div>
+        <div class="col-md-12" id="lesson-views">
+            Employee - foreach? col-md-4 with number of lessons out of course completed
+            Admin/Manager - 
+        </div>
+    </div>
+</div>
 

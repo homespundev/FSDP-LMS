@@ -23,6 +23,8 @@
         <AssociationConnector Association="FSDPDbModel.FK_Lessons_Courses" ManuallyRouted="false" />
         <AssociationConnector Association="FSDPDbModel.FK_LessonViews_Lessons" ManuallyRouted="false" />
         <AssociationConnector Association="FSDPDbModel.LessonsQuizzes" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FSDPDbModel.AspNetRole" Width="1.5" PointX="0.75" PointY="10.25" />
+        <AssociationConnector Association="FSDPDbModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

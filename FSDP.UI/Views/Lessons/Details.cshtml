@@ -4,116 +4,120 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="container">
+    <h2>Details</h2>
 
-<div>
-    <h4>Lesson</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.LessonTitle)
-        </dt>
+    <div>
+        <h4>Lesson</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.LessonTitle)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LessonTitle)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.LessonTitle)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Introduction)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Introduction)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Introduction)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Introduction)
+            </dd>
 
-        <dt>
-            Video
-        </dt>
+            <dt>
+                Video
+            </dt>
 
-        <dd>
-            <div id="player"></div> 
-        </dd>
+            <dd>
+                <div id="player"></div>
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PdfFileName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.PdfFileName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PdfFileName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.PdfFileName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IsActive)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.IsActive)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LessonImage)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.LessonImage)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LessonImage)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.LessonImage)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Cours.CourseName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Cours.CourseName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Cours.CourseName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Cours.CourseName)
+            </dd>
 
-    </dl>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.LessonID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.LessonID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
 
 @section scripts{
+    <script src="http://www.youtube.com/player_api"></script>
+
     <script>
-      // 2. This code loads the IFrame Player API code asynchronously.
-      var tag = document.createElement('script');
-
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-      // 3. This function creates an <iframe> (and YouTube player)
-      //    after the API code downloads.
-      var player;
-      function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-          height: '390',
-          width: '640',
-          videoId: '@ViewBag.VideoID',
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-          }
-        });
-      }
-
-      // 4. The API will call this function when the video player is ready.
-      function onPlayerReady(event) {
-        event.target.playVideo();
-      }
-
-      // 5. The API calls this function when the player's state changes.
-      //    The function indicates that when playing a video (state=1),
-      //    the player should play for six seconds and then stop.
-      var done = false;
-      function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-          setTimeout(stopVideo, 6000);
-          done = true;
+        // create youtube player
+        var player;
+        var h = '@ViewBag.height';
+        var w = '@ViewBag.width';
+        function onYouTubePlayerAPIReady() {
+            player = new YT.Player('player', {
+                height: 360,
+                width: 640,
+                modestbranding: 1,
+                videoId: '@ViewBag.VideoID',
+                playerVars: {
+                    rel: 0,
+                    autoplay: 0,
+                    disablekb: 0,
+                    showsearch: 0,
+                    showinfo: 0,
+                    controls: 1,
+                    fs: 1,
+                    hd: 1,
+                    html5: 1,
+                    iv_load_policy: 3
+                },
+                events: {
+                    onReady: onPlayerReady,
+                    onStateChange: onPlayerStateChange
+                }
+            });
         }
-      }
-      function stopVideo() {
-        player.stopVideo();
-      }
-</script>
+        // autoplay video
+        function onPlayerReady(event) {
+            event.target.playVideo();
+        }
+
+        // when video ends
+        function onPlayerStateChange(event) {
+            if (event.data === 0) {
+                //do something on end;
+                alert('done');
+            }
+        }
+    </script>
 }
