@@ -15,12 +15,14 @@ namespace FSDP.UI.Controllers
         private FSDPDbEntities db = new FSDPDbEntities();
 
         // GET: ClassDates
+        [Authorize(Roles = "Admin, Manager, Employee")]
         public ActionResult Index()
         {
             var classDates = db.ClassDates.Include(c => c.StoreClass);
             return View(classDates.ToList());
         }
 
+        [Authorize(Roles = "Admin, Manager, Employee")]
         // GET: ClassDates/Details/5
         public ActionResult Details(int? id)
         {
@@ -37,6 +39,7 @@ namespace FSDP.UI.Controllers
         }
 
         // GET: ClassDates/Create
+        [Authorize(Roles = "Admin, Manager")]
         public ActionResult Create()
         {
             ViewBag.StoreClassID = new SelectList(db.StoreClasses, "StoreClassID", "ClassName");
@@ -46,6 +49,7 @@ namespace FSDP.UI.Controllers
         // POST: ClassDates/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin, Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ClassDateID,StoreClassID,DateTime")] ClassDate classDate)
@@ -62,6 +66,7 @@ namespace FSDP.UI.Controllers
         }
 
         // GET: ClassDates/Edit/5
+        [Authorize(Roles = "Admin, Manager")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -80,6 +85,7 @@ namespace FSDP.UI.Controllers
         // POST: ClassDates/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin, Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ClassDateID,StoreClassID,DateTime")] ClassDate classDate)
@@ -95,6 +101,7 @@ namespace FSDP.UI.Controllers
         }
 
         // GET: ClassDates/Delete/5
+        [Authorize(Roles = "Admin, Manager")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -110,6 +117,7 @@ namespace FSDP.UI.Controllers
         }
 
         // POST: ClassDates/Delete/5
+        [Authorize(Roles = "Admin, Manager")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

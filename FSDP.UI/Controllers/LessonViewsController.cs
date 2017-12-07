@@ -15,6 +15,7 @@ namespace FSDP.UI.Controllers
         private FSDPDbEntities db = new FSDPDbEntities();
 
         // GET: LessonViews
+        [Authorize(Roles = "Admin, Manager, Employee")]
         public ActionResult Index()
         {
             var lessonViews = db.LessonViews.Include(l => l.AspNetUser).Include(l => l.Lesson);
@@ -22,6 +23,7 @@ namespace FSDP.UI.Controllers
         }
 
         // GET: LessonViews/Details/5
+        [Authorize(Roles = "Admin, Manager, Employee")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +39,8 @@ namespace FSDP.UI.Controllers
         }
 
         // GET: LessonViews/Create
+
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "FirstName");
@@ -47,6 +51,7 @@ namespace FSDP.UI.Controllers
         // POST: LessonViews/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "LessonViewID,UserID,LessonID,DateViewed")] LessonView lessonView)
@@ -64,6 +69,7 @@ namespace FSDP.UI.Controllers
         }
 
         // GET: LessonViews/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -83,6 +89,7 @@ namespace FSDP.UI.Controllers
         // POST: LessonViews/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "LessonViewID,UserID,LessonID,DateViewed")] LessonView lessonView)
@@ -99,6 +106,7 @@ namespace FSDP.UI.Controllers
         }
 
         // GET: LessonViews/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -114,6 +122,7 @@ namespace FSDP.UI.Controllers
         }
 
         // POST: LessonViews/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

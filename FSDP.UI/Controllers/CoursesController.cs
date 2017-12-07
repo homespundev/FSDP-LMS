@@ -39,6 +39,7 @@ namespace FSDP.UI.Controllers
             return View(course);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Courses/Create
         public ActionResult Create()
         {
@@ -48,6 +49,7 @@ namespace FSDP.UI.Controllers
         // POST: Courses/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CourseID,CourseName,CourseDescription,IsActive,CourseImage")] Course course, HttpPostedFileBase courseImg)
@@ -86,6 +88,7 @@ namespace FSDP.UI.Controllers
         }
 
         // GET: Courses/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -103,6 +106,7 @@ namespace FSDP.UI.Controllers
         // POST: Courses/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CourseID,CourseName,CourseDescription,IsActive,CourseImage")] Course course, HttpPostedFileBase courseImage)
@@ -129,6 +133,7 @@ namespace FSDP.UI.Controllers
         }
 
         // GET: Courses/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -144,6 +149,7 @@ namespace FSDP.UI.Controllers
         }
 
         // POST: Courses/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

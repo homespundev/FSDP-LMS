@@ -21,7 +21,7 @@ textarea {
     display: none;
 }
 
-input.input-validation-error, #messages-contact {
+input.input-validation-error, #messages-contact.input-validation-error {
     border-bottom: 1px solid #b94a48;
 }
 
