@@ -172,6 +172,7 @@
     <Compile Include="Controllers\ClassSignUpsController.cs" />
     <Compile Include="Controllers\CourseCompletionsController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LessonsController.cs" />
     <Compile Include="Controllers\LessonViewsController.cs" />
@@ -209,6 +210,7 @@
     <Content Include="Content\Fonts\Simple-Line-Icons.woff2" />
     <Content Include="Content\Images\apple-touch-icon-32-precomposed.png" />
     <Content Include="Content\Images\apple-touch-icon-48-precomposed.png" />
+    <Content Include="Content\Images\bgwlogo.png" />
     <Content Include="Content\Images\Biggerlogo-edit.png" />
     <Content Include="Content\Images\Courses\noimage.jpg" />
     <Content Include="Content\Images\footerlogo.png" />
@@ -725,6 +727,7 @@
     <Content Include="Views\Quizs\Index.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\ContactConfirmation.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FSDP.DATA\FSDP.DATA.csproj">

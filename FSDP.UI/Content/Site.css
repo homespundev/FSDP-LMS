@@ -39,6 +39,8 @@ input[type="checkbox"].input-validation-error {
 
 #home-img {
     padding: 0;
+    /*background-image: url('Images/bgwlogo.png');*/
+    background-image: url('Images/fountain-pen-1854169_1920.jpg');
 }
 
 #topnav {
@@ -60,4 +62,8 @@ input[type="checkbox"].input-validation-error {
 #conSub{
     background-color: #E1B753;
     color:#0c383b;
+}
+#purveyor{
+    font-style:italic;
+    color:rgb(12, 55, 58);
 }
