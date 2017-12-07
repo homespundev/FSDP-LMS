@@ -26,6 +26,10 @@ namespace FSDP.UI.Controllers
         public ActionResult Details(int? id)
         {
             Lesson lesson = db.Lessons.Find(id);
+            
+            if (lesson.VideoUrl != null)
+            {
+
             var CompleteYouTubeURL = lesson.VideoUrl;
             var v = CompleteYouTubeURL.IndexOf("v=");
             var amp = CompleteYouTubeURL.IndexOf("&", v);
@@ -41,6 +45,7 @@ namespace FSDP.UI.Controllers
                 vid = CompleteYouTubeURL.Substring(v + 2, amp - (v + 2));
             }
             ViewBag.VideoID = vid;
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -118,10 +123,27 @@ namespace FSDP.UI.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "LessonID,LessonTitle,CourseID,Introduction,VideoUrl,PdfFileName,IsActive,LessonImage")] Lesson lesson)
+        public ActionResult Create([Bind(Include = "LessonID,LessonTitle,CourseID,Introduction,VideoUrl,PdfFileName,IsActive,LessonImage")] Lesson lesson, HttpPostedFileBase lessonPdf)
         {
             if (ModelState.IsValid)
             {
+                string pdfName = "nopdf.pdf";
+                if (lessonPdf != null)
+                {
+                    string ext = pdfName.Substring(pdfName.LastIndexOf('.'));
+                    string goodExt = ".pdf";
+                    if (goodExt.Contains(ext.ToLower()))
+                    {
+                        pdfName = Guid.NewGuid() + ext;
+                        string pathForTheSaving = Server.MapPath("~/Content/Lessons/Pdf/");
+                        lessonPdf.SaveAs(pathForTheSaving + pdfName);
+                    }
+                }
+                else
+                {
+                    pdfName = "nopdf.pdf";
+                }
+                lesson.PdfFileName = pdfName;
                 db.Lessons.Add(lesson);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -154,10 +176,22 @@ namespace FSDP.UI.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "LessonID,LessonTitle,CourseID,Introduction,VideoUrl,PdfFileName,IsActive,LessonImage")] Lesson lesson)
+        public ActionResult Edit([Bind(Include = "LessonID,LessonTitle,CourseID,Introduction,VideoUrl,PdfFileName,IsActive,LessonImage")] Lesson lesson, HttpPostedFileBase lessonPdf)
         {
             if (ModelState.IsValid)
             {
+                if (lessonPdf != null)
+                {
+                    string pdfName = lessonPdf.FileName;
+                    string ext = pdfName.Substring(pdfName.LastIndexOf('.'));
+                    string goodExt = ".pdf";
+                    if (goodExt.Contains(ext.ToLower()))
+                    {
+                        pdfName = Guid.NewGuid() + ext;
+                        lessonPdf.SaveAs(Server.MapPath("~/Content/Lessons/Pdf/" + pdfName));
+                        lesson.PdfFileName = pdfName;
+                    }
+                }
                 db.Entry(lesson).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

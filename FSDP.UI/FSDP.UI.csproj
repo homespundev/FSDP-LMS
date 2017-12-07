@@ -698,6 +698,7 @@
     <Content Include="Content\revolution\fonts\revicons\revicons.eot" />
     <Content Include="Content\revolution\fonts\revicons\revicons.ttf" />
     <Content Include="Content\revolution\fonts\revicons\revicons.woff" />
+    <Content Include="Content\Lessons\Pdf\nopdf.pdf" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\CourseCompletions\Create.cshtml" />

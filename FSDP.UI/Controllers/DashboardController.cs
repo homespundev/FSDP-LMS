@@ -18,6 +18,7 @@ namespace FSDP.UI.Controllers
         public ActionResult Index()
         {
             var user = User.Identity.GetUserId();
+            //var employee = AspNetUser.
             var roles2 = db.AspNetRoles.Where(r => r.Name == "Employee");
                 return View();
         }
