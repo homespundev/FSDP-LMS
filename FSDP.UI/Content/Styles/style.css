@@ -910,7 +910,7 @@ h4 { font-size: 14px; line-height: 18px; }
 }
 
 .btn-menu::before, .btn-menu::after, .btn-menu span {
-    background-color: rgb(12, 55, 58);
+    background-color: #E1B753;
     -webkit-transition: all ease .238s;
     -moz-transition: all ease .238s;
     transition: all ease .238s;

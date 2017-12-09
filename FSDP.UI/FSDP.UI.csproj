@@ -192,34 +192,27 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Fonts\fontawesome-webfont.eot" />
     <Content Include="Content\Fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Fonts\Linearicons-Free.svg" />
+    <Content Include="Content\Fonts\Simple-Line-Icons.svg" />
+    <Content Include="Content\Fonts\fontawesome-webfont.eot" />
     <Content Include="Content\Fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\Fonts\fontawesome-webfont.woff" />
     <Content Include="Content\Fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\Fonts\FontAwesome.otf" />
     <Content Include="Content\Fonts\Linearicons-Free.eot" />
-    <Content Include="Content\Fonts\Linearicons-Free.svg" />
     <Content Include="Content\Fonts\Linearicons-Free.ttf" />
     <Content Include="Content\Fonts\Linearicons-Free.woff" />
     <Content Include="Content\Fonts\Linearicons-Free.woff2" />
     <Content Include="Content\Fonts\Simple-Line-Icons.eot" />
-    <Content Include="Content\Fonts\Simple-Line-Icons.svg" />
     <Content Include="Content\Fonts\Simple-Line-Icons.ttf" />
     <Content Include="Content\Fonts\Simple-Line-Icons.woff" />
     <Content Include="Content\Fonts\Simple-Line-Icons.woff2" />
     <Content Include="Content\Images\apple-touch-icon-32-precomposed.png" />
     <Content Include="Content\Images\apple-touch-icon-48-precomposed.png" />
-    <Content Include="Content\Images\bgwithlogo.png" />
     <Content Include="Content\Images\bgwlogo.png" />
     <Content Include="Content\Images\Biggerlogo-edit.png" />
-    <Content Include="Content\Images\Courses\31c26aa4-601d-48b7-a205-58275888a9fd.PNG" />
-    <Content Include="Content\Images\Courses\af0fd153-1111-4a84-8b6a-bbe480c64976.jpg" />
-    <Content Include="Content\Images\Courses\f163843a-9d44-48cb-bc15-2df1258733c1.PNG" />
     <Content Include="Content\Images\Courses\noimage.jpg" />
-    <Content Include="Content\Images\Courses\t_31c26aa4-601d-48b7-a205-58275888a9fd.PNG" />
-    <Content Include="Content\Images\Courses\t_af0fd153-1111-4a84-8b6a-bbe480c64976.jpg" />
-    <Content Include="Content\Images\Courses\t_noimage.jpg" />
     <Content Include="Content\Images\footerlogo.png" />
     <Content Include="Content\Images\fountain-pen-1854169_1280.jpg" />
     <Content Include="Content\Images\fountain-pen-1854169_1920.jpg" />
@@ -344,15 +337,11 @@
     <Content Include="Content\Images\images\team\2.jpg" />
     <Content Include="Content\Images\images\team\3.jpg" />
     <Content Include="Content\Images\images\team\4.jpg" />
+    <Content Include="Content\Images\Courses\t_noimage.jpg" />
     <Content Include="Content\Images\whitelogo.png" />
-    <Content Include="Content\Lessons\Pdf\nopdf.pdf" />
     <Content Include="Content\revolution\css\layers.css" />
     <Content Include="Content\revolution\css\settings.css" />
-    <Content Include="Content\revolution\fonts\revicons\index.php" />
-    <Content Include="Content\revolution\fonts\revicons\revicons.eot" />
     <Content Include="Content\revolution\fonts\revicons\revicons.svg" />
-    <Content Include="Content\revolution\fonts\revicons\revicons.ttf" />
-    <Content Include="Content\revolution\fonts\revicons\revicons.woff" />
     <Content Include="Content\revolution\js\extensions\revolution.extension.actions.min.js" />
     <Content Include="Content\revolution\js\extensions\revolution.extension.carousel.min.js" />
     <Content Include="Content\revolution\js\extensions\revolution.extension.kenburn.min.js" />
@@ -405,11 +394,11 @@
     <Content Include="Content\Styles\font-awesome.css" />
     <Content Include="Content\Styles\font-linearicons.css" />
     <Content Include="Content\Styles\jquery.mCustomScrollbar.css" />
-    <Content Include="Content\Styles\layers.css" />
     <Content Include="Content\Styles\learnjs.css" />
     <Content Include="Content\Styles\owl.carousel.css" />
     <Content Include="Content\Styles\responsive.css" />
     <Content Include="Content\Styles\revolution-slider.css" />
+    <Content Include="Content\Styles\layers.css" />
     <Content Include="Content\Styles\settings.css" />
     <Content Include="Content\Styles\shortcode.css" />
     <Content Include="Content\Styles\simple-line-icons.css" />
@@ -476,10 +465,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <Content Include="Content\Lessons\Pdf\3296e512-7f9a-4b39-be7b-93aebeb61c99.pdf" />
-    <Content Include="Content\Lessons\Pdf\6fc0e588-85f8-4b2e-aabf-3f7b1017d864.pdf" />
-    <Content Include="Content\Lessons\Pdf\d7c806ba-de32-42bd-b0ad-437b5f5a03e0.pdf" />
-    <Content Include="Content\Lessons\Pdf\f3bb23d4-e3f4-4eaa-9b42-c6430d33f2c5.pdf" />
+    <Content Include="Content\revolution\fonts\revicons\index.php" />
+    <Content Include="Content\revolution\fonts\revicons\revicons.eot" />
+    <Content Include="Content\revolution\fonts\revicons\revicons.ttf" />
+    <Content Include="Content\revolution\fonts\revicons\revicons.woff" />
+    <Content Include="Content\Lessons\Pdf\nopdf.pdf" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\CourseCompletions\Create.cshtml" />

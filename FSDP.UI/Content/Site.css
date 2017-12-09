@@ -99,22 +99,3 @@ input[type="checkbox"].input-validation-error {
     padding-top: 3em;
     padding-bottom:3em;
 }
-.btn-menu span{
-    background-color:rgb(12, 55, 58);
-}
-@media (min-width:1240px){
-.container{
-    max-width: 1200px;
-}
-}
-@media (min-width:1500px){
-.container{
-    max-width: 1397px;
-}
-}
-@media (min-width:1600px){
-.container{
-    max-width: 1540px;
-}
-}
-
