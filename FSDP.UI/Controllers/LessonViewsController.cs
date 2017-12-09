@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FSDP.DATA;
+using Microsoft.AspNet.Identity;
 
 namespace FSDP.UI.Controllers
 {
@@ -18,7 +19,14 @@ namespace FSDP.UI.Controllers
         [Authorize(Roles = "Admin, Manager, Employee")]
         public ActionResult Index()
         {
+            var userID = User.Identity.GetUserId();
             var lessonViews = db.LessonViews.Include(l => l.AspNetUser).Include(l => l.Lesson);
+            if (User.IsInRole("Employee"))
+            {
+                lessonViews = db.LessonViews.Include(l => l.AspNetUser).Include(l => l.Lesson)
+                    .Where(x => x.AspNetUser.Id == userID);
+            }
+            
             return View(lessonViews.ToList());
         }
 
@@ -34,6 +42,18 @@ namespace FSDP.UI.Controllers
             if (lessonView == null)
             {
                 return HttpNotFound();
+            }
+            if (User.IsInRole("Employee"))
+            {
+                var userId = User.Identity.GetUserId();
+                if (userId == lessonView.UserID)
+                {
+                    return View(lessonView);
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }
             }
             return View(lessonView);
         }

@@ -16,6 +16,7 @@ namespace FSDP.UI.Controllers
         private FSDPDbEntities db = new FSDPDbEntities();
 
         // GET: Lessons
+        [Authorize(Roles = "Admin, Manager, Employee")]
         public ActionResult Index()
         {
             var lessons = db.Lessons.Include(l => l.Cours);
@@ -23,6 +24,7 @@ namespace FSDP.UI.Controllers
         }
 
         // GET: Lessons/Details/5
+        [Authorize(Roles = "Admin, Manager, Employee")]
         public ActionResult Details(int? id)
         {
             Lesson lesson = db.Lessons.Find(id);
@@ -93,7 +95,7 @@ namespace FSDP.UI.Controllers
             }
             return View(lesson);
         }
-
+        [Authorize(Roles = "Admin, Manager, Employee")]
         public ActionResult Quiz(int? id)
         {
             if (id == null)

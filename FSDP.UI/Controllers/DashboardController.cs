@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using FSDP.UI.Models;
 
 namespace FSDP.UI.Controllers
 {
@@ -15,12 +16,14 @@ namespace FSDP.UI.Controllers
         private FSDPDbEntities db = new FSDPDbEntities();
         private UnitOfWork uow = new UnitOfWork();
 
+        [Authorize(Roles = "Admin, Manager, Employee")]
         public ActionResult Index()
         {
             var user = User.Identity.GetUserId();
-            //var employee = AspNetUser.
-            var roles2 = db.AspNetRoles.Where(r => r.Name == "Employee");
-                return View();
+            ViewBag.CompleteCourses = db.CourseCompletions.Where(c => c.UserID == user).Count();
+            ViewBag.lessonsCompleted = db.LessonViews.Where(x => x.UserID == user && x.Lesson.CourseID == 1).Count();
+            ViewBag.courseLessons = db.Lessons.Where(x => x.CourseID == 1).Count();
+            return View();
         }
     }
 }

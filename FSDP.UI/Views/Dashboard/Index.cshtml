@@ -1,21 +1,117 @@
 ﻿@using FSDP.DATA
+@using FSDP.UI.Models
+@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "Dashboard";
     FSDPDbEntities db = new FSDPDbEntities();
+    ApplicationDbContext context = new ApplicationDbContext();
+    var user = User.Identity.GetUserId();
 }
 
-<div class="container">
-    <h2>@ViewBag.Title</h2>
-    <div class="row">
-        <div class="col-md-4" id="course-completions">
-            Course Completions will go here
-            %of total completion for all employees for admin/manager?
-            x/6 for employee
-        </div>
-        <div class="col-md-12" id="lesson-views">
-            Employee - foreach? col-md-4 with number of lessons out of course completed
-            Admin/Manager - 
-        </div>
+<div class="flat-row bg-theme">
+    <div class="container">
+        <h2>@ViewBag.Title</h2>
+        @if (User.IsInRole("Employee"))
+        {
+            <div class="row justify-content-center">
+                <div class="col-md-4" id="course-completions">
+                    Courses completed for the year:
+                    @ViewBag.CompleteCourses / 6
+
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" id="lesson-views">
+                    <div class="container">
+                        <div class="portfolio wrap-box pdbottom">
+                            <div class="portfolio-wrap clearfix">
+                                @foreach (Course c in db.Courses)
+                                {
+                                    var courseLessons = db.Lessons.Where(x => x.CourseID == c.CourseID).Count();
+                                    var lessonViews = db.LessonViews.Where(x => x.UserID == user && x.Lesson.CourseID == c.CourseID).Count();
+                                    decimal courseCompletionPercent = 0;
+                                    if (courseLessons == 0)
+                                    {
+                                        courseCompletionPercent = 0;
+                                    }
+                                    else
+                                    {
+                                        courseCompletionPercent = ((decimal)lessonViews / (decimal)courseLessons);
+                                    }
+                                    //int percentCompletion = (int)(courseCompletionPercent - (courseCompletionPercent % 1));
+
+                                    <div class="item">
+                                        <article class="entry">
+                                            <div class="featured-post">
+                                                <a href="#">
+                                                    <div class="circle" data-value="@courseCompletionPercent">
+                                                        <h1 class="value"></h1>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="entry-post">
+                                                <div class="entry-categories">
+                                                    <span><a href="#">Courses</a></span>
+                                                </div>
+                                                <h3 class="entry-title"><a href="#">@c.CourseName</a></h3>
+                                                <div class="entry-number">
+                                                    <div class="entry-count">
+                                                        COMPLETE LESSONS:<span class="count"> @lessonViews</span>
+                                                    </div>
+                                                    <div class="entry-price">
+                                                        TOTAL LESSONS:<span class="price"> @courseLessons</span>
+                                                    </div>
+                                                </div>
+                                            </div><!-- entry-post -->
+                                        </article>
+                                    </div><!-- item -->
+                                }
+                            </div><!-- portfolio-wrap -->
+                        </div><!-- portfolio -->
+                    </div><!-- container-->
+                </div>
+            </div>
+        }
+        @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+        {
+            <div class="row">
+                <div class="col-md-12" id="lesson-views">
+                    @foreach (AspNetUser e in db.AspNetUsers)
+                {
+                    ICollection<AspNetRole> usersRoles = e.AspNetRoles;
+                    foreach (AspNetRole r in usersRoles)
+                    {
+                        if (r.Name == "Employee")
+                        {
+
+                                <div class="col-md-4">
+                                    <h2>@e.FullName</h2>
+                                    This employee has completed
+                                    @db.CourseCompletions.Where(c => c.UserID == e.Id).Count()
+                                    /
+                                    6 courses
+                                </div>
+                            }
+                        }
+
+                    }
+                </div>
+            </div>
+        }
     </div>
 </div>
+@section scripts{
 
+    <script>
+        var circle = $('.circle');
+        var value = circle.children('.value');
+
+        circle.circleProgress({ fill: { color: "rgba(120, 159, 138, 1)" }, emptyFill: "rgba(225, 183, 83, 1)", size: 200 }).on('circle-animation-progress', function (e, p, v) {
+            $(this).children('.value').text((v * 100).toFixed() + '%');
+        });
+
+
+    </script>
+
+}

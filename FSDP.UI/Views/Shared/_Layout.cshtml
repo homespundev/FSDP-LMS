@@ -15,8 +15,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Bootstrap  -->
-    <link rel="stylesheet" type="text/css" href="~/Content/Styles/bootstrap.css">
-
+    @*<link rel="stylesheet" type="text/css" href="~/Content/Styles/bootstrap.css">*@
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <!-- Theme Style -->
     <link rel="stylesheet" type="text/css" href="~/Content/Styles/style.css">
 
@@ -26,21 +26,13 @@
     <!-- Animation Style -->
     <link rel="stylesheet" type="text/css" href="~/Content/Styles/animate.css">
 
-    <!-- REVOLUTION LAYERS STYLES -->
-    <link rel="stylesheet" type="text/css" href="~/Content/revolution/css/layers.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/revolution/css/settings.css">
-
     <!-- Favicon and touch icons  -->
     <link href="~/Content/Images/icon/icon.png" rel="shortcut icon">
     <link href="~/Content/Site.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
-    <!--[if lt IE 9]>
-        <script src="javascript/html5shiv.js"></script>
-        <script src="javascript/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
-    <div class="boxed position_form position_style3 ">
+    <div class="boxed position_form position_style3">
         <div class="wrap-header">
             <div class="top top-style3" id="topnav">
                 <div class="row">
@@ -70,16 +62,6 @@
                         <div class="logo">
                             <a href="@Url.Action("Index", "Home" )"><img src="~/Content/Images/greenlogo.png" alt="image"></a>
                         </div><!-- /logo -->
-                        @*<div class="flat-search">
-                            <ul>
-                                <li class="show-search"><a href=""><i class="lnr lnr-magnifier"></i></a></li>
-                                <li><a href="#"><i class="lnr lnr-cart"></i></a></li>
-                            </ul>
-                            <div class="btn-menu">
-                                <span></span>
-                            </div>*@<!-- //mobile menu button -->
-                        @*</div>*@
-                        <!-- /wrap-search -->
                         <div class="wrap-nav">
                             <nav id="mainnav" class="mainnav">
                                 <ul class="menu">
@@ -88,8 +70,9 @@
                                     <li>
                                         @Html.ActionLink("Contact", "Contact", "Home")
                                     </li>
+                                    <li>@Html.ActionLink("Class Sign-up", "Create", "ClassSignUps")</li>
                                     <li id="dashboard">
-                                        <a href="@Url.Action("Index","Courses")">Dashboard</a>
+                                        <a href="@Url.Action("Index","Dashboard")">Dashboard</a>
                                         <ul class="submenu">
                                             <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
                                             <li>@Html.ActionLink("Course Completions", "Index", "CourseCompletions")</li>
@@ -97,28 +80,14 @@
                                             <li>@Html.ActionLink("Lesson Views", "Index", "LessonViews")</li>
                                         </ul>
                                     </li>
-                                    <li>@Html.ActionLink("Class Sign-up", "Create", "ClassSignUps")</li>
-                                    
-                                    @if (Request.IsAuthenticated && !User.IsInRole("Customer"))
-                                    {
-                                        <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
-                                    }
                                     @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                                     {
-                                        <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
-                                            <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                                        <li>@Html.ActionLink("Roles", "Index", "RolesAdmin")</li>
+                                            <li>@Html.ActionLink("Users", "Index", "UsersAdmin")</li>
                                     }
 
                                 </ul>
                             </nav>
-                            @*<div class="top-search">
-                                    <form action="#" id="searchform-all" method="get">
-                                        <div>
-                                            <input type="text" id="s" class="sss" placeholder="Search...">
-                                            <input type="submit" value="" id="searchsubmit">
-                                        </div>
-                                    </form>
-                                </div>*@<!-- /top-search -->
                         </div><!-- /wrap-nav -->
                     </div><!-- /col-md-12 -->
                 </div><!-- /row -->
@@ -217,8 +186,13 @@
     </div><!-- Boxed -->
     <!-- Javascript -->
     <script type="text/javascript" src="~/Content/Scripts/jquery.min.js"></script>
-    <script type="text/javascript" src="~/Content/Scripts/bootstrap.min.js"></script>
+    @*<script type="text/javascript" src="~/Content/Scripts/bootstrap.min.js"></script>*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script type="text/javascript" src="~/Content/Scripts/main.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+    <script src="~/Content/Scripts/CircularLoader-v1.3.js"></script>
+    <script src="~/Content/Scripts/circle-progress.js"></script>
     <script type="text/javascript" src="~/Content/Scripts/countdown.js"></script>
     <script type="text/javascript" src="~/Content/Scripts/imagesloaded.min.js"></script>
     <script type="text/javascript" src="~/Content/Scripts/jquery.isotope.min.js"></script>

@@ -76,3 +76,26 @@ input[type="checkbox"].input-validation-error {
 .ytp-icon-watermark{
     visibility:hidden;
 }
+.circle {
+    text-align:center;
+  position: relative;
+  /*display: inline-block;*/
+}
+
+.circle .value {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  top: 42%;
+  margin-top: -15px;
+  /*height: 30px;*/
+  /*font: 24px/30px sans-serif;*/
+  text-align: center;
+}
+.card {
+    border: #E0B655 2px solid;
+    margin-bottom:2.5em;
+    padding-top: 3em;
+    padding-bottom:3em;
+}

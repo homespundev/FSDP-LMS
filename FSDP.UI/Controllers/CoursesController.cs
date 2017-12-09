@@ -19,12 +19,14 @@ namespace FSDP.UI.Controllers
         private UnitOfWork uow = new UnitOfWork();
 
         // GET: Courses
+        [Authorize(Roles = "Admin, Manager, Employee")]
         public ActionResult Index()
         {
             return View(db.Courses.ToList());
         }
 
         // GET: Courses/Details/5
+        [Authorize(Roles = "Admin, Manager, Employee")]
         public ActionResult Details(int? id)
         {
             if (id == null)

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FSDP.DATA;
+using Microsoft.AspNet.Identity;
 
 namespace FSDP.UI.Controllers
 {
@@ -15,13 +16,22 @@ namespace FSDP.UI.Controllers
         private FSDPDbEntities db = new FSDPDbEntities();
 
         // GET: CourseCompletions
+
+        [Authorize(Roles = "Admin, Manager, Employee")]
         public ActionResult Index()
         {
+            var userID = User.Identity.GetUserId();
             var courseCompletions = db.CourseCompletions.Include(c => c.AspNetUser).Include(c => c.Cours);
+            if (User.IsInRole("Employee"))
+            {
+                courseCompletions = db.CourseCompletions.Include(c => c.AspNetUser).Include(c => c.Cours)
+                    .Where(x => x.AspNetUser.Id == userID);
+            }
             return View(courseCompletions.ToList());
         }
 
         // GET: CourseCompletions/Details/5
+        [Authorize(Roles = "Admin, Manager, Employee")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -32,6 +42,18 @@ namespace FSDP.UI.Controllers
             if (courseCompletion == null)
             {
                 return HttpNotFound();
+            }
+            if (User.IsInRole("Employee"))
+            {
+                var userId = User.Identity.GetUserId();
+                if (userId == courseCompletion.UserID)
+                {
+                    return View(courseCompletion);
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }
             }
             return View(courseCompletion);
         }
