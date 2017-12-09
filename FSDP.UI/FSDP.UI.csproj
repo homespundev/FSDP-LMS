@@ -408,6 +408,7 @@
     <Content Include="Content\Styles\layers.css" />
     <Content Include="Content\Styles\learnjs.css" />
     <Content Include="Content\Styles\owl.carousel.css" />
+    <Content Include="Content\Styles\reset.css" />
     <Content Include="Content\Styles\responsive.css" />
     <Content Include="Content\Styles\revolution-slider.css" />
     <Content Include="Content\Styles\settings.css" />
