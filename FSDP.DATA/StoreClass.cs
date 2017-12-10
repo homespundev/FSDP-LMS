@@ -18,7 +18,6 @@ namespace FSDP.DATA
         public StoreClass()
         {
             this.ClassDates = new HashSet<ClassDate>();
-            this.ClassSignUps = new HashSet<ClassSignUp>();
         }
     
         public int StoreClassID { get; set; }
@@ -27,7 +26,5 @@ namespace FSDP.DATA
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClassDate> ClassDates { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ClassSignUp> ClassSignUps { get; set; }
     }
 }

@@ -17,12 +17,12 @@
         <AssociationConnector Association="FSDPDbModel.FK_CourseCompletions_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="FSDPDbModel.FK_LessonViews_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="FSDPDbModel.FK_ClassDates_StoreClasses" ManuallyRouted="false" />
-        <AssociationConnector Association="FSDPDbModel.FK_ClassSignUps_StoreClasses" ManuallyRouted="false" />
         <AssociationConnector Association="FSDPDbModel.FK_CourseCompletions_Courses" ManuallyRouted="false" />
         <AssociationConnector Association="FSDPDbModel.FK_Lessons_Courses" ManuallyRouted="false" />
         <AssociationConnector Association="FSDPDbModel.FK_LessonViews_Lessons" ManuallyRouted="false" />
         <EntityTypeShape EntityType="FSDPDbModel.AspNetRole" Width="1.5" PointX="0.75" PointY="10.25" />
         <AssociationConnector Association="FSDPDbModel.AspNetUserRoles" />
+        <AssociationConnector Association="FSDPDbModel.FK_ClassSignUps_ClassDates" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

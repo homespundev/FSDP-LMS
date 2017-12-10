@@ -1,51 +1,39 @@
 ﻿@model IEnumerable<FSDP.DATA.ClassSignUp>
 
 @{
-    ViewBag.Title = "Class Sign Ups";
+    ViewBag.Title = "Index";
 }
 
-<div class="container">
-    <h2>@ViewBag.Title</h2>
+<h2>Index</h2>
 
-    <p>
-        @Html.ActionLink("Add New Class Sign Up", "Create")
-    </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.ClassDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AspNetUser.FirstName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.StoreClass.ClassName)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ClassDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AspNetUser.FirstName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.StoreClass.ClassName)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.ClassSignUpID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.ClassSignUpID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.ClassSignUpID })
-                    </td>
-                </tr>
-            }
-        </tbody>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AspNetUser.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClassDate.ClassDateID)
+        </th>
+        <th></th>
+    </tr>
 
-    </table>
-</div>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassDate.ClassDateID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ClassSignUpID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ClassSignUpID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ClassSignUpID })
+        </td>
+    </tr>
+}
+
+</table>

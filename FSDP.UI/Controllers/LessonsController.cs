@@ -102,8 +102,8 @@ namespace FSDP.UI.Controllers
         public ActionResult Details(int? id, string txtAnswer)
         {
             Lesson lesson = db.Lessons.Find(id);
-            string userAnswer = Convert.ToString(txtAnswer);
-            if (userAnswer == lesson.QuizAnswer)
+            string userAnswer = Convert.ToString(txtAnswer).ToLower();
+            if (userAnswer == lesson.QuizAnswer.ToLower())
             {
                 if (User.IsInRole("Employee"))
                 {

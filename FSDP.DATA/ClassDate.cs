@@ -14,11 +14,19 @@ namespace FSDP.DATA
     
     public partial class ClassDate
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ClassDate()
+        {
+            this.ClassSignUps = new HashSet<ClassSignUp>();
+        }
+    
         public int ClassDateID { get; set; }
         public int StoreClassID { get; set; }
         public System.DateTime DateTime { get; set; }
         public Nullable<byte> ClassLimit { get; set; }
     
         public virtual StoreClass StoreClass { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ClassSignUp> ClassSignUps { get; set; }
     }
 }

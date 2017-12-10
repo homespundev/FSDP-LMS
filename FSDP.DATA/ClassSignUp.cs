@@ -15,11 +15,10 @@ namespace FSDP.DATA
     public partial class ClassSignUp
     {
         public int ClassSignUpID { get; set; }
-        public int StoreClassID { get; set; }
         public string UserID { get; set; }
-        public System.DateTime ClassDate { get; set; }
+        public int ClassDateID { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
-        public virtual StoreClass StoreClass { get; set; }
+        public virtual ClassDate ClassDate { get; set; }
     }
 }

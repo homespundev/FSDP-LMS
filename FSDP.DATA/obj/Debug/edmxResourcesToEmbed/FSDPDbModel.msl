@@ -34,10 +34,9 @@
     <EntitySetMapping Name="ClassSignUps">
       <EntityTypeMapping TypeName="FSDPDbModel.ClassSignUp">
         <MappingFragment StoreEntitySet="ClassSignUps">
+          <ScalarProperty Name="ClassDateID" ColumnName="ClassDateID" />
           <ScalarProperty Name="ClassSignUpID" ColumnName="ClassSignUpID" />
-          <ScalarProperty Name="StoreClassID" ColumnName="StoreClassID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
-          <ScalarProperty Name="ClassDate" ColumnName="ClassDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -10,116 +10,107 @@ using FSDP.DATA;
 
 namespace FSDP.UI.Controllers
 {
-    public class ClassSignUpsController : Controller
+    public class StoreClassesController : Controller
     {
         private FSDPDbEntities db = new FSDPDbEntities();
 
-        // GET: ClassSignUps
+        // GET: StoreClasses
         public ActionResult Index()
         {
-            var classSignUps = db.ClassSignUps.Include(c => c.AspNetUser).Include(c => c.ClassDate);
-            return View(classSignUps.ToList());
+            return View(db.StoreClasses.ToList());
         }
 
-        // GET: ClassSignUps/Details/5
+        // GET: StoreClasses/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ClassSignUp classSignUp = db.ClassSignUps.Find(id);
-            if (classSignUp == null)
+            StoreClass storeClass = db.StoreClasses.Find(id);
+            if (storeClass == null)
             {
                 return HttpNotFound();
             }
-            return View(classSignUp);
+            return View(storeClass);
         }
 
-        // GET: ClassSignUps/Create
+        // GET: StoreClasses/Create
         public ActionResult Create()
         {
-            ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "FullName");
-            ViewBag.ClassDateID = new SelectList(db.ClassDates, "ClassDateID", "NameDate");
             return View();
         }
 
-        // POST: ClassSignUps/Create
+        // POST: StoreClasses/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ClassSignUpID,UserID,ClassDateID")] ClassSignUp classSignUp)
+        public ActionResult Create([Bind(Include = "StoreClassID,ClassName,ClassDescription")] StoreClass storeClass)
         {
             if (ModelState.IsValid)
             {
-                db.ClassSignUps.Add(classSignUp);
+                db.StoreClasses.Add(storeClass);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "FullName", classSignUp.UserID);
-            ViewBag.ClassDateID = new SelectList(db.ClassDates, "ClassDateID", "NameDate", classSignUp.ClassDateID);
-            return View(classSignUp);
+            return View(storeClass);
         }
 
-        // GET: ClassSignUps/Edit/5
+        // GET: StoreClasses/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ClassSignUp classSignUp = db.ClassSignUps.Find(id);
-            if (classSignUp == null)
+            StoreClass storeClass = db.StoreClasses.Find(id);
+            if (storeClass == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "FullName", classSignUp.UserID);
-            ViewBag.ClassDateID = new SelectList(db.ClassDates, "ClassDateID", "NameDate", classSignUp.ClassDateID);
-            return View(classSignUp);
+            return View(storeClass);
         }
 
-        // POST: ClassSignUps/Edit/5
+        // POST: StoreClasses/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ClassSignUpID,UserID,ClassDateID")] ClassSignUp classSignUp)
+        public ActionResult Edit([Bind(Include = "StoreClassID,ClassName,ClassDescription")] StoreClass storeClass)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(classSignUp).State = EntityState.Modified;
+                db.Entry(storeClass).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "FullName", classSignUp.UserID);
-            ViewBag.ClassDateID = new SelectList(db.ClassDates, "ClassDateID", "NameDate", classSignUp.ClassDateID);
-            return View(classSignUp);
+            return View(storeClass);
         }
 
-        // GET: ClassSignUps/Delete/5
+        // GET: StoreClasses/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ClassSignUp classSignUp = db.ClassSignUps.Find(id);
-            if (classSignUp == null)
+            StoreClass storeClass = db.StoreClasses.Find(id);
+            if (storeClass == null)
             {
                 return HttpNotFound();
             }
-            return View(classSignUp);
+            return View(storeClass);
         }
 
-        // POST: ClassSignUps/Delete/5
+        // POST: StoreClasses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ClassSignUp classSignUp = db.ClassSignUps.Find(id);
-            db.ClassSignUps.Remove(classSignUp);
+            StoreClass storeClass = db.StoreClasses.Find(id);
+            db.StoreClasses.Remove(storeClass);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

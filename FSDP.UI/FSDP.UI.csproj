@@ -178,6 +178,7 @@
     <Compile Include="Controllers\LessonViewsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
+    <Compile Include="Controllers\StoreClassesController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -487,16 +488,6 @@
     <Content Include="Views\LessonViews\Details.cshtml" />
     <Content Include="Views\LessonViews\Edit.cshtml" />
     <Content Include="Views\LessonViews\Index.cshtml" />
-    <Content Include="Views\ClassDates\Create.cshtml" />
-    <Content Include="Views\ClassDates\Delete.cshtml" />
-    <Content Include="Views\ClassDates\Details.cshtml" />
-    <Content Include="Views\ClassDates\Edit.cshtml" />
-    <Content Include="Views\ClassDates\Index.cshtml" />
-    <Content Include="Views\ClassSignUps\Create.cshtml" />
-    <Content Include="Views\ClassSignUps\Delete.cshtml" />
-    <Content Include="Views\ClassSignUps\Details.cshtml" />
-    <Content Include="Views\ClassSignUps\Edit.cshtml" />
-    <Content Include="Views\ClassSignUps\Index.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\ContactConfirmation.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
@@ -504,6 +495,21 @@
     <Content Include="Views\Lessons\Index.cshtml" />
     <Content Include="Views\Lessons\Details.cshtml" />
     <Content Include="Views\Lessons\Delete.cshtml" />
+    <Content Include="Views\ClassDates\Create.cshtml" />
+    <Content Include="Views\ClassDates\Delete.cshtml" />
+    <Content Include="Views\ClassDates\Details.cshtml" />
+    <Content Include="Views\ClassDates\Edit.cshtml" />
+    <Content Include="Views\ClassDates\Index.cshtml" />
+    <Content Include="Views\StoreClasses\Create.cshtml" />
+    <Content Include="Views\StoreClasses\Delete.cshtml" />
+    <Content Include="Views\StoreClasses\Details.cshtml" />
+    <Content Include="Views\StoreClasses\Edit.cshtml" />
+    <Content Include="Views\StoreClasses\Index.cshtml" />
+    <Content Include="Views\ClassSignUps\Create.cshtml" />
+    <Content Include="Views\ClassSignUps\Delete.cshtml" />
+    <Content Include="Views\ClassSignUps\Details.cshtml" />
+    <Content Include="Views\ClassSignUps\Edit.cshtml" />
+    <Content Include="Views\ClassSignUps\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FSDP.DATA\FSDP.DATA.csproj">

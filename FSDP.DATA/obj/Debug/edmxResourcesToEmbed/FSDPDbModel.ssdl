@@ -48,9 +48,8 @@
       <PropertyRef Name="ClassSignUpID" />
     </Key>
     <Property Name="ClassSignUpID" Type="int" Nullable="false" />
-    <Property Name="StoreClassID" Type="int" Nullable="false" />
     <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="ClassDate" Type="date" Nullable="false" />
+    <Property Name="ClassDateID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="CourseCompletions">
     <Key>
@@ -127,15 +126,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ClassSignUps_StoreClasses">
-    <End Role="StoreClasses" Type="Self.StoreClasses" Multiplicity="1" />
+  <Association Name="FK_ClassSignUps_ClassDates">
+    <End Role="ClassDates" Type="Self.ClassDates" Multiplicity="1" />
     <End Role="ClassSignUps" Type="Self.ClassSignUps" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="StoreClasses">
-        <PropertyRef Name="StoreClassID" />
+      <Principal Role="ClassDates">
+        <PropertyRef Name="ClassDateID" />
       </Principal>
       <Dependent Role="ClassSignUps">
-        <PropertyRef Name="StoreClassID" />
+        <PropertyRef Name="ClassDateID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -246,8 +245,8 @@
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="ClassSignUps" EntitySet="ClassSignUps" />
     </AssociationSet>
-    <AssociationSet Name="FK_ClassSignUps_StoreClasses" Association="Self.FK_ClassSignUps_StoreClasses">
-      <End Role="StoreClasses" EntitySet="StoreClasses" />
+    <AssociationSet Name="FK_ClassSignUps_ClassDates" Association="Self.FK_ClassSignUps_ClassDates">
+      <End Role="ClassDates" EntitySet="ClassDates" />
       <End Role="ClassSignUps" EntitySet="ClassSignUps" />
     </AssociationSet>
     <AssociationSet Name="FK_CourseCompletions_AspNetUsers" Association="Self.FK_CourseCompletions_AspNetUsers">
