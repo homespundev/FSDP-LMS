@@ -26,12 +26,17 @@
             @Html.DisplayFor(model => model.Introduction)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.VideoUrl)
-        </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.VideoUrl)
+            @if (Model.VideoUrl != null)
+            {
+                <div id="player"></div>
+            }
+            else
+            {
+                <div>
+                    No video available for this course
+                </div>
+            }
         </dd>
 
         <dt>
@@ -39,7 +44,17 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PdfFileName)
+            @if (Model.PdfFileName != "")
+            {
+                <a href="@Url.Content("~/Content/Lessons/Pdf/" + Model.PdfFileName)" target="_blank">View PDF</a>
+            }
+            else
+            {
+                <div>
+                    No pdf available for this course
+                </div>
+            }
+
         </dd>
 
         <dt>
