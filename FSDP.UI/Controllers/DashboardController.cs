@@ -20,7 +20,10 @@ namespace FSDP.UI.Controllers
         public ActionResult Index()
         {
             var user = User.Identity.GetUserId();
-            ViewBag.CompleteCourses = db.CourseCompletions.Where(c => c.UserID == user).Count();
+            var completeUserCourses = db.CourseCompletions.Where(c => c.UserID == user);
+            int coursesUserCompletedThisYear = completeUserCourses.Where(y => y.DateCompleted.Year == DateTime.Now.Year).Count();
+            ViewBag.UserCompletedThisYear = coursesUserCompletedThisYear;
+            ViewBag.CompleteCourses = completeUserCourses.Count();
             ViewBag.lessonsCompleted = db.LessonViews.Where(x => x.UserID == user && x.Lesson.CourseID == 1).Count();
             ViewBag.courseLessons = db.Lessons.Where(x => x.CourseID == 1).Count();
             return View();

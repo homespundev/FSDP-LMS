@@ -1,138 +1,141 @@
 ﻿@model FSDP.DATA.Lesson
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.LessonTitle + " Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Lesson</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.LessonTitle)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LessonTitle)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Introduction)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Introduction)
-        </dd>
-
-        <dd>
-            @if (Model.VideoUrl != null)
-            {
-                <div id="player"></div>
-            }
-            else
-            {
-                <div>
-                    No video available for this course
-                </div>
-            }
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PdfFileName)
-        </dt>
-
-        <dd>
-            @if (Model.PdfFileName != "")
-            {
-                <a href="@Url.Content("~/Content/Lessons/Pdf/" + Model.PdfFileName)" target="_blank">View PDF</a>
-            }
-            else
-            {
-                <div>
-                    No pdf available for this course
-                </div>
-            }
-
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsActive)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LessonImage)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LessonImage)
-        </dd>
-        @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.QuizQuestion)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.QuizQuestion)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.QuizAnswer)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.QuizAnswer)
-            </dd>
-        }
-        <dt>
-            @Html.DisplayNameFor(model => model.Courses.CourseName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Courses.CourseName)
-        </dd>
-
-    </dl>
-</div>
-
-@if (User.IsInRole("Employee"))
-{
+<div class="container">
+    <h2 class="text-center">@ViewBag.Title</h2>
+    <div id="success">@ViewBag.Success</div>
+    <div id="fail">@ViewBag.Fail</div>
     <div>
-        @Html.BeginForm()
-        {
-        @Html.AntiForgeryToken()
-        <div class="form-horizontal">
-            <h4>Quiz</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                <label class="control-label col-md-2">Question:</label>
-                <div class="col-md-10">
+        <h4>Lesson</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.LessonTitle)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LessonTitle)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Introduction)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Introduction)
+            </dd>
+
+            <dd>
+                @if (Model.VideoUrl != null)
+            {
+                    <div id="player"></div>
+                }
+                else
+                {
+                    <div>
+                        No video available for this course
+                    </div>
+                }
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PdfFileName)
+            </dt>
+
+            <dd>
+                @if (Model.PdfFileName != "")
+            {
+                    <a href="@Url.Content("~/Content/Lessons/Pdf/" + Model.PdfFileName)" target="_blank">View PDF</a>
+                }
+                else
+                {
+                    <div>
+                        No pdf available for this course
+                    </div>
+                }
+
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsActive)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LessonImage)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LessonImage)
+            </dd>
+            @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.QuizQuestion)
+                </dt>
+
+                <dd>
                     @Html.DisplayFor(model => model.QuizQuestion)
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-10">
-                    <label class="control-label col-md-2">Answer:</label>
-                    <input type="text" name="txtAnswer" />
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Submit" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-        }
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.QuizAnswer)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.QuizAnswer)
+                </dd>
+            }
+            <dt>
+                @Html.DisplayNameFor(model => model.Courses.CourseName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Courses.CourseName)
+            </dd>
+
+        </dl>
     </div>
-}
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.LessonID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+    @if (User.IsInRole("Employee"))
+    {
+        <div>
+            @Html.BeginForm()
+            {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                <h4>Quiz</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <label class="control-label col-md-2">Question:</label>
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.QuizQuestion)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <label class="control-label col-md-2">Answer:</label>
+                        <input type="text" name="txtAnswer" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Submit" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    }
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.LessonID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

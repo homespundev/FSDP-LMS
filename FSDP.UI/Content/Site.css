@@ -135,3 +135,11 @@ input[type="checkbox"].input-validation-error {
 .sorting_1{
     padding-left:5%!important;
 }
+#success{
+    background-color: rgba(4, 117, 52,.5);
+    color: rgb(4,117,52);
+}
+#fail{
+    background-color: rgba(238, 12, 12, .5);
+    color: rgb(238,12,12);
+}

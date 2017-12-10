@@ -6,19 +6,56 @@
     FSDPDbEntities db = new FSDPDbEntities();
     ApplicationDbContext context = new ApplicationDbContext();
     var user = User.Identity.GetUserId();
+    var allCourses = db.Courses.Count();
+    decimal userCompletionDecimal = 0;
+    decimal userYearCompletionDecimal = 0;
+    int totalCoursesThisYear = db.CourseCompletions.Where(y => y.DateCompleted.Year == DateTime.Now.Year).Count();
+    if (allCourses == 0)
+    {
+        userCompletionDecimal = 0;
+        userYearCompletionDecimal = 0;
+    }
+    else
+    {
+        userYearCompletionDecimal = ((decimal)ViewBag.UserCompletedThisYear / (decimal)allCourses);
+        userCompletionDecimal = ((decimal)ViewBag.CompleteCourses / (decimal)allCourses);
+    }
+    int userCompletionPercent = (int)(userCompletionDecimal * 100);
+    int userCompletionPercentForYear = (int)(userCompletionDecimal * 100);
+    int totalCoursesCompleted = db.CourseCompletions.Count();
+
+
 }
 
 <div class="flat-row bg-theme">
     <div class="container">
         <h2>@ViewBag.Title</h2>
+        <!-- #region Employee View -->
+        
         @if (User.IsInRole("Employee"))
         {
             <div class="row justify-content-center">
-                <div class="col-md-4" id="course-completions">
-                    Courses completed for the year:
-                    @ViewBag.CompleteCourses / 6
+                <div class="col-md-6" id="course-completions">
+                    <h1>Courses completed for the year:</h1>
+                    <h2>@ViewBag.UserCompletedThisYear / 6</h2>
+                    <div class="progress">
+                        <div class="progress-bar active" role="progressbar" aria-valuenow="@userCompletionPercentForYear" aria-valuemin="0" aria-valuemax="100"
+                             style="width:@userCompletionPercentForYear%">
+                            <span class="sr-only">@userCompletionPercentForYear% Complete</span>
 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h1>Lifetime Courses Completed:</h1>
+                    <h2>@ViewBag.CompleteCourses / @db.Courses.Count()</h2>
+                    <div class="progress">
+                        <div class="progress-bar active" role="progressbar" aria-valuenow="@userCompletionPercent" aria-valuemin="0" aria-valuemax="100"
+                             style="width:@userCompletionPercent%">
+                            <span class="sr-only">@userCompletionPercent% Complete</span>
 
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -54,7 +91,7 @@
                                                 <div class="entry-categories">
                                                     <span><a href="#">Courses</a></span>
                                                 </div>
-                                                <h3 class="entry-title"><a href="#">@c.CourseName</a></h3>
+                                                <h2 class="entry-title"><a href="#">@c.CourseName</a></h2>
                                                 <div class="entry-number">
                                                     <div class="entry-count">
                                                         COMPLETE LESSONS:<span class="count"> @lessonViews</span>
@@ -72,30 +109,73 @@
                     </div><!-- container-->
                 </div>
             </div>
+
         }
+        <!-- #endregion -->
         @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
         {
             <div class="row">
+                <div class="col-md-4">
+                    <h2>Total Courses Completed This Year:</h2>
+                    <h1>@totalCoursesThisYear</h1>
+                </div>
+                <div class="offset-md-4 col-md-4">
+                    <h2>Lifetime Total Courses Completed:</h2>
+                    <h1>@totalCoursesCompleted</h1>
+                </div>
                 <div class="col-md-12" id="lesson-views">
-                    @foreach (AspNetUser e in db.AspNetUsers)
-                {
-                    ICollection<AspNetRole> usersRoles = e.AspNetRoles;
-                    foreach (AspNetRole r in usersRoles)
-                    {
-                        if (r.Name == "Employee")
-                        {
+                    <div class="container">
+                        <div class="portfolio wrap-box pdbottom">
+                            <div class="portfolio-wrap clearfix">
+                                @foreach (AspNetUser e in db.AspNetUsers)
+                                {
+                                    ICollection<AspNetRole> usersRoles = e.AspNetRoles;
+                                    foreach (AspNetRole r in usersRoles)
+                                    {
+                                        if (r.Name == "Employee")
+                                        {
+                                            int employeeCompleted = db.CourseCompletions.Where(x => x.UserID == e.Id && x.DateCompleted.Year == DateTime.Now.Year).Count();
+                                            decimal completionPercent;
+                                            if (allCourses == 0)
+                                            {
+                                                completionPercent = 0;
+                                            }
+                                            else
+                                            {
+                                               completionPercent = employeeCompleted / 6;//TODO: Figure out why this is giving 0 as the answer
+                                            }
+                                            <div class="item">
+                                                <article class="entry">
+                                                    <div class="featured-post">
+                                                        <a href="#">
+                                                            <div class="circle" data-value="@completionPercent">
+                                                                <h1 class="value"></h1>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="entry-post">
+                                                        <div class="entry-categories">
+                                                            <span><a href="#">Employee Completion</a></span>
+                                                        </div>
+                                                        <h2 class="entry-title"><a href="#">@e.FullName</a></h2>
+                                                        <div class="entry-number">
+                                                            <div class="entry-count">
+                                                                COMPLETE COURSES:<span class="count"> </span>
+                                                            </div>
+                                                            <div class="entry-price">
+                                                                TOTAL REQUIRED:<span class="price">6</span>
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- entry-post -->
+                                                </article>
+                                            </div><!-- item -->
+                                        }
+                                    }
 
-                                <div class="col-md-4">
-                                    <h2>@e.FullName</h2>
-                                    This employee has completed
-                                    @db.CourseCompletions.Where(c => c.UserID == e.Id).Count()
-                                    /
-                                    6 courses
-                                </div>
-                            }
-                        }
-
-                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         }

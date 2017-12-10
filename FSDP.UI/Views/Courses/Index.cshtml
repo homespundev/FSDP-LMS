@@ -24,9 +24,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.CourseDescription)
                 </th>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.IsActive)
-                </th>
+                </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.CourseImage)
                 </th>
@@ -50,9 +50,9 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.CourseDescription)
                     </td>
-                    <td>
+                    @*<td>
                         @Html.DisplayFor(modelItem => item.IsActive)
-                    </td>
+                    </td>*@
                     <td>
                         <img src="@Url.Content("~/Content/Images/Courses/t_"+item.CourseImage)" />
                     </td>

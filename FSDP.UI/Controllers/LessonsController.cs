@@ -108,7 +108,7 @@ namespace FSDP.UI.Controllers
                 if (User.IsInRole("Employee"))
                 {
                     string userID = User.Identity.GetUserId();
-                    var lessonViews = db.LessonViews.Where(x => x.LessonID == id && x.UserID == userID && x.Lesson.IsActive);
+                    var lessonViews = db.LessonViews.Where(x => x.LessonID == id && x.UserID == userID);
                     int lessonViewsCount = lessonViews.Count();
                     if (lessonViewsCount == 0)
                     {
@@ -141,12 +141,16 @@ namespace FSDP.UI.Controllers
                     }
 
                 }
-
-                return new JavaScriptResult { Script = "alert('You answered correctly and have completed this lesson!');" };
+                ViewBag.Success = "You answered correctly and have completed this lesson!";
+                //return Content("<script language='javascript' type='text/javascript'>alert('You answered correctly and have completed this lesson!');</script>");
+                //return new JavaScriptResult { Script = "window.alert('You answered correctly and have completed this lesson!');" };
+                return View(lesson);
             }
             else
             {
-                return new JavaScriptResult { Script = "alert('You did not answer correctly. Please try again.');" };
+                ViewBag.Fail = "You did not answer correctly. Please try again.";
+                //return Content("<script language='javascript' type='text/javascript'>alert('You did not answer correctly. Please try again.');</script>");
+                return View(lesson);
             }
         }
 
@@ -232,7 +236,7 @@ namespace FSDP.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                string pdfName = lessonPdf.ToString();
+                string pdfName = "";
                 if (lessonPdf != null)
                 {
                     string ext = pdfName.Substring(pdfName.LastIndexOf('.'));
