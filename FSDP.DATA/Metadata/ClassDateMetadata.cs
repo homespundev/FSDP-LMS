@@ -18,6 +18,7 @@ namespace FSDP.DATA
     [MetadataType(typeof(ClassDateMetadata))]
     public partial class ClassDate
     {
+        [Display(Name="Class")]
         public string NameDate { get { return StoreClass.ClassName + " on " + $"{DateTime:d}"; } }
     }
 }

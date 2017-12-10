@@ -24,7 +24,7 @@ namespace FSDP.UI.Controllers
             if (User.IsInRole("Employee"))
             {
                 lessonViews = db.LessonViews.Include(l => l.AspNetUser).Include(l => l.Lesson)
-                    .Where(x => x.AspNetUser.Id == userID);
+                    .Where(x => x.UserID == userID);
             }
             
             return View(lessonViews.ToList());

@@ -3,16 +3,16 @@
     ViewBag.Title = "Index";
 }
 
-<div class="flat-row bg-theme text-center" id="home-img">
-    <br /><br /><br />
+<div class="flat-row text-center" id="home-img">
+    <br /><br /><br /><br />
     <h1 style="color:#E0B655">
         WELCOME TO
     </h1>
     <img src="~/Content/Images/whitelogo.png" />
     <br /><br />
     <h2 id="purveyor"><strong>Purveyors of Fine Pens, Inks, &amp; Papers</strong></h2>
-    <br />
-    <div class="wrap-btn"><a href="@Url.Action("Create","ClassSignUps")" class="flat-btn" id="classbtn">SIGN UP FOR A CLASS</a></div>
+    <br /><br />
+    @*<div class="wrap-btn"><a href="@Url.Action("Create","ClassSignUps")" class="flat-btn" id="classbtn">SIGN UP FOR A CLASS</a></div>*@
     
     <br /><br /><br /><br />
 </div>
@@ -22,9 +22,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="title-section color-title">
-                        <h1 class="title">OFFERING <span class="color-orange">THE BEST</span> <br> IN EDUCATION TO THE WORLD</h1>
+                        <h1 class="title">OFFERING <span class="color-orange">THE BEST</span> <br> PENS, INKS, &amp; PAPER IN THE WORLD</h1>
                         <div class="sub-title">
-                            Sign-up today to join over 6 million learners already on ALISON
+                            Stop by today or sign up for one of our many classes!
                         </div>
                     </div>
                 </div><!-- col-md-12 -->
@@ -42,14 +42,14 @@
                     <div class="iconbox">
                         <div class="box-header">
                             <div class="box-icon">
-                                <img src="~/Content/Images/images/iconbox/1.png" alt="image">
+                                <img src="~/Content/Images/images/iconbox/26.png" alt="image">
                             </div>
                             <div class="box-title">
-                                <a href="#" title="">Best Learning Communities</a>
+                                <a href="#" title="">Learning Resources</a>
                             </div>
                         </div>
                         <div class="box-content">
-                            <p>The idea is to keep the discussions<br>going after class ends.</p>
+                            <p>Books and online resources<br>recommended by our staff</p>
                         </div>
                     </div>
                 </div>
@@ -57,14 +57,14 @@
                     <div class="iconbox icon-green">
                         <div class="box-header">
                             <div class="box-icon">
-                                <img src="~/Content/Images/images/iconbox/2.png" alt="image">
+                                <img src="~/Content/Images/images/iconbox/25.png" alt="image">
                             </div>
                             <div class="box-title">
-                                <a href="#" title="">Online Teaching Jobs</a>
+                                <a href="#" title="">INKS</a>
                             </div>
                         </div>
                         <div class="box-content">
-                            <p>The idea is to keep the discussions<br>going after class ends.</p>
+                            <p>Browse our collection of <br>inks, gouaches, &amp; paints</p>
                         </div>
                     </div>
                 </div>
@@ -72,14 +72,14 @@
                     <div class="iconbox icon-blue">
                         <div class="box-header">
                             <div class="box-icon">
-                                <img src="~/Content/Images/images/iconbox/3.png" alt="image">
+                                <img src="~/Content/Images/images/iconbox/21.png" alt="image">
                             </div>
                             <div class="box-title">
-                                <a href="#" title="">Learn Courses Online</a>
+                                <a href="#" title="">PENS</a>
                             </div>
                         </div>
                         <div class="box-content">
-                            <p>The idea is to keep the discussions<br>going after class ends.</p>
+                            <p>Check out our collection of<br>dip, fountain, &amp; brush pens</p>
                         </div>
                     </div>
                 </div>
@@ -87,14 +87,14 @@
                     <div class="iconbox icon-cyan">
                         <div class="box-header">
                             <div class="box-icon">
-                                <img src="~/Content/Images/images/iconbox/4.png" alt="image">
+                                <img src="~/Content/Images/images/iconbox/3.png" alt="image">
                             </div>
                             <div class="box-title">
-                                <a href="#" title="">Book Library & Store</a>
+                                <a href="#" title="">PAPER</a>
                             </div>
                         </div>
                         <div class="box-content">
-                            <p>The idea is to keep the discussions<br>going after class ends.</p>
+                            <p>Peruse our collection of<br>notebooks, vellum, practice pads, &amp; parchment</p>
                         </div>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="title-section color-title">
-                        <h1 class="title">POPULAR <span class="color-orange">COURSE</span> CATEGORIES</h1>
+                        <h1 class="title">POPULAR <span class="color-orange">CLASSES</span></h1>
                         <div class="sub-title">
                             Having over 10 million students worldwide and more than 50.000 online courses available.
                         </div>
@@ -124,40 +124,40 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-6">
+                <div class="col-md-12">
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-3 col-sm-6">
                             <div class="iconbox bg-style">
                                 <div class="box-header">
                                     <div class="box-icon">
-                                        <img src="~/Content/Images/images/iconbox/21.png" alt="image">
+                                        <img class="courseImg" src="~/Content/Images/images/iconbox/1.png" alt="image">
                                     </div>
                                     <div class="box-title">
-                                        <a href="#" title="">ARTS & HUMANITIES</a>
+                                        <a href="#" title=""><BR />HISTORIC INKS &amp; PAPERS<br />OF THE<br /> WORLD</a>
                                     </div>
                                 </div>
                             </div>
                         </div><!-- col-md-4 -->
-                        <div class="col-md-4 col-sm-6">
+                        <div class="col-md-3 col-sm-6">
                             <div class="iconbox bg-style bg-blue ">
                                 <div class="box-header">
                                     <div class="box-icon">
-                                        <img src="~/Content/Images/images/iconbox/22.png" alt="image">
+                                        <img class="courseImg" src="~/Content/Images/images/iconbox/2.png" alt="image">
                                     </div>
                                     <div class="box-title">
-                                        <a href="#" title="">BUSSINESS & MANAGENMENT</a>
+                                        <a href="#" title=""><br />MAKING YOUR OWN INK<br />&amp;<BR />WHY YOU SHOULD</a>
                                     </div>
                                 </div>
                             </div>
                         </div><!-- col-md-4 -->
-                        <div class="col-md-4 col-sm-6">
+                        <div class="col-md-3 col-sm-6">
                             <div class="iconbox bg-style bg-cyan">
                                 <div class="box-header">
                                     <div class="box-icon">
-                                        <img src="~/Content/Images/images/iconbox/23.png" alt="image">
+                                        <img class="courseImg" src="~/Content/Images/images/iconbox/23.png" alt="image">
                                     </div>
                                     <div class="box-title">
-                                        <a href="#" title="">ENGINEERING<br>& TECHNOLOGY</a>
+                                        <a href="#" title=""><br />STARING YOUR <BR />ONLINE<br>CRAFT BUSINESS</a>
                                     </div>
                                 </div>
                             </div>
@@ -165,64 +165,44 @@
                         <div class="dividers">
                         </div><!-- dividers -->
                         <!-- <div class="row"> -->
-                        <div class="col-md-4 col-sm-6">
+                        <div class="col-md-3 col-sm-6">
                             <div class="iconbox bg-style bg-red">
                                 <div class="box-header">
                                     <div class="box-icon">
-                                        <img src="~/Content/Images/images/iconbox/24.png" alt="image">
+                                        <img class="courseImg" src="~/Content/Images/images/iconbox/24.png" alt="image">
                                     </div>
                                     <div class="box-title">
-                                        <a href="#" title="">LIFE SCIENCES<br>& MEDICINE</a>
+                                        <a href="#" title=""><BR />MAKING MONEY<br>FROM<br /> YOUR PASSION</a>
                                     </div>
                                 </div>
                             </div>
                         </div><!-- col-md-4 -->
-                        <div class="col-md-4 col-sm-6">
+                        <div class="col-md-3 col-sm-6">
                             <div class="iconbox bg-style bg-green ">
                                 <div class="box-header">
                                     <div class="box-icon">
-                                        <img src="~/Content/Images/images/iconbox/25.png" alt="image">
+                                        <img class="courseImg" src="~/Content/Images/images/iconbox/4.png" alt="image">
                                     </div>
                                     <div class="box-title">
-                                        <a href="#" title="">NATURAL SCIENCES</a>
+                                        <a href="#" title=""><br />BUILDING YOUR CALLIGRAPHY<br />SKILL &amp; TOOL SETS</a>
                                     </div>
                                 </div>
                             </div>
                         </div><!-- col-md-4 -->
-                        <div class="col-md-4 col-sm-6">
+                        <div class="col-md-3 col-sm-6">
                             <div class="iconbox bg-style bg-violet">
                                 <div class="box-header">
                                     <div class="box-icon">
-                                        <img src="~/Content/Images/images/iconbox/26.png" alt="image">
+                                        <img class="courseImg" src="~/Content/Images/images/iconbox/21.png" alt="image">
                                     </div>
                                     <div class="box-title style1">
-                                        <a href="#" title="">SOCIAL<br>SCIENVES</a>
-                                    </div>
-                                    <div class="box-title style2">
-                                        <a href="#" title="">SOCIAL SCIENVES</a>
+                                        <a href="#" title=""><br />INTRODUCTION<BR />TO<br>HANDLETTERING</a>
                                     </div>
                                 </div>
                             </div>
                         </div><!-- col-md-4 -->
                     </div>
                 </div><!-- no-paddingright -->
-                <div class="col-md-6">
-                    <div class="about-us style2 wrap-box pdleft">
-                        <h2 class="title-about-us">ARTS & HUMANITIES</h2>
-                        <div class="text-about-us">
-                            <p>Artist John Sloan said, “Though a living cannot be made at art,<br>art makes life worth living.” </p>
-                            <p>It is this fact which has driven millions of students to get arts and<br>humanities degrees, focussing their attention on painting, litera-ture or history.</p>
-                        </div>
-                        <div class="course-about-us">
-                            <p>COURSES AVAILABLE:<br><strong> 500</strong></p>
-                        </div>
-                        <div class="button-style">
-                            <div class="wrap-btn">
-                                <a class="flat-btn" href="#">SEE COURSE</a>
-                            </div>
-                        </div>
-                    </div><!-- About-us -->
-                </div><!-- col-md-6 -->
             </div><!-- row -->
         </div><!-- Container -->
     </section>

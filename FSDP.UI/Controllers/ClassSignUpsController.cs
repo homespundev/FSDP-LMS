@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FSDP.DATA;
+using Microsoft.AspNet.Identity;
 
 namespace FSDP.UI.Controllers
 {
@@ -17,7 +18,12 @@ namespace FSDP.UI.Controllers
         // GET: ClassSignUps
         public ActionResult Index()
         {
+            var userID = User.Identity.GetUserId();
             var classSignUps = db.ClassSignUps.Include(c => c.AspNetUser).Include(c => c.ClassDate);
+            if (User.IsInRole("Customer"))
+            {
+                classSignUps = db.ClassSignUps.Include(c => c.AspNetUser).Include(c => c.ClassDate).Where(x => x.UserID == userID);
+            }
             return View(classSignUps.ToList());
         }
 
@@ -39,7 +45,16 @@ namespace FSDP.UI.Controllers
         // GET: ClassSignUps/Create
         public ActionResult Create()
         {
-            ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "FullName");
+            var currentUser = User.Identity.GetUserId();
+            if (User.IsInRole("Customer"))
+            {
+                ViewBag.UserID = new SelectList(db.AspNetUsers.Where(x => x.Id == currentUser), "Id", "FullName");
+            }
+            else
+            {
+                ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "FullName");
+            }
+
             ViewBag.ClassDateID = new SelectList(db.ClassDates, "ClassDateID", "NameDate");
             return View();
         }
@@ -51,14 +66,21 @@ namespace FSDP.UI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ClassSignUpID,UserID,ClassDateID")] ClassSignUp classSignUp)
         {
+            var currentUser = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
                 db.ClassSignUps.Add(classSignUp);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "FullName", classSignUp.UserID);
+            if (User.IsInRole("Customer"))
+            {
+                ViewBag.UserID = new SelectList(db.AspNetUsers.Where(x => x.Id == currentUser), "Id", "FullName", classSignUp.UserID);
+            }
+            else
+            {
+                ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "FullName", classSignUp.UserID);
+            }
             ViewBag.ClassDateID = new SelectList(db.ClassDates, "ClassDateID", "NameDate", classSignUp.ClassDateID);
             return View(classSignUp);
         }
@@ -66,6 +88,7 @@ namespace FSDP.UI.Controllers
         // GET: ClassSignUps/Edit/5
         public ActionResult Edit(int? id)
         {
+            var currentUser = User.Identity.GetUserId();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -75,7 +98,14 @@ namespace FSDP.UI.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "FullName", classSignUp.UserID);
+            if (User.IsInRole("Customer"))
+            {
+                ViewBag.UserID = new SelectList(db.AspNetUsers.Where(x => x.Id == currentUser), "Id", "FullName", classSignUp.UserID);
+            }
+            else
+            {
+                ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "FullName", classSignUp.UserID);
+            }
             ViewBag.ClassDateID = new SelectList(db.ClassDates, "ClassDateID", "NameDate", classSignUp.ClassDateID);
             return View(classSignUp);
         }
@@ -87,13 +117,21 @@ namespace FSDP.UI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ClassSignUpID,UserID,ClassDateID")] ClassSignUp classSignUp)
         {
+            var currentUser = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
                 db.Entry(classSignUp).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "FullName", classSignUp.UserID);
+            if (User.IsInRole("Customer"))
+            {
+                ViewBag.UserID = new SelectList(db.AspNetUsers.Where(x => x.Id == currentUser), "Id", "FullName", classSignUp.UserID);
+            }
+            else
+            {
+                ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "FullName", classSignUp.UserID);
+            }
             ViewBag.ClassDateID = new SelectList(db.ClassDates, "ClassDateID", "NameDate", classSignUp.ClassDateID);
             return View(classSignUp);
         }

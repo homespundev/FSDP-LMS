@@ -1,5 +1,8 @@
 ﻿
 /* Set padding to keep content from hitting the edges */
+a{
+    color:#666666;
+}
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
@@ -41,11 +44,11 @@ input[type="checkbox"].input-validation-error {
     padding: 0;
     /*background-image: url('Images/bgwlogo.png');*/
     background-image: url('Images/fountain-pen-1854169_1920.jpg');
+    border: none;
 }
 
 #topnav {
     padding: .25% 33px;
-    border: white 1px solid; 
 }
 
 .tp-bullets, .tp-rightarrow, .tp-leftarrow {
@@ -66,6 +69,7 @@ input[type="checkbox"].input-validation-error {
 #purveyor{
     font-style:italic;
     color:rgb(12, 55, 58);
+    text-shadow: 1px white;
 }
 #player{
     width:auto;
@@ -118,3 +122,9 @@ input[type="checkbox"].input-validation-error {
 }
 }
 
+.wrap-nav, #mainnav, .menu{
+    height:100%;
+}
+.courseImg{
+    height:100%;
+}

@@ -52,7 +52,7 @@
           <Key>
             <PropertyRef Name="ClassSignUpID" />
           </Key>
-          <Property Name="ClassSignUpID" Type="int" Nullable="false" />
+          <Property Name="ClassSignUpID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="ClassDateID" Type="int" Nullable="false" />
         </EntityType>
