@@ -13,6 +13,11 @@
     <table class="table">
         <thead>
             <tr>
+                @if (User.IsInRole("Admin"))
+                {
+                    <th></th>
+                }
+                
                 <th>
                     @Html.DisplayNameFor(model => model.CourseName)
                 </th>
@@ -25,15 +30,22 @@
                 <th>
                     @Html.DisplayNameFor(model => model.CourseImage)
                 </th>
-                <th></th>
+                
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
                 <tr>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <td>
+                            <a href="@Url.Action("Edit", new { id= item.CourseID})" class="fa fa-pencil-square-o"></a> |
+                            <a href="@Url.Action("Delete", new { id= item.CourseID} )" class="fa fa-trash"></a>
+                        </td>
+                    }
                     <td>
-                        @Html.DisplayFor(modelItem => item.CourseName)
+                        @Html.ActionLink(item.CourseName, "Details", new { id = item.CourseID })
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.CourseDescription)
@@ -44,11 +56,6 @@
                     <td>
                         <img src="@Url.Content("~/Content/Images/Courses/t_"+item.CourseImage)" />
                     </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.CourseID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.CourseID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.CourseID })
-                    </td>
                 </tr>
             }
         </tbody>
@@ -57,9 +64,4 @@
 </div>
 
 @section scripts{
-    <script>
-        $(document).ready(function () {
-            $('.table').DataTable();
-        });
-</script>
     }

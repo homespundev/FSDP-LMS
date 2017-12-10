@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <!-- Theme Style -->
     <link rel="stylesheet" type="text/css" href="~/Content/Styles/style.css">
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
     <!-- Responsive -->
     <link rel="stylesheet" type="text/css" href="~/Content/Styles/responsive.css">
 
@@ -29,7 +29,7 @@
     <!-- Favicon and touch icons  -->
     <link href="~/Content/Images/icon/icon.png" rel="shortcut icon">
     <link href="~/Content/Site.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+    
 </head>
 <body>
     <div class="boxed position_form position_style3">
@@ -76,21 +76,27 @@
                                         <li>
                                             @Html.ActionLink("Contact", "Contact", "Home")
                                         </li>
-                                        <li>@Html.ActionLink("Class Sign-up", "Create", "ClassSignUps")</li>
-                                        <li id="dashboard">
-                                            <a href="@Url.Action("Index","Dashboard")">Dashboard</a>
-                                            <ul class="submenu">
-                                                <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
-                                                <li>@Html.ActionLink("Course Completions", "Index", "CourseCompletions")</li>
-                                                <li>@Html.ActionLink("Lessons", "Index", "Lessons")</li>
-                                                <li>@Html.ActionLink("Lesson Views", "Index", "LessonViews")</li>
-                                            </ul>
-                                        </li>
-                                        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                                        <li>@Html.ActionLink("Classes", "Index", "StoreClasses")</li>
+                                        @if (Request.IsAuthenticated && !User.IsInRole("Customer"))
                                         {
-                                        <li>@Html.ActionLink("Roles", "Index", "RolesAdmin")</li>
-                                        <li>@Html.ActionLink("Users", "Index", "UsersAdmin")</li>
-                                        }
+                                            <li id="dashboard">
+                                                <a href="@Url.Action("Index","Dashboard")">Dashboard</a>
+                                                <ul class="submenu">
+                                                    <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
+                                                    <li>@Html.ActionLink("Course Completions", "Index", "CourseCompletions")</li>
+                                                    <li>@Html.ActionLink("Lessons", "Index", "Lessons")</li>
+                                                    <li>@Html.ActionLink("Lesson Views", "Index", "LessonViews")</li>
+                                                    <li>@Html.ActionLink("Classes", "Index", "StoreClasses")</li>
+                                                    <li>@Html.ActionLink("Class Dates", "Index", "ClassDates")</li>
+                                                    <li>@Html.ActionLink("Class Sign Ups", "Index", "ClassSignUps")</li>
+                                                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                                                    {
+                                                        <li>@Html.ActionLink("Roles", "Index", "RolesAdmin")</li>
+                                                        <li>@Html.ActionLink("Users", "Index", "UsersAdmin")</li>
+                                                    }
+                                                </ul>
+                                            </li>}
+                                        
 
                                     </ul>
                                 </nav>
@@ -142,12 +148,12 @@
     <!-- Javascript -->
     <script type="text/javascript" src="~/Content/Scripts/jquery.min.js"></script>
     @*<script type="text/javascript" src="~/Content/Scripts/bootstrap.min.js"></script>*@
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script type="text/javascript" src="~/Content/Scripts/main.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
-    <script src="~/Content/Scripts/CircularLoader-v1.3.js"></script>
-    <script src="~/Content/Scripts/circle-progress.js"></script>
+    <script type="text/javascript" src="~/Content/Scripts/CircularLoader-v1.3.js"></script>
+    <script type="text/javascript" src="~/Content/Scripts/circle-progress.js"></script>
     <script type="text/javascript" src="~/Content/Scripts/countdown.js"></script>
     <script type="text/javascript" src="~/Content/Scripts/imagesloaded.min.js"></script>
     <script type="text/javascript" src="~/Content/Scripts/jquery.isotope.min.js"></script>
@@ -156,12 +162,13 @@
     <script type="text/javascript" src="~/Content/Scripts/jquery.easing.js"></script>
     <script type="text/javascript" src="~/Content/Scripts/jquery.flexslider.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
     <script>
-        //$(document).ready(function () {
-        //    $('.table').DataTable();
-        //});
+        $(document).ready(function () {
+            $('.table').DataTable();
+        });
     </script>
     @RenderSection("scripts", required: false)
 </body>

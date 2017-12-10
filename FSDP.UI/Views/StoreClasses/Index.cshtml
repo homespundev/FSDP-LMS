@@ -4,36 +4,44 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="container">
+    <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ClassName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ClassDescription)
-        </th>
-        <th></th>
-    </tr>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ClassName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ClassDescription)
+                </th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @if (User.IsInRole("Admin"))
+                {
+                        <td>
+                            <a href="@Url.Action("Edit", new { id= item.StoreClassID})" class="fa fa-pencil-square-o"></a> |
+                            <a href="@Url.Action("Delete", new { id= item.StoreClassID} )" class="fa fa-trash"></a>
+                        </td> }
+                    <td>
+                        @Html.ActionLink(item.ClassName, "Details", new { id = item.StoreClassID })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClassDescription)
+                    </td>
+                </tr>
+            }
+        </tbody>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClassName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClassDescription)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.StoreClassID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.StoreClassID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.StoreClassID })
-        </td>
-    </tr>
-}
-
-</table>
+    </table>
+</div>

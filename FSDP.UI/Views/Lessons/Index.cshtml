@@ -4,66 +4,79 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="container">
+    <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.LessonTitle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Introduction)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VideoUrl)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PdfFileName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LessonImage)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Courses.CourseName)
-        </th>
-        <th></th>
-    </tr>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                @if (User.IsInRole("Admin"))
+                {
+                    <th></th>
+                }
+                
+                <th>
+                    @Html.DisplayNameFor(model => model.LessonTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Introduction)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VideoUrl)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PdfFileName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LessonImage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Courses.CourseName)
+                </th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <td>
+                            <a href="@Url.Action("Edit", new { id= item.LessonID})" class="fa fa-pencil-square-o"></a> |
+                            <a href="@Url.Action("Delete", new { id= item.LessonID} )" class="fa fa-trash"></a>
+                        </td>
+                    }
+                    <td>
+                        @Html.ActionLink(item.LessonTitle, "Details", new { id = item.LessonID })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Introduction)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VideoUrl)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PdfFileName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LessonImage)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Courses.CourseName)
+                    </td>
+                </tr>
+            }
+        </tbody>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.LessonTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Introduction)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VideoUrl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PdfFileName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LessonImage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Courses.CourseName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.LessonID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.LessonID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.LessonID })
-        </td>
-    </tr>
-}
-
-</table>
+    </table>
+</div>

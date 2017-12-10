@@ -12,35 +12,44 @@
     <table class="table">
         <thead>
             <tr>
+                @if (User.IsInRole("Admin"))
+                {
+                    <th></th>
+                }
+                
+
                 <th>
-                    @Html.DisplayNameFor(model => model.DateCompleted)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AspNetUser.FirstName)
+                    @Html.DisplayNameFor(model => model.AspNetUser.FullName)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Cours.CourseName)
                 </th>
-                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateCompleted)
+                </th>
+
+
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
                 <tr>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <td>
+                            <a href="@Url.Action("Edit", new { id= item.CourseCompletionID})" class="fa fa-pencil-square-o"></a> |
+                            <a href="@Url.Action("Delete", new { id= item.CourseCompletionID} )" class="fa fa-trash"></a>
+                        </td>
+                    }
                     <td>
-                        @Html.DisplayFor(modelItem => item.DateCompleted)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AspNetUser.FirstName)
+                        @Html.ActionLink(item.AspNetUser.FullName, "Details", new { id = item.CourseCompletionID })
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Cours.CourseName)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.CourseCompletionID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.CourseCompletionID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.CourseCompletionID })
+                        @Html.DisplayFor(modelItem => item.DateCompleted)
                     </td>
                 </tr>
             }
