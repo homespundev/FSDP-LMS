@@ -12,7 +12,6 @@
         <EntityTypeShape EntityType="FSDPDbModel.Course" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FSDPDbModel.Lesson" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="FSDPDbModel.LessonView" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FSDPDbModel.Quiz" Width="1.5" PointX="5.25" PointY="12.875" IsExpanded="true" />
         <EntityTypeShape EntityType="FSDPDbModel.StoreClass" Width="1.5" PointX="5.75" PointY="5.25" IsExpanded="true" />
         <AssociationConnector Association="FSDPDbModel.FK_ClassSignUps_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="FSDPDbModel.FK_CourseCompletions_AspNetUsers" ManuallyRouted="false" />
@@ -22,7 +21,6 @@
         <AssociationConnector Association="FSDPDbModel.FK_CourseCompletions_Courses" ManuallyRouted="false" />
         <AssociationConnector Association="FSDPDbModel.FK_Lessons_Courses" ManuallyRouted="false" />
         <AssociationConnector Association="FSDPDbModel.FK_LessonViews_Lessons" ManuallyRouted="false" />
-        <AssociationConnector Association="FSDPDbModel.LessonsQuizzes" ManuallyRouted="false" />
         <EntityTypeShape EntityType="FSDPDbModel.AspNetRole" Width="1.5" PointX="0.75" PointY="10.25" />
         <AssociationConnector Association="FSDPDbModel.AspNetUserRoles" />
       </Diagram>

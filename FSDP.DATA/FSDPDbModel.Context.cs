@@ -32,7 +32,6 @@ namespace FSDP.DATA
         public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<Lesson> Lessons { get; set; }
         public virtual DbSet<LessonView> LessonViews { get; set; }
-        public virtual DbSet<Quiz> Quizs { get; set; }
         public virtual DbSet<StoreClass> StoreClasses { get; set; }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
     }

@@ -94,9 +94,6 @@
     <Compile Include="Metadata\LessonMetadata.cs" />
     <Compile Include="Metadata\UserMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Quiz.cs">
-      <DependentUpon>FSDPDbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="StoreClass.cs">
       <DependentUpon>FSDPDbModel.tt</DependentUpon>
     </Compile>

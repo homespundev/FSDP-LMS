@@ -18,7 +18,6 @@ namespace FSDP.DATA
         public Lesson()
         {
             this.LessonViews = new HashSet<LessonView>();
-            this.Quizzes = new HashSet<Quiz>();
         }
     
         public int LessonID { get; set; }
@@ -29,11 +28,11 @@ namespace FSDP.DATA
         public string PdfFileName { get; set; }
         public bool IsActive { get; set; }
         public string LessonImage { get; set; }
+        public string QuizQuestion { get; set; }
+        public string QuizAnswer { get; set; }
     
-        public virtual Course Cours { get; set; }
+        public virtual Course Courses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LessonView> LessonViews { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Quiz> Quizzes { get; set; }
     }
 }

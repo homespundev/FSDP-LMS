@@ -177,7 +177,6 @@
     <Compile Include="Controllers\LessonsController.cs" />
     <Compile Include="Controllers\LessonViewsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\QuizsController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
@@ -502,14 +501,10 @@
     <Content Include="Views\ClassSignUps\Details.cshtml" />
     <Content Include="Views\ClassSignUps\Edit.cshtml" />
     <Content Include="Views\ClassSignUps\Index.cshtml" />
-    <Content Include="Views\Quizs\Create.cshtml" />
-    <Content Include="Views\Quizs\Delete.cshtml" />
-    <Content Include="Views\Quizs\Details.cshtml" />
-    <Content Include="Views\Quizs\Edit.cshtml" />
-    <Content Include="Views\Quizs\Index.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\ContactConfirmation.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Lessons\Edit1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FSDP.DATA\FSDP.DATA.csproj">

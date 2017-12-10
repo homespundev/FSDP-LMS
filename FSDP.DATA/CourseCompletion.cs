@@ -20,6 +20,6 @@ namespace FSDP.DATA
         public System.DateTime DateCompleted { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
-        public virtual Course Cours { get; set; }
+        public virtual Course Courses { get; set; }
     }
 }

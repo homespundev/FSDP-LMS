@@ -21,10 +21,10 @@ namespace FSDP.UI.Controllers
         public ActionResult Index()
         {
             var userID = User.Identity.GetUserId();
-            var courseCompletions = db.CourseCompletions.Include(c => c.AspNetUser).Include(c => c.Cours);
+            var courseCompletions = db.CourseCompletions.Include(c => c.AspNetUser).Include(c => c.Courses);
             if (User.IsInRole("Employee"))
             {
-                courseCompletions = db.CourseCompletions.Include(c => c.AspNetUser).Include(c => c.Cours)
+                courseCompletions = db.CourseCompletions.Include(c => c.AspNetUser).Include(c => c.Courses)
                     .Where(x => x.AspNetUser.Id == userID);
             }
             return View(courseCompletions.ToList());

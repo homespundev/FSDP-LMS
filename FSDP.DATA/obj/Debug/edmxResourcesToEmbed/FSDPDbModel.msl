@@ -65,6 +65,8 @@
     <EntitySetMapping Name="Lessons">
       <EntityTypeMapping TypeName="FSDPDbModel.Lesson">
         <MappingFragment StoreEntitySet="Lessons">
+          <ScalarProperty Name="QuizAnswer" ColumnName="QuizAnswer" />
+          <ScalarProperty Name="QuizQuestion" ColumnName="QuizQuestion" />
           <ScalarProperty Name="LessonID" ColumnName="LessonID" />
           <ScalarProperty Name="LessonTitle" ColumnName="LessonTitle" />
           <ScalarProperty Name="CourseID" ColumnName="CourseID" />
@@ -86,18 +88,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Quizs">
-      <EntityTypeMapping TypeName="FSDPDbModel.Quiz">
-        <MappingFragment StoreEntitySet="Quizzes">
-          <ScalarProperty Name="WrongAnswer3" ColumnName="WrongAnswer3" />
-          <ScalarProperty Name="WrongAnswer2" ColumnName="WrongAnswer2" />
-          <ScalarProperty Name="WrongAnswer1" ColumnName="WrongAnswer1" />
-          <ScalarProperty Name="CorrectAnswer" ColumnName="CorrectAnswer" />
-          <ScalarProperty Name="QuizID" ColumnName="QuizID" />
-          <ScalarProperty Name="Question" ColumnName="Question" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="StoreClasses">
       <EntityTypeMapping TypeName="FSDPDbModel.StoreClass">
         <MappingFragment StoreEntitySet="StoreClasses">
@@ -107,14 +97,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="LessonsQuizzes" TypeName="FSDPDbModel.LessonsQuizzes" StoreEntitySet="LessonsQuizzes">
-      <EndProperty Name="Lessons">
-        <ScalarProperty Name="LessonID" ColumnName="LessonID" />
-      </EndProperty>
-      <EndProperty Name="Quizzes">
-        <ScalarProperty Name="QuizID" ColumnName="QuizID" />
-      </EndProperty>
-    </AssociationSetMapping>
     <EntitySetMapping Name="AspNetRoles">
       <EntityTypeMapping TypeName="FSDPDbModel.AspNetRole">
         <MappingFragment StoreEntitySet="AspNetRoles">

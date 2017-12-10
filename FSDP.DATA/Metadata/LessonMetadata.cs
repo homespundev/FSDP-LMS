@@ -38,5 +38,13 @@ namespace FSDP.DATA
         [DisplayFormat(NullDisplayText = "N/A")]
         [Display(Name = "Image")]
         public string LessonImage { get; set; }
+
+        [Display(Name ="Quiz Question")]
+        [StringLength(300, ErrorMessage = "* Not to exceed 300 characters")]
+        public string QuizQuestion { get; set; }
+
+        [Display(Name = "Quiz Question")]
+        [StringLength(50, ErrorMessage = "* Not to exceed 50 characters")]
+        public string QuizAnswer { get; set; }
     }
 }

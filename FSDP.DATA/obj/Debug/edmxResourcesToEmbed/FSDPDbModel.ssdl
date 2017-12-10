@@ -83,16 +83,8 @@
     <Property Name="PdfFileName" Type="varchar" MaxLength="100" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
     <Property Name="LessonImage" Type="varchar" MaxLength="100" />
-  </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'FSDPDb.dbo.LessonsQuizzes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="LessonsQuizzes">
-    <Key>
-      <PropertyRef Name="QuizID" />
-      <PropertyRef Name="LessonID" />
-    </Key>
-    <Property Name="QuizID" Type="int" Nullable="false" />
-    <Property Name="LessonID" Type="int" Nullable="false" />
+    <Property Name="QuizQuestion" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="QuizAnswer" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="LessonViews">
     <Key>
@@ -102,17 +94,6 @@ warning 6002: The table/view 'FSDPDb.dbo.LessonsQuizzes' does not have a primary
     <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="LessonID" Type="int" Nullable="false" />
     <Property Name="DateViewed" Type="date" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Quizzes">
-    <Key>
-      <PropertyRef Name="QuizID" />
-    </Key>
-    <Property Name="QuizID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Question" Type="varchar" MaxLength="200" Nullable="false" />
-    <Property Name="CorrectAnswer" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="WrongAnswer1" Type="varchar" MaxLength="50" />
-    <Property Name="WrongAnswer2" Type="varchar" MaxLength="50" />
-    <Property Name="WrongAnswer3" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="StoreClasses">
     <Key>
@@ -222,30 +203,6 @@ warning 6002: The table/view 'FSDPDb.dbo.LessonsQuizzes' does not have a primary
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_LessonsQuizzes_Lessons">
-    <End Role="Lessons" Type="Self.Lessons" Multiplicity="1" />
-    <End Role="LessonsQuizzes" Type="Self.LessonsQuizzes" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Lessons">
-        <PropertyRef Name="LessonID" />
-      </Principal>
-      <Dependent Role="LessonsQuizzes">
-        <PropertyRef Name="LessonID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_LessonsQuizzes_Quizzes">
-    <End Role="Quizzes" Type="Self.Quizzes" Multiplicity="1" />
-    <End Role="LessonsQuizzes" Type="Self.LessonsQuizzes" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Quizzes">
-        <PropertyRef Name="QuizID" />
-      </Principal>
-      <Dependent Role="LessonsQuizzes">
-        <PropertyRef Name="QuizID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_LessonViews_AspNetUsers">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
     <End Role="LessonViews" Type="Self.LessonViews" Multiplicity="*" />
@@ -280,14 +237,7 @@ warning 6002: The table/view 'FSDPDb.dbo.LessonsQuizzes' does not have a primary
     <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Lessons" EntityType="Self.Lessons" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LessonViews" EntityType="Self.LessonViews" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Quizzes" EntityType="Self.Quizzes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StoreClasses" EntityType="Self.StoreClasses" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="LessonsQuizzes" EntityType="Self.LessonsQuizzes" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [LessonsQuizzes].[QuizID] AS [QuizID], 
-    [LessonsQuizzes].[LessonID] AS [LessonID]
-    FROM [dbo].[LessonsQuizzes] AS [LessonsQuizzes]</DefiningQuery>
-    </EntitySet>
     <AssociationSet Name="FK_ClassDates_StoreClasses" Association="Self.FK_ClassDates_StoreClasses">
       <End Role="StoreClasses" EntitySet="StoreClasses" />
       <End Role="ClassDates" EntitySet="ClassDates" />
@@ -319,14 +269,6 @@ warning 6002: The table/view 'FSDPDb.dbo.LessonsQuizzes' does not have a primary
     <AssociationSet Name="FK_Lessons_Courses" Association="Self.FK_Lessons_Courses">
       <End Role="Courses" EntitySet="Courses" />
       <End Role="Lessons" EntitySet="Lessons" />
-    </AssociationSet>
-    <AssociationSet Name="FK_LessonsQuizzes_Lessons" Association="Self.FK_LessonsQuizzes_Lessons">
-      <End Role="Lessons" EntitySet="Lessons" />
-      <End Role="LessonsQuizzes" EntitySet="LessonsQuizzes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_LessonsQuizzes_Quizzes" Association="Self.FK_LessonsQuizzes_Quizzes">
-      <End Role="Quizzes" EntitySet="Quizzes" />
-      <End Role="LessonsQuizzes" EntitySet="LessonsQuizzes" />
     </AssociationSet>
     <AssociationSet Name="FK_LessonViews_AspNetUsers" Association="Self.FK_LessonViews_AspNetUsers">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
