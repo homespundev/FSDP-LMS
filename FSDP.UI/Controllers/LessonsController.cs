@@ -232,7 +232,7 @@ namespace FSDP.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                string pdfName = "nopdf.pdf";
+                string pdfName = lessonPdf.ToString();
                 if (lessonPdf != null)
                 {
                     string ext = pdfName.Substring(pdfName.LastIndexOf('.'));
@@ -243,10 +243,6 @@ namespace FSDP.UI.Controllers
                         string pathForTheSaving = Server.MapPath("~/Content/Lessons/Pdf/");
                         lessonPdf.SaveAs(pathForTheSaving + pdfName);
                     }
-                }
-                else
-                {
-                    pdfName = "nopdf.pdf";
                 }
                 lesson.PdfFileName = pdfName;
                 db.Lessons.Add(lesson);
