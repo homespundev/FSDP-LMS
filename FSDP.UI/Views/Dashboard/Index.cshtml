@@ -27,17 +27,16 @@
 
 }
 
-<div class="flat-row bg-theme">
+<div class="flat-row" id="dashboarddiv">
     <div class="container">
-        <h2>@ViewBag.Title</h2>
+        <h1 class="text-center" style="color:#0C373A">@ViewBag.UserRole @ViewBag.Title</h1><br/><br/>
         <!-- #region Employee View -->
-        
+
         @if (User.IsInRole("Employee"))
         {
-            <div class="row justify-content-center">
+            <div class="row justify-content-center text-center" id="totalComplete">
                 <div class="col-md-6" id="course-completions">
-                    <h1>Courses completed for the year:</h1>
-                    <h2>@ViewBag.UserCompletedThisYear / 6</h2>
+                    <h1>Courses completed for the year: <span style="color:rgb(120,159,138)"><strong>@ViewBag.UserCompletedThisYear / 6</strong></span></h1><br />
                     <div class="progress">
                         <div class="progress-bar active" role="progressbar" aria-valuenow="@userCompletionPercentForYear" aria-valuemin="0" aria-valuemax="100"
                              style="width:@userCompletionPercentForYear%">
@@ -47,8 +46,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <h1>Lifetime Courses Completed:</h1>
-                    <h2>@ViewBag.CompleteCourses / @db.Courses.Count()</h2>
+                    <h1>Lifetime Courses Completed: <strong>@ViewBag.CompleteCourses / @db.Courses.Count()</strong></h1><br />
                     <div class="progress">
                         <div class="progress-bar active" role="progressbar" aria-valuenow="@userCompletionPercent" aria-valuemin="0" aria-valuemax="100"
                              style="width:@userCompletionPercent%">
@@ -142,7 +140,7 @@
                                             }
                                             else
                                             {
-                                               completionPercent = employeeCompleted / 6;//TODO: Figure out why this is giving 0 as the answer
+                                                completionPercent = employeeCompleted / 6.0m;//TODO: Figure out why this is giving 0 as the answer
                                             }
                                             <div class="item">
                                                 <article class="entry">

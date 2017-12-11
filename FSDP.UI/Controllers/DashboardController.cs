@@ -26,6 +26,19 @@ namespace FSDP.UI.Controllers
             ViewBag.CompleteCourses = completeUserCourses.Count();
             ViewBag.lessonsCompleted = db.LessonViews.Where(x => x.UserID == user && x.Lesson.CourseID == 1).Count();
             ViewBag.courseLessons = db.Lessons.Where(x => x.CourseID == 1).Count();
+            ViewBag.UserRole = "";
+            if (User.IsInRole("Employee"))
+            {
+                ViewBag.UserRole = "Employee";
+            }
+            else if (User.IsInRole("Manager"))
+            {
+                ViewBag.UserRole = "Manager";     
+            }
+            else if (User.IsInRole("Admin"))
+            {
+                ViewBag.UserRole = "Administrator";
+            }
             return View();
         }
     }

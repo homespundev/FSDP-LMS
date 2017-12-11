@@ -1,8 +1,9 @@
 ﻿
 /* Set padding to keep content from hitting the edges */
-a{
-    color:#666666;
+a {
+    color: #666666;
 }
+
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
@@ -62,84 +63,132 @@ input[type="checkbox"].input-validation-error {
 #header {
     background-color: #E1B753;
 }
-#conSub{
+
+#conSub {
     background-color: #E1B753;
-    color:#0c383b;
+    color: #0c383b;
 }
-#purveyor{
-    font-style:italic;
-    color:rgb(12, 55, 58);
+
+#purveyor {
+    font-style: italic;
+    color: rgb(12, 55, 58);
     text-shadow: 2px 2px 1px white;
 }
-#player{
-    width:auto;
-    max-width:50%;
-    height:auto;
-    max-height:100%;
-}
-.ytp-icon-watermark{
-    visibility:hidden;
-}
-.circle {
-    text-align:center;
-  position: relative;
-  /*display: inline-block;*/
+
+#player {
+    width: auto;
+    max-width: 50%;
+    height: auto;
+    max-height: 100%;
 }
 
-.circle .value {
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  right: 0;
-  top: 42%;
-  margin-top: -15px;
-  /*height: 30px;*/
-  /*font: 24px/30px sans-serif;*/
-  text-align: center;
+.ytp-icon-watermark {
+    visibility: hidden;
 }
+
+.circle {
+    text-align: center;
+    position: relative;
+    /*display: inline-block;*/
+}
+
+    .circle .value {
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        right: 0;
+        top: 42%;
+        margin-top: -15px;
+        /*height: 30px;*/
+        /*font: 24px/30px sans-serif;*/
+        text-align: center;
+    }
+
 .card {
     border: #E0B655 2px solid;
-    margin-bottom:2.5em;
+    margin-bottom: 2.5em;
     padding-top: 3em;
-    padding-bottom:3em;
-}
-.btn-menu span{
-    background-color:rgb(12, 55, 58);
-}
-@media (min-width:1240px){
-.container{
-    max-width: 1200px;
-}
-}
-@media (min-width:1500px){
-.container{
-    max-width: 1397px;
-}
-}
-@media (min-width:1600px){
-.container{
-    max-width: 1540px;
-}
+    padding-bottom: 3em;
 }
 
-.wrap-nav, #mainnav, .menu{
-    height:100%;
+.btn-menu span {
+    background-color: rgb(12, 55, 58);
 }
-.courseImg{
-    height:100%;
-}
-.fa-trash, .fa-pencil-square-o{
-    font-size:2em;
 
+@media (min-width:1240px) {
+    .container {
+        max-width: 1200px;
+    }
 }
-.sorting_1{
-    padding-left:5%!important;
+
+@media (min-width:1500px) {
+    .container {
+        max-width: 1397px;
+    }
 }
-#success{
+
+@media (min-width:1600px) {
+    .container {
+        max-width: 1540px;
+    }
+}
+
+.wrap-nav, #mainnav, .menu {
+    height: 100%;
+}
+
+.courseImg {
+    height: 100%;
+}
+
+.fa-trash, .fa-pencil-square-o {
+    font-size: 2em;
+}
+
+.sorting_1 {
+    padding-left: 5% !important;
+}
+
+#success {
     background-color: rgba(4, 117, 52,.5);
     color: rgb(4,117,52);
 }
-#fail{
+
+#fail {
     background-color: rgba(238, 12, 12, .5);
     color: rgb(238,12,12);
+}
+
+#dashboarddiv {
+    background-color: #E2D8A3;
+}
+
+.progress {
+    background-color: #E0B655;
+}
+
+.progress-bar.active {
+    background-color: rgb(120,159,138);
+}
+
+#totalComplete {
+    padding: 3em 1em;
+    background-color: white;
+    margin: 1em;
+    color: #0c373a;
+}
+
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    padding-bottom: 387.6px;
+    height: 100%;
+}
+.footer-wrap{
+    position:absolute;
+    height:387.6px;
+    width:100%;
 }

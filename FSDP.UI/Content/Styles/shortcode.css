@@ -168,7 +168,6 @@
     position: relative;
     padding: 92px 0px 100px 0px;
     background-color: #fff;
-    border-top: 10px solid #E1B753;
 }
 
 .flat-row.pd-blog {
@@ -235,6 +234,7 @@
 .flat-row.bg-theme {
     position: relative;
     background-color: #E2D8A3;
+    border-top: 10px solid #E1B753;
 }
 
 /* Title-section 
