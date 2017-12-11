@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using FSDP.DATA;
 using Microsoft.AspNet.Identity;
 using FSDP.UI.Models;
+using System.Net.Mail;
 
 namespace FSDP.UI.Controllers
 {
@@ -58,42 +59,6 @@ namespace FSDP.UI.Controllers
             {
                 return HttpNotFound();
             }
-            //if (User.IsInRole("Employee"))
-            //{
-            //    string userID = User.Identity.GetUserId();
-            //    var lessonViews = db.LessonViews.Where(x => x.LessonID == id && x.UserID == userID && x.Lesson.IsActive);
-            //    int lessonViewsCount = lessonViews.Count();
-            //    if (lessonViewsCount == 0)
-            //    {
-            //        LessonView lessonView = new LessonView()
-            //        {
-            //            UserID = userID,
-            //            LessonID = (int)id,
-            //            DateViewed = DateTime.Now
-            //        };
-            //        db.LessonViews.Add(lessonView);
-            //        db.SaveChanges();
-            //        var courseCompletion = db.CourseCompletions.Where(x => x.UserID == userID && x.CourseID == lesson.CourseID);
-            //        if (courseCompletion.Count() == 0)
-            //        {
-            //            var lessonsCompleted = db.LessonViews.Where(x => x.UserID == userID && x.Lesson.CourseID == lesson.CourseID).Count();
-            //            var courseLessons = db.Lessons.Where(x => x.CourseID == lesson.CourseID).Count();
-            //            if (lessonsCompleted == courseLessons)
-            //            {
-            //                CourseCompletion userCourseCompletion = new CourseCompletion()
-            //                {
-            //                    UserID = userID,
-            //                    CourseID = lesson.CourseID,
-            //                    DateCompleted = DateTime.Now
-            //                };
-            //                db.CourseCompletions.Add(userCourseCompletion);
-            //                db.SaveChanges();
-            //            }
-            //        }
-
-            //    }
-
-            //}
             return View(lesson);
         }
 
@@ -108,6 +73,7 @@ namespace FSDP.UI.Controllers
                 if (User.IsInRole("Employee"))
                 {
                     string userID = User.Identity.GetUserId();
+                    string currentUser = db.AspNetUsers.Where(x => x.Id == userID).FirstOrDefault().FullName;
                     var lessonViews = db.LessonViews.Where(x => x.LessonID == id && x.UserID == userID);
                     int lessonViewsCount = lessonViews.Count();
                     if (lessonViewsCount == 0)
@@ -123,6 +89,7 @@ namespace FSDP.UI.Controllers
                         var courseCompletion = db.CourseCompletions.Where(x => x.UserID == userID && x.CourseID == lesson.CourseID);
                         if (courseCompletion.Count() == 0)
                         {
+                            string currentCourse = db.Courses.Where(x => x.CourseID == lesson.CourseID).FirstOrDefault().CourseName;
                             var lessonsCompleted = db.LessonViews.Where(x => x.UserID == userID && x.Lesson.CourseID == lesson.CourseID).Count();
                             var courseLessons = db.Lessons.Where(x => x.CourseID == lesson.CourseID).Count();
                             if (lessonsCompleted == courseLessons)
@@ -135,6 +102,24 @@ namespace FSDP.UI.Controllers
                                 };
                                 db.CourseCompletions.Add(userCourseCompletion);
                                 db.SaveChanges();
+                                MailMessage msg = new MailMessage("no-reply@homespundev.com", "mfrey2011@gmail.com", "Course Completion", $"{currentUser} has completed {currentCourse}");
+                                msg.IsBodyHtml = true;
+                                msg.Priority = MailPriority.High;
+
+                                SmtpClient client = new SmtpClient("mail.homespundev.com");
+                                client.Credentials = new NetworkCredential("no-reply@homespundev.com", "P@ssw0rd");
+                                using (client)
+                                {
+                                    try
+                                    {
+                                        client.Send(msg);
+                                    }
+                                    catch
+                                    {
+                                        ViewBag.ErrorMessage = "There was an error sending your email. Please try again.";
+                                        return View();
+                                    }
+                                }
                             }
                         }
 
@@ -248,6 +233,7 @@ namespace FSDP.UI.Controllers
                         lessonPdf.SaveAs(pathForTheSaving + pdfName);
                     }
                 }
+                lesson.IsActive = true;
                 lesson.PdfFileName = pdfName;
                 db.Lessons.Add(lesson);
                 db.SaveChanges();

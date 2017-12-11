@@ -177,18 +177,35 @@ input[type="checkbox"].input-validation-error {
     margin: 1em;
     color: #0c373a;
 }
-
-html {
-    min-height: 100%;
+.btn-cancel{
+    background-color:#0c373a;
+    display: inline-block;
+    padding: 0 24px 0 30px;
+    height: 50px;
+    line-height: 45px;
+    font-size: 13px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    border: 2px solid #0c373a;
+    -webkit-border-radius: 0px;
+    -ms-border-radius: 0px;
+    -o-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    font-weight: 700;
+    font-family: "Roboto", sans-serif;
     position: relative;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
-body {
-    padding-bottom: 387.6px;
-    height: 100%;
+.btn-default:hover{
+    color:#0c373a;
 }
-.footer-wrap{
-    position:absolute;
-    height:387.6px;
-    width:100%;
+.container{
+    padding-top: 2em;
+    padding-bottom:2em;
 }
