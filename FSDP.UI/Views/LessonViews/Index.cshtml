@@ -3,12 +3,15 @@
 @{
     ViewBag.Title = "Lesson Views";
 }
-<div class="container">
-    <h2>@ViewBag.Title</h2>
-
-    <p>
-        @Html.ActionLink("Add New Lesson View", "Create")
-    </p>
+<div class="container page">
+    <h1 class="text-center">@ViewBag.Title</h1>
+    @if (User.IsInRole("Admin"))
+    {
+        <h2>
+            <a href="@Url.Action("Create")" class="fa fa-plus-square-o" title="Add New Lesson View"> Lesson View</a>
+        </h2>
+    }
+    
     <table class="table">
         <thead>
             <tr>
@@ -33,9 +36,9 @@
                 <tr>
                     @if (User.IsInRole("Admin"))
                     {
-                        <td>
-                            <a href="@Url.Action("Edit", new { id= item.LessonViewID})" class="fa fa-pencil-square-o"></a> |
-                            <a href="@Url.Action("Delete", new { id= item.LessonViewID} )" class="fa fa-trash"></a>
+                        <td class="manage">
+                            <a href="@Url.Action("Edit", new { id= item.LessonViewID})" title="Edit" class="fa fa-pencil-square-o"></a> |
+                            <a href="@Url.Action("Delete", new { id= item.LessonViewID} )" title="Delete" class="fa fa-trash"></a>
                         </td>
                     }
                     <td>

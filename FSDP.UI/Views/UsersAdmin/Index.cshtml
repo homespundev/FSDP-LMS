@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<FSDP.UI.Models.ApplicationUser>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Users";
 }
 
-<div class="container">
-    <h2>Index</h2>
+<div class="container page">
+    <h1 class="text-center">@ViewBag.Title</h1>
 
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
+    <h2>
+        <a href="@Url.Action("Create")" class="fa fa-plus-square-o" title="Add New User"> User</a>
+    </h2>
     <table class="table">
         <thead>
             <tr>
@@ -26,9 +26,9 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>
-                        <a href="@Url.Action("Edit", new { id= item.Id})" class="fa fa-pencil-square-o"></a> |
-                        <a href="@Url.Action("Delete", new { id= item.Id} )" class="fa fa-trash"></a>
+                    <td class="manage">
+                        <a href="@Url.Action("Edit", new { id= item.Id})" title="Edit" class="fa fa-pencil-square-o"></a> |
+                        <a href="@Url.Action("Delete", new { id= item.Id} )" title="Edit" class="fa fa-trash"></a>
                     </td>
                     <td>
                         @Html.ActionLink(item.UserName, "Details", new { id = item.Id })

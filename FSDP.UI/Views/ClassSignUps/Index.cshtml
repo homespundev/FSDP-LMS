@@ -1,15 +1,17 @@
 ﻿@model IEnumerable<FSDP.DATA.ClassSignUp>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Class Sign Ups";
 }
 
-<div class="container">
-    <h2>Index</h2>
-
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
+<div class="container page">
+    <h1 class="text-center">@ViewBag.Title</h1>
+    @if (User.IsInRole("Admin"))
+    {
+        <h2>
+            <a href="@Url.Action("Create")" class="fa fa-plus-square-o" title="Add New Class Sign Up"> Class Sign Up</a>
+        </h2>
+    }
     <table class="table">
         <thead>
             <tr>
@@ -31,9 +33,9 @@
                 <tr>
                     @if (User.IsInRole("Admin")||User.IsInRole("Manager"))
                     {
-                    <td>
-                        <a href="@Url.Action("Edit", new { id= item.ClassSignUpID})" class="fa fa-pencil-square-o"></a> |
-                        <a href="@Url.Action("Delete", new { id= item.ClassSignUpID} )" class="fa fa-trash"></a>
+                    <td class="manage">
+                        <a href="@Url.Action("Edit", new { id= item.ClassSignUpID})" title="Edit" class="fa fa-pencil-square-o"></a> |
+                        <a href="@Url.Action("Delete", new { id= item.ClassSignUpID} )" title ="Delete" class="fa fa-trash"></a>
                     </td>
                     }
                     <td>

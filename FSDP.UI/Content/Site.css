@@ -208,3 +208,6 @@ input[type="checkbox"].input-validation-error {
     display:inline;
     width:auto;
 }
+.manage{
+    width:70px;
+}
