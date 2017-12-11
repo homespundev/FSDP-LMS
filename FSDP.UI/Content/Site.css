@@ -117,7 +117,7 @@ input[type="checkbox"].input-validation-error {
 
 @media (min-width:1240px) {
     .container {
-        max-width: 1200px;
+        max-width: 1170px;
     }
 }
 
@@ -205,7 +205,7 @@ input[type="checkbox"].input-validation-error {
 .btn-default:hover{
     color:#0c373a;
 }
-.container{
+.page{
     padding-top: 2em;
     padding-bottom:2em;
 }

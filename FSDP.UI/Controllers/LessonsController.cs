@@ -233,7 +233,7 @@ namespace FSDP.UI.Controllers
                         lessonPdf.SaveAs(pathForTheSaving + pdfName);
                     }
                 }
-                lesson.IsActive = true;
+                //lesson.IsActive = true;
                 lesson.PdfFileName = pdfName;
                 db.Lessons.Add(lesson);
                 db.SaveChanges();
