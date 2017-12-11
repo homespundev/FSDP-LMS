@@ -217,13 +217,16 @@ namespace FSDP.UI.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "LessonID,LessonTitle,CourseID,Introduction,VideoUrl,PdfFileName,IsActive,LessonImage,QuizQuestion,QuizAnswer")] Lesson lesson, HttpPostedFileBase lessonPdf)
+        public ActionResult Create([Bind(Include = "LessonID,LessonTitle,CourseID,Introduction,VideoUrl,PdfFileName,IsActive,LessonImage,QuizQuestion,QuizAnswer")]
+        Lesson lesson, HttpPostedFileBase lessonPdf)
         {
             if (ModelState.IsValid)
             {
+                lesson.IsActive = true;
                 string pdfName = "";
                 if (lessonPdf != null)
                 {
+                    pdfName = lessonPdf.FileName;
                     string ext = pdfName.Substring(pdfName.LastIndexOf('.'));
                     string goodExt = ".pdf";
                     if (goodExt.Contains(ext.ToLower()))
@@ -233,7 +236,7 @@ namespace FSDP.UI.Controllers
                         lessonPdf.SaveAs(pathForTheSaving + pdfName);
                     }
                 }
-                //lesson.IsActive = true;
+                
                 lesson.PdfFileName = pdfName;
                 db.Lessons.Add(lesson);
                 db.SaveChanges();

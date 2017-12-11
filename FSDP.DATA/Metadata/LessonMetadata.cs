@@ -43,8 +43,11 @@ namespace FSDP.DATA
         [StringLength(300, ErrorMessage = "* Not to exceed 300 characters")]
         public string QuizQuestion { get; set; }
 
-        [Display(Name = "Quiz Question")]
+        [Display(Name = "Answer")]
         [StringLength(50, ErrorMessage = "* Not to exceed 50 characters")]
         public string QuizAnswer { get; set; }
     }
+
+    [MetadataType(typeof(LessonMetadata))]
+    public partial class Lesson { }
 }

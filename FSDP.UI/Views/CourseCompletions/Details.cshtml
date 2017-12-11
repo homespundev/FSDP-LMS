@@ -27,16 +27,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Cours.CourseName)
+            @Html.DisplayNameFor(model => model.Courses.CourseName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Cours.CourseName)
+            @Html.DisplayFor(model => model.Courses.CourseName)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CourseCompletionID }) |
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.CourseCompletionID }) @:|
+    }
     @Html.ActionLink("Back to List", "Index")
 </p>

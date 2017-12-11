@@ -32,18 +32,11 @@
             </div>
 
             <div class="row justify-content-md-center">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-8">
                     @Html.LabelFor(model => model.Introduction, htmlAttributes: new { @class = "control-label" })
                     <div>
-                        @Html.EditorFor(model => model.Introduction, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.Introduction, new { htmlAttributes = new { @class = "form-control"} })
                         @Html.ValidationMessageFor(model => model.Introduction, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group col-md-4" style="visibility:hidden">
-                    @Html.LabelFor(model => model.LessonImage, htmlAttributes: new { @class = "control-label" })
-                    <div>
-                        @Html.EditorFor(model => model.LessonImage, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.LessonImage, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
@@ -85,7 +78,7 @@
             </div>
             <div class="row justify-content-md-center">
                 <div class="form-group col-md-4 text-left">
-                    <span >
+                    <span>
                         <input type="submit" value="Create" class="btn btn-default" />
                     </span>
                 </div>

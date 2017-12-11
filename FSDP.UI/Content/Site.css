@@ -115,11 +115,6 @@ input[type="checkbox"].input-validation-error {
     background-color: rgb(12, 55, 58);
 }
 
-@media (min-width:1240px) {
-    .container {
-        max-width: 1170px;
-    }
-}
 
 @media (min-width:1500px) {
     .container {
@@ -208,4 +203,8 @@ input[type="checkbox"].input-validation-error {
 .page{
     padding-top: 2em;
     padding-bottom:2em;
+}
+.dataTables_length select, .dataTables_filter input{
+    display:inline;
+    width:auto;
 }

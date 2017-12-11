@@ -30,7 +30,7 @@
 
             <dd>
                 @if (Model.VideoUrl != null)
-            {
+                {
                     <div id="player"></div>
                 }
                 else
@@ -46,8 +46,8 @@
             </dt>
 
             <dd>
-                @if (Model.PdfFileName != "")
-            {
+                @if (Model.PdfFileName != null)//look at using String.IsNullOrEmpty()
+                {
                     <a href="@Url.Content("~/Content/Lessons/Pdf/" + Model.PdfFileName)" target="_blank">View PDF</a>
                 }
                 else
@@ -59,16 +59,16 @@
 
             </dd>
 
-               
+
             @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
             {
-            <dt>
-                @Html.DisplayNameFor(model => model.IsActive)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.IsActive)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.IsActive)
+                </dd>
                 <dt>
                     @Html.DisplayNameFor(model => model.QuizQuestion)
                 </dt>
@@ -99,36 +99,39 @@
     @if (User.IsInRole("Employee"))
     {
         <div>
-            @Html.BeginForm()
+            @using (Html.BeginForm())
             {
-            @Html.AntiForgeryToken()
-            <div class="form-horizontal">
-                <h4>Quiz</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    <label class="control-label col-md-2">Question:</label>
-                    <div class="col-md-10">
-                        @Html.DisplayFor(model => model.QuizQuestion)
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    <h4>Quiz</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Question:</label>
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.QuizQuestion)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label class="control-label col-md-2">Answer:</label>
+                            <input type="text" name="txtAnswer" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Submit" class="btn btn-default" />
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-10">
-                        <label class="control-label col-md-2">Answer:</label>
-                        <input type="text" name="txtAnswer" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Submit" class="btn btn-default" />
-                    </div>
-                </div>
-            </div>
             }
         </div>
     }
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.LessonID }) |
+        @if (User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = Model.LessonID }) @:|
+                }
         @Html.ActionLink("Back to List", "Index")
     </p>
 </div>

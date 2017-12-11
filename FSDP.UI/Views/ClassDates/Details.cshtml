@@ -37,6 +37,10 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ClassDateID }) |
+    @if (Request.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("Manager")))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ClassDateID }) @:|
+    }
+
     @Html.ActionLink("Back to List", "Index")
 </p>

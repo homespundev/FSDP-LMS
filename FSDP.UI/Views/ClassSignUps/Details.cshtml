@@ -29,6 +29,10 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ClassSignUpID }) |
+    @if (Request.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("Manager")))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ClassSignUpID }) @:|
+    }
+
     @Html.ActionLink("Back to List", "Index")
 </p>
