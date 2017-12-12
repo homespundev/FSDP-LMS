@@ -10,6 +10,7 @@ using FSDP.DATA;
 using Microsoft.AspNet.Identity;
 using FSDP.UI.Models;
 using System.Net.Mail;
+using System.Web.Mvc.Html;
 
 namespace FSDP.UI.Controllers
 {
@@ -102,7 +103,8 @@ namespace FSDP.UI.Controllers
                                 };
                                 db.CourseCompletions.Add(userCourseCompletion);
                                 db.SaveChanges();
-                                MailMessage msg = new MailMessage("no-reply@homespundev.com", "mfrey2011@gmail.com", "Course Completion", $"{currentUser} has completed {currentCourse}");
+                                MailMessage msg = new MailMessage("no-reply@homespundev.com", "mfrey2011@gmail.com", 
+                                    "Course Completion", $"{currentUser} has completed {currentCourse}");
                                 msg.IsBodyHtml = true;
                                 msg.Priority = MailPriority.High;
 
@@ -126,7 +128,8 @@ namespace FSDP.UI.Controllers
                     }
 
                 }
-                ViewBag.Success = "You answered correctly and have completed this lesson!";
+                ViewBag.NextLesson = $"<a href='{(int)id+1}'>Continue to Next Lesson<a>";
+                ViewBag.Success = "You answered correctly and have completed this lesson! ";
                 //return Content("<script language='javascript' type='text/javascript'>alert('You answered correctly and have completed this lesson!');</script>");
                 //return new JavaScriptResult { Script = "window.alert('You answered correctly and have completed this lesson!');" };
                 return View(lesson);
@@ -139,70 +142,6 @@ namespace FSDP.UI.Controllers
             }
         }
 
-
-
-        //[Authorize(Roles = "Admin, Manager, Employee")]
-        //public ActionResult Quiz(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Quiz quiz = db.Quizs.Find(id);
-        //    if (quiz == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(quiz);
-        //}
-
-        //[HttpPost]
-        //[Authorize(Roles = "Admin, Manager, Employee")]
-        //public ActionResult Quiz(int? id, string userAnswer)
-        //{
-        //    Quiz quiz = db.Quizs.Find(id);
-        //    Lesson lesson = (from l in db.Lessons join lq in db.Lessons. );
-        //    string strName = Convert.ToString(userAnswer);
-        //    if (strName == quiz.CorrectAnswer)
-        //    {
-        //        if (User.IsInRole("Employee"))
-        //        {
-        //            string userID = User.Identity.GetUserId();
-        //            var lessonViews = db.LessonViews.Where(x => x.LessonID == id && x.UserID == userID && x.Lesson.IsActive);
-        //            int lessonViewsCount = lessonViews.Count();
-        //            if (lessonViewsCount == 0)
-        //            {
-        //                LessonView lessonView = new LessonView()
-        //                {
-        //                    UserID = userID,
-        //                    LessonID = (int)id,
-        //                    DateViewed = DateTime.Now
-        //                };
-        //                db.LessonViews.Add(lessonView);
-        //                db.SaveChanges();
-        //                var courseCompletion = db.CourseCompletions.Where(x => x.UserID == userID && x.CourseID == lesson.CourseID);
-        //                if (courseCompletion.Count() == 0)
-        //                {
-        //                    var lessonsCompleted = db.LessonViews.Where(x => x.UserID == userID && x.Lesson.CourseID == lesson.CourseID).Count();
-        //                    var courseLessons = db.Lessons.Where(x => x.CourseID == lesson.CourseID).Count();
-        //                    if (lessonsCompleted == courseLessons)
-        //                    {
-        //                        CourseCompletion userCourseCompletion = new CourseCompletion()
-        //                        {
-        //                            UserID = userID,
-        //                            CourseID = lesson.CourseID,
-        //                            DateCompleted = DateTime.Now
-        //                        };
-        //                        db.CourseCompletions.Add(userCourseCompletion);
-        //                        db.SaveChanges();
-        //                    }
-        //                }
-
-        //            }
-
-        //        }
-        //    }
-        //}
         // GET: Lessons/Create
         [Authorize(Roles = "Admin")]
         public ActionResult Create()
@@ -317,6 +256,13 @@ namespace FSDP.UI.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Lesson lesson = db.Lessons.Find(id);
+            var hasViews = db.LessonViews.FirstOrDefault(x => x.LessonID == id);
+            string lessonName = db.Lessons.FirstOrDefault(x => x.LessonID == id).LessonTitle;
+            if (hasViews != null)
+            {
+                ViewBag.ErrorMessageDelete = lessonName + "currently has lesson views and you cannot remove it.";
+                return View(lesson);
+            }
             db.Lessons.Remove(lesson);
             db.SaveChanges();
             return RedirectToAction("Index");

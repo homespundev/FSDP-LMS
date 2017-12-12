@@ -149,7 +149,7 @@ input[type="checkbox"].input-validation-error {
     color: rgb(4,117,52);
 }
 
-#fail {
+.fail {
     background-color: rgba(238, 12, 12, .5);
     color: rgb(238,12,12);
 }
@@ -203,11 +203,23 @@ input[type="checkbox"].input-validation-error {
 .page{
     padding-top: 2em;
     padding-bottom:2em;
+    min-height:415px;
 }
 .dataTables_length select, .dataTables_filter input{
     display:inline;
     width:auto;
 }
 .manage{
-    width:70px;
+    min-width:70px;
+}
+#courseDesc{
+    /*display: flex;
+    justify-content:center;
+    align-content:center;
+    flex-direction:column;*/
+    margin:auto;
+    text-align:center;
+}
+h1{
+    color:#0c373a;
 }

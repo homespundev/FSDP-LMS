@@ -11,6 +11,9 @@ namespace FSDP.DATA
     {
         //public int ClassDateID { get; set; }
         public int StoreClassID { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Date")]
         public System.DateTime DateTime { get; set; }
         public Nullable<byte> ClassLimit { get; set; }
     }

@@ -1,54 +1,85 @@
 ﻿@model FSDP.DATA.Course
-
+@using FSDP.DATA
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.CourseName;
+    FSDPDbEntities db = new FSDPDbEntities();
+    var currentCourseId = Model.CourseID;
+    var courseLessons = db.Lessons.Where(x => x.CourseID == currentCourseId);
+
 }
 
-<h2>Details</h2>
+<div class="container page">
+    <h1 class="text-center">@ViewBag.Title</h1>
 
-<div>
-    <h4>Course</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CourseName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CourseName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CourseDescription)
-        </dt>
-
-        <dd>
+    <div class="row" style="vertical-align:middle">
+        <div class="col-md-6">
+            <img src="@Url.Content("~/Content/Images/Courses/" + Model.CourseImage)" />
+        </div>
+        <div class="col-md-6" id="courseDesc">
             @Html.DisplayFor(model => model.CourseDescription)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </dt>
-
-        <dd>
+            <br /><br />
+            <div style="float:left">
+                @Html.DisplayNameFor(model => model.IsActive)
             @Html.DisplayFor(model => model.IsActive)
-        </dd>
+        </div>
+                    @*&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;*@
+            <div style="float:right">
+                @if (User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.CourseID }) @:|
+                }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CourseImage)
-        </dt>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <br />
+    <h1 class="text-center">Lessons</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                @if (User.IsInRole("Admin"))
+                {
+                    <th></th>
+                }
 
-        <dd>
-            @Html.DisplayFor(model => model.CourseImage)
-        </dd>
+                <th>
+                    Lesson Title
+                </th>
+                <th>
+                    Introduction
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.LessonImage)
+                    </th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Lesson lesson in courseLessons)
+            {
+                <tr>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <td class="manage">
+                            <a href="@Url.Action("Edit", new { id= lesson.LessonID})" title="Edit" class="fa fa-pencil-square-o"></a> |
+                            <a href="@Url.Action("Delete", new { id= lesson.LessonID} )" title="Delete" class="fa fa-trash"></a>
+                        </td>
+                    }
+                    <td>
+                        @Html.ActionLink(lesson.LessonTitle, "Details", new { id = lesson.LessonID })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => lesson.Introduction)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.LessonImage)
+                        </td>*@
+                </tr>
+            }
+        </tbody>
 
-    </dl>
+    </table>
 </div>
-<p>
-    @if (User.IsInRole("Admin"))
-    {
-        @Html.ActionLink("Edit", "Edit", new { id = Model.CourseID }) @:|
-    }
-
-    @Html.ActionLink("Back to List", "Index")
-</p>

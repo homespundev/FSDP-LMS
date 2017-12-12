@@ -91,6 +91,8 @@
       <DependentUpon>FSDPDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Metadata\ClassDateMetadata.cs" />
+    <Compile Include="Metadata\CourseCompletionMetadata.cs" />
+    <Compile Include="Metadata\LessonViewMetadata.cs" />
     <Compile Include="Metadata\CourseMetadata.cs" />
     <Compile Include="Metadata\LessonMetadata.cs" />
     <Compile Include="Metadata\UserMetadata.cs" />

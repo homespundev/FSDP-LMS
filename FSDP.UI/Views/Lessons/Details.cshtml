@@ -6,8 +6,8 @@
 
 <div class="container">
     <h2 class="text-center">@ViewBag.Title</h2>
-    <div id="success">@ViewBag.Success</div>
-    <div id="fail">@ViewBag.Fail</div>
+    <div id="success">@ViewBag.Success @Html.Raw(ViewBag.NextLesson)</div>
+    <div class="fail">@ViewBag.Fail</div>
     <div>
         <h4>Lesson</h4>
         <hr />
@@ -132,6 +132,6 @@
         {
             @Html.ActionLink("Edit", "Edit", new { id = Model.LessonID }) @:|
                 }
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Back to All Lessons", "Index") | <a href="@Url.Action("Details", "Courses", new { id = Model.CourseID })">Back to Course Lessons</a>
     </p>
 </div>

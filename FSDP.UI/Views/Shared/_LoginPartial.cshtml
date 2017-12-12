@@ -6,7 +6,6 @@
 @if (Request.IsAuthenticated) {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "flat-login-register" })) {
         @Html.AntiForgeryToken()
-@*db.AspNetUsers.Where(x=>x.Id == user).FirstOrDefault().FirstName*@
         <ul class="flat-login-register">
             <li>
                 @Html.ActionLink("Hello " + Session["FirstName"] + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })

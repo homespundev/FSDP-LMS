@@ -110,6 +110,13 @@ namespace FSDP.UI.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             StoreClass storeClass = db.StoreClasses.Find(id);
+            var hasDate = db.ClassDates.FirstOrDefault(x => x.StoreClassID == id);
+            string className = db.StoreClasses.FirstOrDefault(x => x.StoreClassID == id).ClassName;
+            if (hasDate != null)
+            {
+                ViewBag.ErrorMessageDelete = className + "currently has class dates scheduled and you cannot remove it.";
+                return View(storeClass);
+            }
             db.StoreClasses.Remove(storeClass);
             db.SaveChanges();
             return RedirectToAction("Index");

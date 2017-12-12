@@ -157,6 +157,13 @@ namespace FSDP.UI.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Course course = db.Courses.Find(id);
+            var hasLessons = db.Lessons.FirstOrDefault(x => x.CourseID == id);
+            string courseName = db.Lessons.FirstOrDefault(x => x.CourseID == id).LessonTitle;
+            if (hasLessons != null)
+            {
+                ViewBag.ErrorMessageDelete = courseName + "currently has lessons and you cannot remove it.";
+                return View(course);
+            }
             db.Courses.Remove(course);
             db.SaveChanges();
             return RedirectToAction("Index");

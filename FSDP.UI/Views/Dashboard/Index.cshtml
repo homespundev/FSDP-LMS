@@ -29,7 +29,7 @@
 
 <div class="flat-row" id="dashboarddiv">
     <div class="container">
-        <h1 class="text-center" style="color:#0C373A">@ViewBag.UserRole @ViewBag.Title</h1><br/><br/>
+        <h1 class="text-center" style="color:#0C373A"><strong>@ViewBag.UserRole @ViewBag.Title</strong></h1><br /><br />
         <!-- #region Employee View -->
 
         @if (User.IsInRole("Employee"))
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <h1>Lifetime Courses Completed: <strong>@ViewBag.CompleteCourses / @db.Courses.Count()</strong></h1><br />
+                    <h1>Lifetime Courses Completed: <span style="color:rgb(120,159,138)"><strong>@ViewBag.CompleteCourses / @db.Courses.Count()</strong></span></h1><br />
                     <div class="progress">
                         <div class="progress-bar active" role="progressbar" aria-valuenow="@userCompletionPercent" aria-valuemin="0" aria-valuemax="100"
                              style="width:@userCompletionPercent%">
@@ -79,17 +79,15 @@
                                     <div class="item">
                                         <article class="entry">
                                             <div class="featured-post">
-                                                <a href="#">
                                                     <div class="circle" data-value="@courseCompletionPercent">
                                                         <h1 class="value"></h1>
                                                     </div>
-                                                </a>
                                             </div>
                                             <div class="entry-post">
                                                 <div class="entry-categories">
-                                                    <span><a href="#">Courses</a></span>
+                                                    <span><a href="@Url.Action("Index", "Courses")">Courses</a></span>
                                                 </div>
-                                                <h2 class="entry-title"><a href="#">@c.CourseName</a></h2>
+                                                <h2 class="entry-title"><a href="@Url.Action("Details", "Courses", new { id=c.CourseID})">@c.CourseName</a></h2>
                                                 <div class="entry-number">
                                                     <div class="entry-count">
                                                         COMPLETE LESSONS:<span class="count"> @lessonViews</span>
@@ -112,15 +110,15 @@
         <!-- #endregion -->
         @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
         {
+            <div class="row justify-content-center text-center" id="totalComplete">
+                <div class="col-md-6">
+                    <h1>Total Courses Completed This Year:<span style="color:rgb(120,159,138)"><strong> @totalCoursesThisYear</strong></span></h1>
+                </div>
+                <div class="col-md-6">
+                    <h1>Lifetime Total Courses Completed:<span style="color:rgb(120,159,138)"><strong> @totalCoursesCompleted</strong></span></h1>
+                </div>
+            </div>
             <div class="row">
-                <div class="col-md-4">
-                    <h2>Total Courses Completed This Year:</h2>
-                    <h1>@totalCoursesThisYear</h1>
-                </div>
-                <div class="offset-md-4 col-md-4">
-                    <h2>Lifetime Total Courses Completed:</h2>
-                    <h1>@totalCoursesCompleted</h1>
-                </div>
                 <div class="col-md-12" id="lesson-views">
                     <div class="container">
                         <div class="portfolio wrap-box pdbottom">
@@ -142,31 +140,29 @@
                                             {
                                                 completionPercent = employeeCompleted / 6.0m;//TODO: Figure out why this is giving 0 as the answer
                                             }
-                                            <div class="item">
-                                                <article class="entry">
-                                                    <div class="featured-post">
-                                                        <a href="#">
-                                                            <div class="circle" data-value="@completionPercent">
-                                                                <h1 class="value"></h1>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="entry-post">
-                                                        <div class="entry-categories">
-                                                            <span><a href="#">Employee Completion</a></span>
-                                                        </div>
-                                                        <h2 class="entry-title"><a href="#">@e.FullName</a></h2>
-                                                        <div class="entry-number">
-                                                            <div class="entry-count">
-                                                                COMPLETE COURSES:<span class="count"> </span>
-                                                            </div>
-                                                            <div class="entry-price">
-                                                                TOTAL REQUIRED:<span class="price">6</span>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- entry-post -->
-                                                </article>
-                                            </div><!-- item -->
+                                <div class="item">
+                                    <article class="entry">
+                                        <div class="featured-post">
+                                                <div class="circle" data-value="@completionPercent">
+                                                    <h1 class="value"></h1>
+                                                </div>
+                                        </div>
+                                        <div class="entry-post">
+                                            <div class="entry-categories">
+                                                <span>Employee Completion</span>
+                                            </div>
+                                            <h2 class="entry-title">@e.FullName</h2>
+                                            <div class="entry-number">
+                                                <div class="entry-count">
+                                                    COMPLETE COURSES:<span class="count">@employeeCompleted</span>
+                                                </div>
+                                                <div class="entry-price">
+                                                    TOTAL REQUIRED:<span class="price">6</span>
+                                                </div>
+                                            </div>
+                                        </div><!-- entry-post -->
+                                    </article>
+                                </div><!-- item -->
                                         }
                                     }
 

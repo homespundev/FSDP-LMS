@@ -115,6 +115,13 @@ namespace FSDP.UI.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             ClassDate classDate = db.ClassDates.Find(id);
+            var hasSignUps = db.ClassSignUps.FirstOrDefault(x => x.ClassDateID == id);
+            string classDateName = db.ClassDates.FirstOrDefault(x => x.ClassDateID == id).NameDate;
+            if (hasSignUps != null)
+            {
+                ViewBag.ErrorMessageDelete = classDateName + "currently has lesson views and you cannot remove it.";
+                return View(classDate);
+            }
             db.ClassDates.Remove(classDate);
             db.SaveChanges();
             return RedirectToAction("Index");
