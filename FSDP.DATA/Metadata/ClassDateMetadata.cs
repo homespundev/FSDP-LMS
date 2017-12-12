@@ -15,6 +15,8 @@ namespace FSDP.DATA
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         [Display(Name = "Date")]
         public System.DateTime DateTime { get; set; }
+
+        [Display(Name ="Class Limit")]
         public Nullable<byte> ClassLimit { get; set; }
     }
 

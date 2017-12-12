@@ -1,56 +1,56 @@
 ﻿@model FSDP.DATA.ClassDate
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit " + Model.NameDate;
 }
 
-<h2>Edit</h2>
+<div class="container page">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
+        <div class="form-horizontal">
+            <h1 class="text-center">@ViewBag.Title</h1>
+            <br />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row justify-content-md-center">
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(model => model.StoreClassID, "Class", htmlAttributes: new { @class = "control-label" })
+                    <div>
+                        @Html.DropDownList("StoreClassID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.StoreClassID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>ClassDate</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ClassDateID)
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(model => model.DateTime, htmlAttributes: new { @class = "control-label" })
+                    <div>
+                        @Html.EditorFor(model => model.DateTime, new { htmlAttributes = new { @class = "form-control", id = "datepicker" } })
+                        @Html.ValidationMessageFor(model => model.DateTime, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.StoreClassID, "StoreClassID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("StoreClassID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.StoreClassID, "", new { @class = "text-danger" })
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(model => model.ClassLimit, htmlAttributes: new { @class = "control-label" })
+                    <div>
+                        @Html.EditorFor(model => model.ClassLimit, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ClassLimit, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group col-md-3 text-right">
+                    <span>
+                        <input type="submit" value="Edit" class="btn btn-default" />
+                    </span>
+                </div>
+                <div class="col-md-4 offset-md-5 text-left">
+                    <span>
+                        @Html.ActionLink("Cancel", "Index", "ClassDates", new { @class = "btn btn-cancel" })
+                    </span>
+                </div>
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DateTime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DateTime, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DateTime, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ClassLimit, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ClassLimit, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ClassLimit, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    }
 </div>
 
 @section Scripts {
