@@ -11,7 +11,7 @@ namespace FSDP.DATA
     {
         [Required(ErrorMessage = "* Required")]
         [StringLength(200, ErrorMessage = "* Not to exceed 200 characters")]
-        [Display(Name = "Name")]
+        [Display(Name = "Course")]
         public string CourseName { get; set; }
 
         [DisplayFormat(NullDisplayText = "N/A")]

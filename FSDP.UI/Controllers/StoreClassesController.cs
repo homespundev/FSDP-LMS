@@ -15,27 +15,29 @@ namespace FSDP.UI.Controllers
         private FSDPDbEntities db = new FSDPDbEntities();
 
         // GET: StoreClasses
+        [Authorize(Roles = "Admin, Manager, Employee")]
         public ActionResult Index()
         {
             return View(db.StoreClasses.ToList());
         }
 
-        // GET: StoreClasses/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            StoreClass storeClass = db.StoreClasses.Find(id);
-            if (storeClass == null)
-            {
-                return HttpNotFound();
-            }
-            return View(storeClass);
-        }
+        //// GET: StoreClasses/Details/5
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    StoreClass storeClass = db.StoreClasses.Find(id);
+        //    if (storeClass == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(storeClass);
+        //}
 
         // GET: StoreClasses/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -44,6 +46,7 @@ namespace FSDP.UI.Controllers
         // POST: StoreClasses/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "StoreClassID,ClassName,ClassDescription")] StoreClass storeClass)
@@ -59,6 +62,7 @@ namespace FSDP.UI.Controllers
         }
 
         // GET: StoreClasses/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -76,6 +80,7 @@ namespace FSDP.UI.Controllers
         // POST: StoreClasses/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "StoreClassID,ClassName,ClassDescription")] StoreClass storeClass)
@@ -90,6 +95,7 @@ namespace FSDP.UI.Controllers
         }
 
         // GET: StoreClasses/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,6 +111,7 @@ namespace FSDP.UI.Controllers
         }
 
         // POST: StoreClasses/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

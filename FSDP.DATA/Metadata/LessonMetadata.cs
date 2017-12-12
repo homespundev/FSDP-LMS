@@ -10,7 +10,7 @@ namespace FSDP.DATA
     class LessonMetadata
     {
         [Required(ErrorMessage ="* Required")]
-        [Display(Name ="Title")]
+        [Display(Name ="Lesson")]
         [StringLength(200, ErrorMessage ="* Not to exceed 200 characters")]
         public string LessonTitle { get; set; }
 

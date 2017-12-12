@@ -17,32 +17,37 @@
             <tr>
                 @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
                 {
-                <th></th>}
+                    <th></th>}
                 <th>
                     @Html.DisplayNameFor(model => model.AspNetUser.FullName)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ClassDate.NameDate)
+                    @Html.DisplayNameFor(model => model.ClassDate.StoreClass.ClassName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ClassDate.DateTime)
                 </th>
                 
+
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
                 <tr>
-                    @if (User.IsInRole("Admin")||User.IsInRole("Manager"))
+                    @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
                     {
-                    <td class="manage">
-                        <a href="@Url.Action("Edit", new { id= item.ClassSignUpID})" title="Edit" class="fa fa-pencil-square-o"></a> |
-                        <a href="@Url.Action("Delete", new { id= item.ClassSignUpID} )" title ="Delete" class="fa fa-trash"></a>
-                    </td>
+                        <td class="manage">
+                            <a href="@Url.Action("Edit", new { id= item.ClassSignUpID})" title="Edit" class="fa fa-pencil-square-o"></a> |
+                            <a href="@Url.Action("Delete", new { id= item.ClassSignUpID} )" title="Delete" class="fa fa-trash"></a>
+                        </td>
                     }
                     <td>
-                        @Html.ActionLink(item.AspNetUser.FullName, "Details", new { id = item.ClassSignUpID })
+                        @Html.DisplayFor(modelItem=>item.AspNetUser.FullName)
                     </td>
+                        @Html.DisplayFor(modelItem=>item.ClassDate.StoreClass.ClassName)
                     <td>
-                        @Html.DisplayFor(modelItem => item.ClassDate.NameDate)
+                        @Html.DisplayFor(modelItem => item.ClassDate.DateTime)
                     </td>
                 </tr>
             }

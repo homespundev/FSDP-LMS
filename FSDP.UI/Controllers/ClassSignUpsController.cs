@@ -28,19 +28,19 @@ namespace FSDP.UI.Controllers
         }
 
         // GET: ClassSignUps/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ClassSignUp classSignUp = db.ClassSignUps.Find(id);
-            if (classSignUp == null)
-            {
-                return HttpNotFound();
-            }
-            return View(classSignUp);
-        }
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    ClassSignUp classSignUp = db.ClassSignUps.Find(id);
+        //    if (classSignUp == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(classSignUp);
+        //}
 
         // GET: ClassSignUps/Create
         public ActionResult Create()

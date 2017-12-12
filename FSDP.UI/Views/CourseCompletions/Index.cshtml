@@ -45,7 +45,7 @@
                         </td>
                     }
                     <td>
-                        @Html.ActionLink(item.AspNetUser.FullName, "Details", new { id = item.CourseCompletionID })
+                        @Html.DisplayFor(modelItem=>item.AspNetUser.FullName)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Courses.CourseName)

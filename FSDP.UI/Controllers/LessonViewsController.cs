@@ -31,32 +31,32 @@ namespace FSDP.UI.Controllers
         }
 
         // GET: LessonViews/Details/5
-        [Authorize(Roles = "Admin, Manager, Employee")]
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            LessonView lessonView = db.LessonViews.Find(id);
-            if (lessonView == null)
-            {
-                return HttpNotFound();
-            }
-            if (User.IsInRole("Employee"))
-            {
-                var userId = User.Identity.GetUserId();
-                if (userId == lessonView.UserID)
-                {
-                    return View(lessonView);
-                }
-                else
-                {
-                    return RedirectToAction("Index");
-                }
-            }
-            return View(lessonView);
-        }
+        //[Authorize(Roles = "Admin, Manager, Employee")]
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    LessonView lessonView = db.LessonViews.Find(id);
+        //    if (lessonView == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    if (User.IsInRole("Employee"))
+        //    {
+        //        var userId = User.Identity.GetUserId();
+        //        if (userId == lessonView.UserID)
+        //        {
+        //            return View(lessonView);
+        //        }
+        //        else
+        //        {
+        //            return RedirectToAction("Index");
+        //        }
+        //    }
+        //    return View(lessonView);
+        //}
 
         // GET: LessonViews/Create
 

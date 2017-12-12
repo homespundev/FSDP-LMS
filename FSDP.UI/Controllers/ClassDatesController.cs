@@ -22,19 +22,19 @@ namespace FSDP.UI.Controllers
         }
 
         // GET: ClassDates/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ClassDate classDate = db.ClassDates.Find(id);
-            if (classDate == null)
-            {
-                return HttpNotFound();
-            }
-            return View(classDate);
-        }
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    ClassDate classDate = db.ClassDates.Find(id);
+        //    if (classDate == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(classDate);
+        //}
 
         // GET: ClassDates/Create
         public ActionResult Create()

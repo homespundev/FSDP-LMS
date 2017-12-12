@@ -31,32 +31,32 @@ namespace FSDP.UI.Controllers
         }
 
         // GET: CourseCompletions/Details/5
-        [Authorize(Roles = "Admin, Manager, Employee")]
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            CourseCompletion courseCompletion = db.CourseCompletions.Find(id);
-            if (courseCompletion == null)
-            {
-                return HttpNotFound();
-            }
-            if (User.IsInRole("Employee"))
-            {
-                var userId = User.Identity.GetUserId();
-                if (userId == courseCompletion.UserID)
-                {
-                    return View(courseCompletion);
-                }
-                else
-                {
-                    return RedirectToAction("Index");
-                }
-            }
-            return View(courseCompletion);
-        }
+        //[Authorize(Roles = "Admin, Manager, Employee")]
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    CourseCompletion courseCompletion = db.CourseCompletions.Find(id);
+        //    if (courseCompletion == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    if (User.IsInRole("Employee"))
+        //    {
+        //        var userId = User.Identity.GetUserId();
+        //        if (userId == courseCompletion.UserID)
+        //        {
+        //            return View(courseCompletion);
+        //        }
+        //        else
+        //        {
+        //            return RedirectToAction("Index");
+        //        }
+        //    }
+        //    return View(courseCompletion);
+        //}
 
         [Authorize(Roles = "Admin")]
         // GET: CourseCompletions/Create

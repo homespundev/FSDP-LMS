@@ -40,7 +40,7 @@
                             <a href="@Url.Action("Delete", new { id= item.StoreClassID} )" title="Delete" class="fa fa-trash"></a>
                         </td> }
                     <td>
-                        @Html.ActionLink(item.ClassName, "Details", new { id = item.StoreClassID })
+                        @Html.DisplayFor(modelItem => item.ClassName)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.ClassDescription)

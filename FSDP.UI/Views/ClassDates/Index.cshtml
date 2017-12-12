@@ -1,7 +1,15 @@
 ﻿@model IEnumerable<FSDP.DATA.ClassDate>
 
 @{
-    ViewBag.Title = "Class Dates";
+    if (User.IsInRole("Customer"))
+    {
+        ViewBag.Title = "Scheduled Classes";
+    }
+    else
+    {
+        ViewBag.Title = "Class Dates";
+    }
+
 }
 
 <div class="container page">
@@ -26,6 +34,9 @@
                     @Html.DisplayNameFor(model => model.DateTime)
                 </th>
                 <th>
+                    @Html.DisplayNameFor(model=>model.StoreClass.ClassDescription)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.ClassLimit)
                 </th>
                 
@@ -45,10 +56,13 @@
                         </td>
                     }
                     <td>
-                        @Html.ActionLink(item.StoreClass.ClassName, "Details", new { id = item.ClassDateID })
+                        @Html.DisplayFor(modelItem=>item.StoreClass.ClassName)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.DateTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem=>item.StoreClass.ClassDescription)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.ClassLimit)
