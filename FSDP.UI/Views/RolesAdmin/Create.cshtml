@@ -1,40 +1,41 @@
 ﻿@model FSDP.UI.Models.RoleViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Add Role";
 }
 
-<h2>Create.</h2>
-
-
-@using (Html.BeginForm())
-{
+<div class="container page">
+    @using (Html.BeginForm())
+    {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Role.</h4>
-        <hr />
+        <h1 class="text-center">@ViewBag.Title</h1>
+        <br /><br /><br />
         @Html.ValidationSummary(true)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Name)
+        <div class="row justify-content-md-center">
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Name, new { @class = "control-label" })
+                <div>
+                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="form-group col-md-2">
+                <span>
+                    <input type="submit" value="Add" class="btn btn-default" />
+                </span>
+            </div>
+            <div class="col-md-2">
+                <span>
+                    @Html.ActionLink("Cancel", "Index", "RolesAdmin", new { @class = "btn btn-cancel" })
+                </span>
             </div>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+}</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
