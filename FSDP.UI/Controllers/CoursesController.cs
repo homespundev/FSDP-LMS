@@ -58,7 +58,7 @@ namespace FSDP.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                string imageName = "noimage.jpg";
+                string imageName = "";
                 if (courseImg != null)
                 {
                     imageName = courseImg.FileName;
@@ -74,10 +74,6 @@ namespace FSDP.UI.Controllers
                         int maxThumbSize = 100;
                         ImageService.ResizeImage(pathForTheSaving, imageName, convertedImage, maxImageSize, maxThumbSize);
                     }
-                }
-                else
-                {
-                    imageName = "noimage.jpg";
                 }
                 course.CourseImage = imageName;
                 //uow.CourseRepository.Add(course);

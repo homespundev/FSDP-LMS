@@ -20,7 +20,7 @@
     <h1 class="text-center">@ViewBag.Title</h1>
 
     <div class="row justify-content-md-center" style="vertical-align:middle">
-        @if (Model.CourseImage != "noimage.jpg")
+        @if (Model.CourseImage != "")
         {
             <div class="col-md-6">
                 <img src="@Url.Content("~/Content/Images/Courses/" + Model.CourseImage)" />
