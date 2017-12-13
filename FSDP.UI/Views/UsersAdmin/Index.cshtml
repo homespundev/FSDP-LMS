@@ -17,7 +17,7 @@
 
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.UserName)
+                    Name
                 </th>
 
             </tr>
@@ -25,13 +25,14 @@
         <tbody>
             @foreach (var item in Model)
             {
+                var fullName = item.FirstName + " " + item.LastName;
                 <tr>
                     <td class="manage">
                         <a href="@Url.Action("Edit", new { id= item.Id})" title="Edit" class="fa fa-pencil-square-o"></a> |
                         <a href="@Url.Action("Delete", new { id= item.Id} )" title="Edit" class="fa fa-trash"></a>
                     </td>
                     <td>
-                        @Html.ActionLink(item.UserName, "Details", new { id = item.Id })
+                        @Html.ActionLink(fullName, "Details", new { id = item.Id })
                     </td>
 
                 </tr>

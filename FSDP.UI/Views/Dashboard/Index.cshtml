@@ -90,10 +90,10 @@
                                                 <h2 class="entry-title"><a href="@Url.Action("Details", "Courses", new { id=c.CourseID})">@c.CourseName</a></h2>
                                                 <div class="entry-number">
                                                     <div class="entry-count">
-                                                        COMPLETE LESSONS:<span class="count"> @lessonViews</span>
+                                                        COMPLETE LESSONS:<span class="count"> <strong>@lessonViews</strong></span>
                                                     </div>
                                                     <div class="entry-price">
-                                                        TOTAL LESSONS:<span class="price"> @courseLessons</span>
+                                                        TOTAL LESSONS:<span class="price"> <strong>@courseLessons</strong></span>
                                                     </div>
                                                 </div>
                                             </div><!-- entry-post -->
@@ -154,10 +154,10 @@
                                             <h2 class="entry-title">@e.FullName</h2>
                                             <div class="entry-number">
                                                 <div class="entry-count">
-                                                    COMPLETE COURSES:<span class="count">@employeeCompleted</span>
+                                                    COMPLETE COURSES:<span class="count"> <strong>@employeeCompleted</strong></span>
                                                 </div>
                                                 <div class="entry-price">
-                                                    TOTAL REQUIRED:<span class="price">6</span>
+                                                    TOTAL REQUIRED:<span class="price"> <strong>6</strong></span>
                                                 </div>
                                             </div>
                                         </div><!-- entry-post -->

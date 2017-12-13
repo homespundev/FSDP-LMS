@@ -1026,7 +1026,6 @@
     overflow: hidden;
     padding: 12px 0px;
     border-top: 1px solid #e5e5e5;
-    color: #bfc5ca;
 }
 
 .portfolio .entry-number .entry-count {
@@ -1039,7 +1038,7 @@
 }
 
 .portfolio .entry-number .entry-count span {
-    color: #79AAAC;
+    color: #e0b655;
 }
 
 .portfolio .entry .entry-number .entry-price {
