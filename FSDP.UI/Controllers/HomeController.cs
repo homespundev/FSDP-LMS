@@ -12,12 +12,12 @@ namespace FSDP.UI.Controllers
             return View();
         }
 
-        [Authorize]
-        public ActionResult About()
-        {
+        //[Authorize]
+        //public ActionResult About()
+        //{
             
-            return View();
-        }
+        //    return View();
+        //}
 
         public ActionResult Contact()
         {

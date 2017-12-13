@@ -63,12 +63,6 @@ input[type="checkbox"].input-validation-error {
 #header {
     background-color: #E1B753;
 }
-
-#conSub {
-    background-color: #E1B753;
-    color: #0c383b;
-}
-
 #purveyor {
     font-style: italic;
     color: rgb(12, 55, 58);
@@ -173,22 +167,22 @@ input[type="checkbox"].input-validation-error {
     color: #0c373a;
 }
 .btn-cancel{
-    background-color:#0c373a;
-    color:#E1B753;
-    display: inline-block;
-    padding: 0 24px 0 30px;
-    height: 50px;
-    line-height: 45px;
-    font-size: 13px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    border: 2px solid #0c373a;
-    -webkit-border-radius: 0px;
+    background-color:#0c373a!important;
+    color:#E1B753!important;
+    display: inline-block!important;
+    padding: 0 24px 0 30px!important;
+    height: 50px!important;
+    line-height: 2.5em!important;
+    font-size: 1em!important;
+    letter-spacing: 2.5px!important;
+    text-transform: uppercase!important;
+    border: 2px solid #0c373a!important;
+    -webkit-border-radius: 0px!important;
     -ms-border-radius: 0px;
     -o-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px;
-    font-weight: 700;
+    font-weight: 700!important;
     font-family: "Roboto", sans-serif;
     position: relative;
     -webkit-transition: all 0.3s ease-in-out;
@@ -198,26 +192,26 @@ input[type="checkbox"].input-validation-error {
     transition: all 0.3s ease-in-out;
 }
 .btn-cancel:hover{
-    background-color:#E1B753;
-    color:#0c373a;
+    background-color:#E1B753!important;
+    color:#0c373a!important;
 }
 .btn-default{
-    background-color: #E1B753;
-    color:#0c373a;
-    display: inline-block;
-    padding: 0 24px 0 30px;
-    height: 50px;
-    line-height: 45px;
-    font-size: 13px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    border: 2px solid #E1b753;
-    -webkit-border-radius: 0px;
+    background-color: #E1B753!important;
+    color:#0c373a!important;
+    display: inline-block!important;
+    padding: 0 24px 0 30px!important;
+    height: 50px!important;
+    line-height: 2.5em!important;
+    font-size: 1em!important;
+    letter-spacing: 2.5px!important;
+    text-transform: uppercase!important;
+    border: 2px solid #E1b753!important;
+    -webkit-border-radius: 0px!important;
     -ms-border-radius: 0px;
     -o-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px;
-    font-weight: 700;
+    font-weight: 700!important;
     font-family: "Roboto", sans-serif;
     position: relative;
     -webkit-transition: all 0.3s ease-in-out;
@@ -228,8 +222,8 @@ input[type="checkbox"].input-validation-error {
 }
 
 .btn-default:hover{
-    background-color:#0c373a;
-    color:#E1B753;
+    background-color:#0c373a!important;
+    color:#E1B753!important;
 }
 input[type=submit]{
     color:#0c373a;

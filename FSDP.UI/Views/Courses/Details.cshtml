@@ -8,30 +8,36 @@
 
 }
 
+
 <div class="container page">
+    @if (User.IsInRole("Admin"))
+    {
+        <h3 class="text-right">
+            @Html.DisplayNameFor(model => model.IsActive)
+            @Html.DisplayFor(model => model.IsActive)
+        </h3>
+    }
     <h1 class="text-center">@ViewBag.Title</h1>
 
-    <div class="row" style="vertical-align:middle">
-        <div class="col-md-6">
-            <img src="@Url.Content("~/Content/Images/Courses/" + Model.CourseImage)" />
-        </div>
+    <div class="row justify-content-md-center" style="vertical-align:middle">
+        @if (Model.CourseImage != "noimage.jpg")
+        {
+            <div class="col-md-6">
+                <img src="@Url.Content("~/Content/Images/Courses/" + Model.CourseImage)" />
+            </div>
+        }
         <div class="col-md-6" id="courseDesc">
-            @Html.DisplayFor(model => model.CourseDescription)
-            <br /><br />
-            <div style="float:left">
-                @Html.DisplayNameFor(model => model.IsActive)
-            @Html.DisplayFor(model => model.IsActive)
-        </div>
-                    @*&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;*@
-            <div style="float:right">
+            <h2>@Html.DisplayFor(model => model.CourseDescription)</h2>
+            <br /><br /><br /><br />
+            <div>
                 @if (User.IsInRole("Admin"))
                 {
-                    @Html.ActionLink("Edit", "Edit", new { id = Model.CourseID }) @:|
+                    @*@Html.ActionLink("Edit", "Edit", "Courses", new { id = Model.CourseID, @class = "btn btn-cancel" })*@
+                    <a href="~/Courses/Edit/@Model.CourseID" class="btn btn-cancel">Edit</a>
                 }
 
-                @Html.ActionLink("Back to List", "Index")
+                @Html.ActionLink("Back to List", "Index", "Courses", new { @class = "btn btn-default" })
             </div>
-            <div class="clear"></div>
         </div>
     </div>
     <br />

@@ -3,22 +3,22 @@
     ViewBag.Title = "Contact";
 }
 
-<section class="flat-row bg-theme pd-top-100 contact">
+<section class="flat-row bg-theme pd-top-100 contact" style="border:none">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
 
                 <div class="form-contact">
                     <div class="form-contact-title">
-                        <h6 class="contact-title">CONTACT US BY EMAIL!</h6>
+                        <h6 class="contact-title">CONTACT US</h6>
                     </div>
                     <div class="status alert alert-success" style="display: none"></div>
-                    <div id="main-contact-form" class="contact-form row" name="contact-form" method="get" action="#" onsubmit="validateForm()">
+                    <div id="main-contact-form" class="contact-form" name="contact-form" method="get" action="#" onsubmit="validateForm()">
                         @using (Html.BeginForm())
                         {
                             @Html.AntiForgeryToken()
                             <div class="info-contact">
-                                <p class="wrap-input-name">
+                                <h4 class="wrap-input-name">
                                     @Html.TextBoxFor(x => x.Name, new
                                {
                                    @placeholder = "Name",
@@ -27,8 +27,8 @@
                                    @tabindex = "1"
                                })
                                     @Html.ValidationMessageFor(x => x.Name)
-                                </p>
-                                <p class="wrap-input-name">
+                                </h4>
+                                <h4 class="wrap-input-name">
                                     @Html.TextBoxFor(x => x.Email, new
                                {
                                    @placeholder = "Email",
@@ -38,8 +38,8 @@
                                })
                                     @Html.ValidationMessageFor(x => x.Email)
 
-                                </p>
-                                <p class="wrap-input-name">
+                                </h4>
+                                <h4 class="wrap-input-name">
                                     @Html.TextBoxFor(x => x.Subject, new
                                {
                                    @placeholder = "Subject",
@@ -49,8 +49,8 @@
                                })
                                     @Html.ValidationMessageFor(x => x.Subject)
 
-                                </p>
-                                <p class="wrap-input-name">
+                                </h4>
+                                <h4 class="wrap-input-name">
                                     @Html.TextAreaFor(x => x.Message, new
                                {
                                    @placeholder = "Message",
@@ -60,9 +60,9 @@
                                })
                                     @Html.ValidationMessageFor(x => x.Message)
 
-                                </p>
+                                </h4>
                                 <div class="wrap-btn">
-                                    <input type="submit" name="submit" class="flat-btn" value="Submit" id="conSub">
+                                    <input type="submit" name="submit" class="btn btn-default" value="Submit">
 
                                 </div>
                             </div>

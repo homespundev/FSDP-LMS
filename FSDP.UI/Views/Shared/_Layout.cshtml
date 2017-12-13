@@ -28,9 +28,10 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <!-- Favicon and touch icons  -->
     <link href="~/Content/Images/icon/icon.png" rel="shortcut icon">
-    <link href="~/Content/Site.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/r-2.2.1/datatables.min.css" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
 </head>
 <body>
     <div class="boxed position_form position_style3">
@@ -73,11 +74,10 @@
                                 <nav id="mainnav" class="mainnav">
                                     <ul class="menu">
                                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                                        <li>@Html.ActionLink("About", "About", "Home")</li>
                                         <li>
                                             @Html.ActionLink("Contact", "Contact", "Home")
                                         </li>
-                                        <li>@Html.ActionLink("Classes", "Index", "StoreClasses")</li>
+                                        <li>@Html.ActionLink("Classes", "Index", "ClassDates")</li>
                                         @if (Request.IsAuthenticated && !User.IsInRole("Customer"))
                                         {
                                             <li id="dashboard">
