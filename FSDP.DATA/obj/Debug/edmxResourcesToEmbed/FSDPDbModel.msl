@@ -1,6 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="FSDPDbModelStoreContainer" CdmEntityContainer="FSDPDbEntities">
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="FSDPDbModel.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="AspNetUsers">
       <EntityTypeMapping TypeName="FSDPDbModel.AspNetUser">
         <MappingFragment StoreEntitySet="AspNetUsers">
@@ -24,19 +32,19 @@
     <EntitySetMapping Name="ClassDates">
       <EntityTypeMapping TypeName="FSDPDbModel.ClassDate">
         <MappingFragment StoreEntitySet="ClassDates">
-          <ScalarProperty Name="ClassLimit" ColumnName="ClassLimit" />
           <ScalarProperty Name="ClassDateID" ColumnName="ClassDateID" />
           <ScalarProperty Name="StoreClassID" ColumnName="StoreClassID" />
           <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="ClassLimit" ColumnName="ClassLimit" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ClassSignUps">
       <EntityTypeMapping TypeName="FSDPDbModel.ClassSignUp">
         <MappingFragment StoreEntitySet="ClassSignUps">
-          <ScalarProperty Name="ClassDateID" ColumnName="ClassDateID" />
           <ScalarProperty Name="ClassSignUpID" ColumnName="ClassSignUpID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ClassDateID" ColumnName="ClassDateID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -64,8 +72,6 @@
     <EntitySetMapping Name="Lessons">
       <EntityTypeMapping TypeName="FSDPDbModel.Lesson">
         <MappingFragment StoreEntitySet="Lessons">
-          <ScalarProperty Name="QuizAnswer" ColumnName="QuizAnswer" />
-          <ScalarProperty Name="QuizQuestion" ColumnName="QuizQuestion" />
           <ScalarProperty Name="LessonID" ColumnName="LessonID" />
           <ScalarProperty Name="LessonTitle" ColumnName="LessonTitle" />
           <ScalarProperty Name="CourseID" ColumnName="CourseID" />
@@ -74,6 +80,8 @@
           <ScalarProperty Name="PdfFileName" ColumnName="PdfFileName" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="LessonImage" ColumnName="LessonImage" />
+          <ScalarProperty Name="QuizQuestion" ColumnName="QuizQuestion" />
+          <ScalarProperty Name="QuizAnswer" ColumnName="QuizAnswer" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -96,20 +104,12 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="AspNetRoles">
-      <EntityTypeMapping TypeName="FSDPDbModel.AspNetRole">
-        <MappingFragment StoreEntitySet="AspNetRoles">
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <AssociationSetMapping Name="AspNetUserRoles" TypeName="FSDPDbModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-      <EndProperty Name="AspNetUser">
-        <ScalarProperty Name="Id" ColumnName="UserId" />
-      </EndProperty>
-      <EndProperty Name="AspNetRole">
+      <EndProperty Name="AspNetRoles">
         <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

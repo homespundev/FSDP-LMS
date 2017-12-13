@@ -52,43 +52,43 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AspNetRole.cs">
-      <DependentUpon>FSDPDbModel.tt</DependentUpon>
+      <DependentUpon>FSDPdbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="AspNetUser.cs">
-      <DependentUpon>FSDPDbModel.tt</DependentUpon>
+      <DependentUpon>FSDPdbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ClassDate.cs">
-      <DependentUpon>FSDPDbModel.tt</DependentUpon>
+      <DependentUpon>FSDPdbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ClassSignUp.cs">
-      <DependentUpon>FSDPDbModel.tt</DependentUpon>
+      <DependentUpon>FSDPdbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Course.cs">
-      <DependentUpon>FSDPDbModel.tt</DependentUpon>
+      <DependentUpon>FSDPdbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="CourseCompletion.cs">
-      <DependentUpon>FSDPDbModel.tt</DependentUpon>
+      <DependentUpon>FSDPdbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="FSDPDbModel.Context.cs">
+    <Compile Include="FSDPdbModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FSDPDbModel.Context.tt</DependentUpon>
+      <DependentUpon>FSDPdbModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="FSDPDbModel.cs">
+    <Compile Include="FSDPdbModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FSDPDbModel.tt</DependentUpon>
+      <DependentUpon>FSDPdbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="FSDPDbModel.Designer.cs">
+    <Compile Include="FSDPdbModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FSDPDbModel.edmx</DependentUpon>
+      <DependentUpon>FSDPdbModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Lesson.cs">
-      <DependentUpon>FSDPDbModel.tt</DependentUpon>
+      <DependentUpon>FSDPdbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="LessonView.cs">
-      <DependentUpon>FSDPDbModel.tt</DependentUpon>
+      <DependentUpon>FSDPdbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Metadata\ClassDateMetadata.cs" />
     <Compile Include="Metadata\CourseCompletionMetadata.cs" />
@@ -99,17 +99,17 @@
     <Compile Include="Metadata\UserMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StoreClass.cs">
-      <DependentUpon>FSDPDbModel.tt</DependentUpon>
+      <DependentUpon>FSDPdbModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="FSDPDbModel.edmx">
+    <EntityDeploy Include="FSDPdbModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FSDPDbModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>FSDPdbModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="FSDPDbModel.edmx.diagram">
-      <DependentUpon>FSDPDbModel.edmx</DependentUpon>
+    <None Include="FSDPdbModel.edmx.diagram">
+      <DependentUpon>FSDPdbModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -117,15 +117,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FSDPDbModel.Context.tt">
+    <Content Include="FSDPdbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FSDPDbModel.edmx</DependentUpon>
-      <LastGenOutput>FSDPDbModel.Context.cs</LastGenOutput>
+      <DependentUpon>FSDPdbModel.edmx</DependentUpon>
+      <LastGenOutput>FSDPdbModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="FSDPDbModel.tt">
+    <Content Include="FSDPdbModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FSDPDbModel.edmx</DependentUpon>
-      <LastGenOutput>FSDPDbModel.cs</LastGenOutput>
+      <DependentUpon>FSDPdbModel.edmx</DependentUpon>
+      <LastGenOutput>FSDPdbModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

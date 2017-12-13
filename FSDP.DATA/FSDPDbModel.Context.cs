@@ -25,6 +25,7 @@ namespace FSDP.DATA
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<ClassDate> ClassDates { get; set; }
         public virtual DbSet<ClassSignUp> ClassSignUps { get; set; }
@@ -33,6 +34,5 @@ namespace FSDP.DATA
         public virtual DbSet<Lesson> Lessons { get; set; }
         public virtual DbSet<LessonView> LessonViews { get; set; }
         public virtual DbSet<StoreClass> StoreClasses { get; set; }
-        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
     }
 }

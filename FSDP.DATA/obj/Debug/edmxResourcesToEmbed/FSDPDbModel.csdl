@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="FSDPDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
   <EntityType Name="AspNetUser">
     <Key>
       <PropertyRef Name="Id" />
@@ -21,7 +29,7 @@
     <NavigationProperty Name="ClassSignUps" Relationship="Self.FK_ClassSignUps_AspNetUsers" FromRole="AspNetUsers" ToRole="ClassSignUps" />
     <NavigationProperty Name="CourseCompletions" Relationship="Self.FK_CourseCompletions_AspNetUsers" FromRole="AspNetUsers" ToRole="CourseCompletions" />
     <NavigationProperty Name="LessonViews" Relationship="Self.FK_LessonViews_AspNetUsers" FromRole="AspNetUsers" ToRole="LessonViews" />
-    <NavigationProperty Name="AspNetRoles" Relationship="FSDPDbModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
   </EntityType>
   <EntityType Name="ClassDate">
     <Key>
@@ -30,19 +38,19 @@
     <Property Name="ClassDateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="StoreClassID" Type="Int32" Nullable="false" />
     <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="StoreClass" Relationship="Self.FK_ClassDates_StoreClasses" FromRole="ClassDates" ToRole="StoreClasses" />
     <Property Name="ClassLimit" Type="Byte" />
-    <NavigationProperty Name="ClassSignUps" Relationship="FSDPDbModel.FK_ClassSignUps_ClassDates" FromRole="ClassDate" ToRole="ClassSignUp" />
+    <NavigationProperty Name="StoreClass" Relationship="Self.FK_ClassDates_StoreClasses" FromRole="ClassDates" ToRole="StoreClasses" />
+    <NavigationProperty Name="ClassSignUps" Relationship="Self.FK_ClassSignUps_ClassDates" FromRole="ClassDates" ToRole="ClassSignUps" />
   </EntityType>
   <EntityType Name="ClassSignUp">
     <Key>
       <PropertyRef Name="ClassSignUpID" />
     </Key>
-    <Property Name="ClassSignUpID" Type="Int32" Nullable="false" />
+    <Property Name="ClassSignUpID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_ClassSignUps_AspNetUsers" FromRole="ClassSignUps" ToRole="AspNetUsers" />
     <Property Name="ClassDateID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="ClassDate" Relationship="FSDPDbModel.FK_ClassSignUps_ClassDates" FromRole="ClassSignUp" ToRole="ClassDate" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_ClassSignUps_AspNetUsers" FromRole="ClassSignUps" ToRole="AspNetUsers" />
+    <NavigationProperty Name="ClassDate" Relationship="Self.FK_ClassSignUps_ClassDates" FromRole="ClassSignUps" ToRole="ClassDates" />
   </EntityType>
   <EntityType Name="CourseCompletion">
     <Key>
@@ -79,10 +87,10 @@
     <Property Name="PdfFileName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
     <Property Name="LessonImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="QuizQuestion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="QuizAnswer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Courses" Relationship="Self.FK_Lessons_Courses" FromRole="Lessons" ToRole="Courses" />
     <NavigationProperty Name="LessonViews" Relationship="Self.FK_LessonViews_Lessons" FromRole="Lessons" ToRole="LessonViews" />
-    <Property Name="QuizQuestion" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
-    <Property Name="QuizAnswer" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="LessonView">
     <Key>
@@ -152,6 +160,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ClassSignUps_ClassDates">
+    <End Role="ClassDates" Type="Self.ClassDate" Multiplicity="1" />
+    <End Role="ClassSignUps" Type="Self.ClassSignUp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClassDates">
+        <PropertyRef Name="ClassDateID" />
+      </Principal>
+      <Dependent Role="ClassSignUps">
+        <PropertyRef Name="ClassDateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_CourseCompletions_Courses">
     <End Role="Courses" Type="FSDPDbModel.Course" Multiplicity="1" />
     <End Role="CourseCompletions" Type="Self.CourseCompletion" Multiplicity="*" />
@@ -188,7 +208,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+  </Association>
   <EntityContainer Name="FSDPDbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
     <EntitySet Name="ClassDates" EntityType="Self.ClassDate" />
     <EntitySet Name="ClassSignUps" EntityType="Self.ClassSignUp" />
@@ -213,6 +238,10 @@
       <End Role="StoreClasses" EntitySet="StoreClasses" />
       <End Role="ClassDates" EntitySet="ClassDates" />
     </AssociationSet>
+    <AssociationSet Name="FK_ClassSignUps_ClassDates" Association="Self.FK_ClassSignUps_ClassDates">
+      <End Role="ClassDates" EntitySet="ClassDates" />
+      <End Role="ClassSignUps" EntitySet="ClassSignUps" />
+    </AssociationSet>
     <AssociationSet Name="FK_CourseCompletions_Courses" Association="Self.FK_CourseCompletions_Courses">
       <End Role="Courses" EntitySet="Courses" />
       <End Role="CourseCompletions" EntitySet="CourseCompletions" />
@@ -225,38 +254,9 @@
       <End Role="Lessons" EntitySet="Lessons" />
       <End Role="LessonViews" EntitySet="LessonViews" />
     </AssociationSet>
-    <EntitySet Name="AspNetRoles" EntityType="FSDPDbModel.AspNetRole" />
-    <AssociationSet Name="AspNetUserRoles" Association="FSDPDbModel.AspNetUserRoles">
-      <End Role="AspNetRole" EntitySet="AspNetRoles" />
-      <End Role="AspNetUser" EntitySet="AspNetUsers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ClassSignUps_ClassDates" Association="FSDPDbModel.FK_ClassSignUps_ClassDates">
-      <End Role="ClassDate" EntitySet="ClassDates" />
-      <End Role="ClassSignUp" EntitySet="ClassSignUps" />
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
     </AssociationSet>
   </EntityContainer>
-  <EntityType Name="AspNetRole">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="AspNetUsers" Relationship="FSDPDbModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
-  </EntityType>
-  <Association Name="AspNetUserRoles">
-    <End Type="FSDPDbModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
-    <End Type="FSDPDbModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
-  </Association>
-  <Association Name="FK_ClassSignUps_ClassDates">
-    <End Type="FSDPDbModel.ClassDate" Role="ClassDate" Multiplicity="1" />
-    <End Type="FSDPDbModel.ClassSignUp" Role="ClassSignUp" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ClassDate">
-        <PropertyRef Name="ClassDateID" />
-      </Principal>
-      <Dependent Role="ClassSignUp">
-        <PropertyRef Name="ClassDateID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema>

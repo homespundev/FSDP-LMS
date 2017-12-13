@@ -21,16 +21,12 @@
                 <th>
                     @Html.DisplayNameFor(model => model.AspNetUser.FullName)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ClassDate.StoreClass.ClassName)
-                </th>
+                <th>@Html.DisplayNameFor(model => model.ClassDate.StoreClass.ClassName)</th>
                 <th>
                     @Html.DisplayNameFor(model => model.ClassDate.DateTime)
                 </th>
-                
-
             </tr>
-        </thead>
+            </thead>
         <tbody>
             @foreach (var item in Model)
             {
@@ -43,14 +39,21 @@
                         </td>
                     }
                     <td>
-                        @Html.DisplayFor(modelItem=>item.AspNetUser.FullName)
+                        @Html.DisplayFor(modelItem => item.AspNetUser.FullName)
                     </td>
-                        @Html.DisplayFor(modelItem=>item.ClassDate.StoreClass.ClassName)
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClassDate.StoreClass.ClassName)
+                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.ClassDate.DateTime)
                     </td>
+                    @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ClassSignUpID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ClassSignUpID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ClassSignUpID })
+                    </td>*@
                 </tr>
             }
         </tbody>
     </table>
-</div>
+    </div>

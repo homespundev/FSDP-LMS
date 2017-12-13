@@ -12,3 +12,5 @@ C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.DOMAIN\bin\
 C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.DOMAIN\obj\Debug\FSDP.DOMAIN.csprojResolveAssemblyReference.cache
 C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.DOMAIN\obj\Debug\FSDP.DOMAIN.dll
 C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.DOMAIN\obj\Debug\FSDP.DOMAIN.pdb
+C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.DOMAIN\bin\Debug\FSDP.DOMAIN.dll.CodeAnalysisLog.xml
+C:\Users\Student\Documents\Visual Studio 2015\Projects\FSDP\src\FSDP.DOMAIN\bin\Debug\FSDP.DOMAIN.dll.lastcodeanalysissucceeded

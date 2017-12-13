@@ -16,7 +16,6 @@ namespace FSDP.UI.Controllers
     public class CoursesController : Controller
     {
         private FSDPDbEntities db = new FSDPDbEntities();
-        private UnitOfWork uow = new UnitOfWork();
 
         // GET: Courses
         [Authorize(Roles = "Admin, Manager, Employee")]
@@ -58,7 +57,7 @@ namespace FSDP.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                string imageName = "";
+                string imageName;
                 if (courseImg != null)
                 {
                     imageName = courseImg.FileName;
@@ -74,8 +73,9 @@ namespace FSDP.UI.Controllers
                         int maxThumbSize = 100;
                         ImageService.ResizeImage(pathForTheSaving, imageName, convertedImage, maxImageSize, maxThumbSize);
                     }
+                    course.CourseImage = imageName;
                 }
-                course.CourseImage = imageName;
+                
                 //uow.CourseRepository.Add(course);
                 db.Courses.Add(course);
                 db.SaveChanges();

@@ -162,7 +162,7 @@ namespace FSDP.UI.Controllers
             if (ModelState.IsValid)
             {
                 lesson.IsActive = true;
-                string pdfName = "";
+                string pdfName;
                 if (lessonPdf != null)
                 {
                     pdfName = lessonPdf.FileName;
@@ -174,9 +174,10 @@ namespace FSDP.UI.Controllers
                         string pathForTheSaving = Server.MapPath("~/Content/Lessons/Pdf/");
                         lessonPdf.SaveAs(pathForTheSaving + pdfName);
                     }
+                    lesson.PdfFileName = pdfName;
                 }
                 
-                lesson.PdfFileName = pdfName;
+                
                 db.Lessons.Add(lesson);
                 db.SaveChanges();
                 return RedirectToAction("Index");
