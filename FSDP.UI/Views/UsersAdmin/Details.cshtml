@@ -4,42 +4,41 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details.</h2>
 
-<div>
-    <h4>User</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-    </dl>
-</div>
-<h4>List of roles for this user</h4>
-@if (ViewBag.RoleNames.Count == 0)
-{
-    <hr />
-    <p>No roles found for this user.</p>
-}
-
-<table class="table">
-
-    @foreach (var item in ViewBag.RoleNames)
+<div class="container page text-center">
+    <br />
+    <div>
+        <h1>@Model.FirstName @Model.LastName</h1>
+        <hr />
+        <h2><strong>@Html.DisplayNameFor(model => model.Email):</strong></h2>
+        <br />
+        <h2>@Html.DisplayFor(model => model.Email)</h2>
+    </div>
+    <br />
+    <h2><strong>List of roles for this user:</strong></h2><br />
+    @if (ViewBag.RoleNames.Count == 0)
     {
-        <tr>
-            <td>
-                @item
-            </td>
-        </tr>
+        <p>No roles found for this user.</p>
     }
-</table>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
 
+    <table class="table">
 
+        @foreach (var item in ViewBag.RoleNames)
+        {
+            <tr>
+                <td>
+                    <h2>@item</h2>
+                </td>
+            </tr>
+        }
+    </table>
+    <br />
+    <p>
+        <div>
+            @Html.ActionLink("Edit", "Edit", "UsersAdmin", new { @class="btn btn-default", id = Model.Id})
+            &emsp;
+            @Html.ActionLink("Cancel", "Index", "UsersAdmin", new { @class = "btn btn-cancel" })
 
+        </div>
+    </p>
+</div>

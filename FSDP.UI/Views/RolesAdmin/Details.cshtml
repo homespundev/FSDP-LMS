@@ -1,45 +1,45 @@
 ﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.Name + " Role Details";
 }
-
-<h2>Details.</h2>
-
-<div>
-    <h4>Roles.</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-    </dl>
-</div>
-<h4>List of users in this role</h4>
-@if (ViewBag.UserCount == 0)
-{
-    <hr />
-    <p>No users found in this role.</p>
-}
-
-<table class="table">
-
-    @foreach (var item in ViewBag.Users)
+<div class="container page text-center">
+    <br />
+    <div>
+        <h1>@ViewBag.Title</h1>
+        <hr />
+        <h2><strong>@Html.DisplayNameFor(model => model.Name):</strong></h2>
+        <br />
+        <h2>@Html.DisplayFor(model => model.Name)</h2>
+    </div>
+    <br />
+    <h2><strong>List of users in this role:</strong></h2><br />
+    @if (ViewBag.UserCount == 0)
     {
-        <tr>
-            <td>
-                @item.UserName
-            </td>
-        </tr>
+        <hr />
+        <p>No users found in this role.</p>
     }
-</table>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
 
+    <table class="table">
+
+        @foreach (var item in ViewBag.Users)
+        {
+            <tr>
+                <td>
+                    <h2>@item.FirstName @item.LastName</h2>
+                </td>
+            </tr>
+        }
+    </table>
+    <p>
+        <br />
+        <div>
+            @Html.ActionLink("Edit", "Edit", "UsersAdmin", new { id = Model.Id, @class = "btn btn-default" })
+            &emsp;
+            @Html.ActionLink("Cancel", "Index", "UsersAdmin", new { @class = "btn btn-cancel" })
+
+        </div>
+    </p>
+</div>
 
 
