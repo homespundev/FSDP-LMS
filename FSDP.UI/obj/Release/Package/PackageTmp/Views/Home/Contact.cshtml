@@ -1,0 +1,90 @@
+﻿@model FSDP.UI.Models.ContactViewModel
+@{
+    ViewBag.Title = "Contact";
+}
+
+<section class="flat-row bg-theme pd-top-100 contact" style="border:none">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+
+                <div class="form-contact">
+                    <div class="form-contact-title">
+                        <h6 class="contact-title">CONTACT US</h6>
+                    </div>
+                    <div class="status alert alert-success" style="display: none"></div>
+                    <div id="main-contact-form" class="contact-form" name="contact-form" method="get" action="#" onsubmit="validateForm()">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="info-contact">
+                                <h4 class="wrap-input-name">
+                                    @Html.TextBoxFor(x => x.Name, new
+                               {
+                                   @placeholder = "Name",
+                                   id = "name",
+                                   name = "name",
+                                   @tabindex = "1"
+                               })
+                                    @Html.ValidationMessageFor(x => x.Name)
+                                </h4>
+                                <h4 class="wrap-input-name">
+                                    @Html.TextBoxFor(x => x.Email, new
+                               {
+                                   @placeholder = "Email",
+                                   id = "email",
+                                   name = "email",
+                                   @tabindex = "2"
+                               })
+                                    @Html.ValidationMessageFor(x => x.Email)
+
+                                </h4>
+                                <h4 class="wrap-input-name">
+                                    @Html.TextBoxFor(x => x.Subject, new
+                               {
+                                   @placeholder = "Subject",
+                                   id = "subject",
+                                   name = "subject",
+                                   @tabindex = "3"
+                               })
+                                    @Html.ValidationMessageFor(x => x.Subject)
+
+                                </h4>
+                                <h4 class="wrap-input-name">
+                                    @Html.TextAreaFor(x => x.Message, new
+                               {
+                                   @placeholder = "Message",
+                                   id = "messages-contact",
+                                   name = "messages",
+                                   @tabindex = "4"
+                               })
+                                    @Html.ValidationMessageFor(x => x.Message)
+
+                                </h4>
+                                <div class="wrap-btn">
+                                    <input type="submit" name="submit" class="btn btn-default" value="Submit">
+
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3102.1104790594!2d-94.86404838413365!3d38.967145250433965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87c0972d84a2a613%3A0xae053a9be7b5988d!2sQuill+St%2C+Lenexa%2C+KS+66227!5e0!3m2!1sen!2sus!4v1512599858763" 
+                            @*width="600" height="450"*@ frameborder="0" style="border:0; opacity:.8" allowfullscreen id="flat-map"></iframe>
+                </div>
+            </div>
+            <div class="col-md-1">
+                @ViewBag.VideoID
+            </div>
+
+
+        </div>
+    </div>
+</section>
+@section scripts{
+<script src="~/Content/Scripts/formvalidation.js"></script>
+}
+

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<FSDP.DATA.LessonView>
+
+@{
+    ViewBag.Title = "Lesson Views";
+}
+<div class="container page">
+    <h1 class="text-center">@ViewBag.Title</h1>
+    @if (User.IsInRole("Admin"))
+    {
+        <h2>
+            <a href="@Url.Action("Create")" class="fa fa-plus-square-o" title="Add New Lesson View"> Lesson View</a>
+        </h2>
+    }
+    
+    <table class="table">
+        <thead>
+            <tr>
+                @if (User.IsInRole("Admin"))
+                {
+                    <th></th>
+                }
+                <th>
+                    @Html.DisplayNameFor(model => model.AspNetUser.FullName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Lesson.LessonTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateViewed)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <td class="manage">
+                            <a href="@Url.Action("Edit", new { id= item.LessonViewID})" title="Edit" class="fa fa-pencil-square-o"></a> |
+                            <a href="@Url.Action("Delete", new { id= item.LessonViewID} )" title="Delete" class="fa fa-trash"></a>
+                        </td>
+                    }
+                    <td>
+                        @Html.DisplayFor(modelItem=>item.AspNetUser.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Lesson.LessonTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateViewed)
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

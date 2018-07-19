@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FSDPDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ClassSignUps" Relationship="Self.FK_ClassSignUps_AspNetUsers" FromRole="AspNetUsers" ToRole="ClassSignUps" />
+    <NavigationProperty Name="CourseCompletions" Relationship="Self.FK_CourseCompletions_AspNetUsers" FromRole="AspNetUsers" ToRole="CourseCompletions" />
+    <NavigationProperty Name="LessonViews" Relationship="Self.FK_LessonViews_AspNetUsers" FromRole="AspNetUsers" ToRole="LessonViews" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="ClassDate">
+    <Key>
+      <PropertyRef Name="ClassDateID" />
+    </Key>
+    <Property Name="ClassDateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StoreClassID" Type="Int32" Nullable="false" />
+    <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ClassLimit" Type="Byte" />
+    <NavigationProperty Name="StoreClass" Relationship="Self.FK_ClassDates_StoreClasses" FromRole="ClassDates" ToRole="StoreClasses" />
+    <NavigationProperty Name="ClassSignUps" Relationship="Self.FK_ClassSignUps_ClassDates" FromRole="ClassDates" ToRole="ClassSignUps" />
+  </EntityType>
+  <EntityType Name="ClassSignUp">
+    <Key>
+      <PropertyRef Name="ClassSignUpID" />
+    </Key>
+    <Property Name="ClassSignUpID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClassDateID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_ClassSignUps_AspNetUsers" FromRole="ClassSignUps" ToRole="AspNetUsers" />
+    <NavigationProperty Name="ClassDate" Relationship="Self.FK_ClassSignUps_ClassDates" FromRole="ClassSignUps" ToRole="ClassDates" />
+  </EntityType>
+  <EntityType Name="CourseCompletion">
+    <Key>
+      <PropertyRef Name="CourseCompletionID" />
+    </Key>
+    <Property Name="CourseCompletionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CourseID" Type="Int32" Nullable="false" />
+    <Property Name="DateCompleted" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_CourseCompletions_AspNetUsers" FromRole="CourseCompletions" ToRole="AspNetUsers" />
+    <NavigationProperty Name="Courses" Relationship="Self.FK_CourseCompletions_Courses" FromRole="CourseCompletions" ToRole="Courses" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="CourseID" />
+    </Key>
+    <Property Name="CourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CourseDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CourseImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CourseCompletions" Relationship="Self.FK_CourseCompletions_Courses" FromRole="Courses" ToRole="CourseCompletions" />
+    <NavigationProperty Name="Lessons" Relationship="Self.FK_Lessons_Courses" FromRole="Courses" ToRole="Lessons" />
+  </EntityType>
+  <EntityType Name="Lesson">
+    <Key>
+      <PropertyRef Name="LessonID" />
+    </Key>
+    <Property Name="LessonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LessonTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CourseID" Type="Int32" Nullable="false" />
+    <Property Name="Introduction" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="VideoUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="PdfFileName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LessonImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="QuizQuestion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="QuizAnswer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Courses" Relationship="Self.FK_Lessons_Courses" FromRole="Lessons" ToRole="Courses" />
+    <NavigationProperty Name="LessonViews" Relationship="Self.FK_LessonViews_Lessons" FromRole="Lessons" ToRole="LessonViews" />
+  </EntityType>
+  <EntityType Name="LessonView">
+    <Key>
+      <PropertyRef Name="LessonViewID" />
+    </Key>
+    <Property Name="LessonViewID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LessonID" Type="Int32" Nullable="false" />
+    <Property Name="DateViewed" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_LessonViews_AspNetUsers" FromRole="LessonViews" ToRole="AspNetUsers" />
+    <NavigationProperty Name="Lesson" Relationship="Self.FK_LessonViews_Lessons" FromRole="LessonViews" ToRole="Lessons" />
+  </EntityType>
+  <EntityType Name="StoreClass">
+    <Key>
+      <PropertyRef Name="StoreClassID" />
+    </Key>
+    <Property Name="StoreClassID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClassName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ClassDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ClassDates" Relationship="Self.FK_ClassDates_StoreClasses" FromRole="StoreClasses" ToRole="ClassDates" />
+  </EntityType>
+  <Association Name="FK_ClassSignUps_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+    <End Role="ClassSignUps" Type="Self.ClassSignUp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ClassSignUps">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CourseCompletions_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+    <End Role="CourseCompletions" Type="Self.CourseCompletion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CourseCompletions">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LessonViews_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+    <End Role="LessonViews" Type="Self.LessonView" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LessonViews">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClassDates_StoreClasses">
+    <End Role="StoreClasses" Type="Self.StoreClass" Multiplicity="1" />
+    <End Role="ClassDates" Type="Self.ClassDate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StoreClasses">
+        <PropertyRef Name="StoreClassID" />
+      </Principal>
+      <Dependent Role="ClassDates">
+        <PropertyRef Name="StoreClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClassSignUps_ClassDates">
+    <End Role="ClassDates" Type="Self.ClassDate" Multiplicity="1" />
+    <End Role="ClassSignUps" Type="Self.ClassSignUp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClassDates">
+        <PropertyRef Name="ClassDateID" />
+      </Principal>
+      <Dependent Role="ClassSignUps">
+        <PropertyRef Name="ClassDateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CourseCompletions_Courses">
+    <End Role="Courses" Type="FSDPDbModel.Course" Multiplicity="1" />
+    <End Role="CourseCompletions" Type="Self.CourseCompletion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="CourseCompletions">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lessons_Courses">
+    <End Role="Courses" Type="FSDPDbModel.Course" Multiplicity="1" />
+    <End Role="Lessons" Type="Self.Lesson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="Lessons">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LessonViews_Lessons">
+    <End Role="Lessons" Type="Self.Lesson" Multiplicity="1" />
+    <End Role="LessonViews" Type="Self.LessonView" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lessons">
+        <PropertyRef Name="LessonID" />
+      </Principal>
+      <Dependent Role="LessonViews">
+        <PropertyRef Name="LessonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="FSDPDbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+    <EntitySet Name="ClassDates" EntityType="Self.ClassDate" />
+    <EntitySet Name="ClassSignUps" EntityType="Self.ClassSignUp" />
+    <EntitySet Name="CourseCompletions" EntityType="Self.CourseCompletion" />
+    <EntitySet Name="Courses" EntityType="FSDPDbModel.Course" />
+    <EntitySet Name="Lessons" EntityType="Self.Lesson" />
+    <EntitySet Name="LessonViews" EntityType="Self.LessonView" />
+    <EntitySet Name="StoreClasses" EntityType="Self.StoreClass" />
+    <AssociationSet Name="FK_ClassSignUps_AspNetUsers" Association="Self.FK_ClassSignUps_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="ClassSignUps" EntitySet="ClassSignUps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CourseCompletions_AspNetUsers" Association="Self.FK_CourseCompletions_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="CourseCompletions" EntitySet="CourseCompletions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LessonViews_AspNetUsers" Association="Self.FK_LessonViews_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="LessonViews" EntitySet="LessonViews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClassDates_StoreClasses" Association="Self.FK_ClassDates_StoreClasses">
+      <End Role="StoreClasses" EntitySet="StoreClasses" />
+      <End Role="ClassDates" EntitySet="ClassDates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClassSignUps_ClassDates" Association="Self.FK_ClassSignUps_ClassDates">
+      <End Role="ClassDates" EntitySet="ClassDates" />
+      <End Role="ClassSignUps" EntitySet="ClassSignUps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CourseCompletions_Courses" Association="Self.FK_CourseCompletions_Courses">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="CourseCompletions" EntitySet="CourseCompletions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lessons_Courses" Association="Self.FK_Lessons_Courses">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="Lessons" EntitySet="Lessons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LessonViews_Lessons" Association="Self.FK_LessonViews_Lessons">
+      <End Role="Lessons" EntitySet="Lessons" />
+      <End Role="LessonViews" EntitySet="LessonViews" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

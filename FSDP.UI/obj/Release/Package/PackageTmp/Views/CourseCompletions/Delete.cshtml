@@ -1,0 +1,25 @@
+﻿@model FSDP.DATA.CourseCompletion
+
+@{
+    ViewBag.Title = "Delete " + Model.AspNetUser.FullName + "'s course completion for " + Model.Courses.CourseName;
+}
+
+<div class="container page">
+    <br /><br /><br />
+    <h1 class="text-center">@ViewBag.Title</h1>
+    <br /><br />
+    <h2 class="text-center">Are you sure you want to delete this?</h2>
+    <br /><br />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions text-center">
+                <input type="submit" value="Delete" class="btn btn-default" />
+                &emsp;
+                @Html.ActionLink("Cancel", "Index", "CourseCompletions", new { @class = "btn btn-cancel" })
+
+        </div>
+    }
+</div>
+

@@ -1,0 +1,26 @@
+﻿@model FSDP.DATA.StoreClass
+
+@{
+    ViewBag.Title = "Delete: " + Model.ClassName;
+}
+
+<div class="container page text-center">
+    <br /><br /><br />
+    <h1>@ViewBag.Title</h1>
+    <br /><br />
+    <div class="fail">@ViewBag.ErrorMessageDelete</div>
+
+    <h2>Are you sure you want to delete this?</h2>
+    <br /><br />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions text-center">
+            <input type="submit" value="Delete" class="btn btn-default" />
+            &emsp;
+            @Html.ActionLink("Cancel", "Index", "StoreClasses", new { @class = "btn btn-cancel" })
+
+        </div>
+    }
+</div>

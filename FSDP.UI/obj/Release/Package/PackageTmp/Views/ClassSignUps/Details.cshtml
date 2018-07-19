@@ -1,0 +1,38 @@
+﻿@model FSDP.DATA.ClassSignUp
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ClassSignUp</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassDate.ClassDateID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassDate.ClassDateID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (Request.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("Manager")))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ClassSignUpID }) @:|
+    }
+
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -86,6 +86,7 @@ namespace FSDP.UI.Controllers
         }
 
         // GET: ClassSignUps/Edit/5
+        [Authorize(Roles = "Admin, Manager")]
         public ActionResult Edit(int? id)
         {
             var currentUser = User.Identity.GetUserId();
@@ -115,6 +116,7 @@ namespace FSDP.UI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Manager")]
         public ActionResult Edit([Bind(Include = "ClassSignUpID,UserID,ClassDateID")] ClassSignUp classSignUp)
         {
             var currentUser = User.Identity.GetUserId();
@@ -137,6 +139,7 @@ namespace FSDP.UI.Controllers
         }
 
         // GET: ClassSignUps/Delete/5
+        [Authorize(Roles = "Admin, Manager")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -154,6 +157,7 @@ namespace FSDP.UI.Controllers
         // POST: ClassSignUps/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Manager")]
         public ActionResult DeleteConfirmed(int id)
         {
             ClassSignUp classSignUp = db.ClassSignUps.Find(id);

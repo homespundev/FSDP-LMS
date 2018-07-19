@@ -1,0 +1,43 @@
+﻿@model FSDP.UI.Models.RoleViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="container page">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h1 class="text-center">@ViewBag.Title</h1>
+            <br /><br /><br />
+            @Html.ValidationSummary(true)
+
+            <div class="row justify-content-md-center">
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(model => model.Name, new { @class = "control-label" })
+                    <div>
+                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </div>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <span>
+                        <input type="submit" value="Edit" class="btn btn-default" />
+                    </span>
+                </div>
+                <div class="col-md-2">
+                    <span>
+                        @Html.ActionLink("Cancel", "Index", "RolesAdmin", new { @class = "btn btn-cancel" })
+                    </span>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -124,20 +124,15 @@ namespace FSDP.UI.Controllers
                                 }
                             }
                         }
-
                     }
-
                 }
                 ViewBag.NextLesson = $"<a href='{(int)id+1}'>Continue to Next Lesson<a>";
                 ViewBag.Success = "You answered correctly and have completed this lesson! ";
-                //return Content("<script language='javascript' type='text/javascript'>alert('You answered correctly and have completed this lesson!');</script>");
-                //return new JavaScriptResult { Script = "window.alert('You answered correctly and have completed this lesson!');" };
                 return View(lesson);
             }
             else
             {
                 ViewBag.Fail = "You did not answer correctly. Please try again.";
-                //return Content("<script language='javascript' type='text/javascript'>alert('You did not answer correctly. Please try again.');</script>");
                 return View(lesson);
             }
         }

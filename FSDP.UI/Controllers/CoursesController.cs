@@ -68,10 +68,10 @@ namespace FSDP.UI.Controllers
                         imageName = Guid.NewGuid() + ext;
                         string pathForTheSaving = Server.MapPath("~/Content/Images/Courses/");
                         courseImg.SaveAs(pathForTheSaving +  imageName);
-                        Image convertedImage = Image.FromStream(courseImg.InputStream);
-                        int maxImageSize = 500;
-                        int maxThumbSize = 100;
-                        ImageService.ResizeImage(pathForTheSaving, imageName, convertedImage, maxImageSize, maxThumbSize);
+                        //Image convertedImage = Image.FromStream(courseImg.InputStream);
+                        //int maxImageSize = 500;
+                        //int maxThumbSize = 100;
+                        //ImageService.ResizeImage(pathForTheSaving, imageName, convertedImage, maxImageSize, maxThumbSize);
                     }
                     course.CourseImage = imageName;
                 }

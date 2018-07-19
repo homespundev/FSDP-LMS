@@ -214,11 +214,22 @@
     <Content Include="Content\Images\bgwithlogo.png" />
     <Content Include="Content\Images\bgwlogo.png" />
     <Content Include="Content\Images\Biggerlogo-edit.png" />
+    <Content Include="Content\Images\Courses\0fe2ecf3-b5e3-4079-99ad-b7ec8d8398d0.png" />
     <Content Include="Content\Images\Courses\31c26aa4-601d-48b7-a205-58275888a9fd.PNG" />
+    <Content Include="Content\Images\Courses\4d2c7e2d-29c1-49dd-b5e7-5bdbd9f4de09.jpg" />
+    <Content Include="Content\Images\Courses\52793edc-1f94-480b-8479-198e0044403c.png" />
+    <Content Include="Content\Images\Courses\719aa570-901f-4076-8a37-4b4483520845.jpg" />
+    <Content Include="Content\Images\Courses\9e8a5635-9f26-45ab-a38d-2c0033eef805.png" />
+    <Content Include="Content\Images\Courses\a9bdd390-5534-48c2-8552-bcb50eac429d.png" />
     <Content Include="Content\Images\Courses\af0fd153-1111-4a84-8b6a-bbe480c64976.jpg" />
+    <Content Include="Content\Images\Courses\c12967b1-adc1-4ec6-ac92-50e1c9c61335.png" />
+    <Content Include="Content\Images\Courses\d55e09f4-72d9-4eec-897c-b0db6f26c21a.png" />
+    <Content Include="Content\Images\Courses\e8df4f3f-ec5c-45af-8c6b-b30136a672f2.png" />
     <Content Include="Content\Images\Courses\f163843a-9d44-48cb-bc15-2df1258733c1.PNG" />
+    <Content Include="Content\Images\Courses\f898e631-14f2-434a-b83f-ba51c410d6c5.png" />
     <Content Include="Content\Images\Courses\noimage.jpg" />
     <Content Include="Content\Images\Courses\t_31c26aa4-601d-48b7-a205-58275888a9fd.PNG" />
+    <Content Include="Content\Images\Courses\t_52793edc-1f94-480b-8479-198e0044403c.png" />
     <Content Include="Content\Images\Courses\t_af0fd153-1111-4a84-8b6a-bbe480c64976.jpg" />
     <Content Include="Content\Images\Courses\t_noimage.jpg" />
     <Content Include="Content\Images\footerlogo.png" />
@@ -346,6 +357,10 @@
     <Content Include="Content\Images\images\team\3.jpg" />
     <Content Include="Content\Images\images\team\4.jpg" />
     <Content Include="Content\Images\whitelogo.png" />
+    <Content Include="Content\Lessons\Pdf\3296e512-7f9a-4b39-be7b-93aebeb61c99.pdf" />
+    <Content Include="Content\Lessons\Pdf\6fc0e588-85f8-4b2e-aabf-3f7b1017d864.pdf" />
+    <Content Include="Content\Lessons\Pdf\d7c806ba-de32-42bd-b0ad-437b5f5a03e0.pdf" />
+    <Content Include="Content\Lessons\Pdf\f3bb23d4-e3f4-4eaa-9b42-c6430d33f2c5.pdf" />
     <Content Include="Content\Lessons\Pdf\nopdf.pdf" />
     <Content Include="Content\revolution\css\layers.css" />
     <Content Include="Content\revolution\css\settings.css" />
@@ -416,8 +431,9 @@
     <Content Include="Content\Styles\shortcode.css" />
     <Content Include="Content\Styles\simple-line-icons.css" />
     <Content Include="Content\Styles\style.css" />
-    <Content Include="favicon.ico" />
+    <Content Include="favicon.png" />
     <Content Include="Global.asax" />
+    <Content Include="googled108c14bbe7aab10.html" />
     <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\Chart.min.js" />
     <Content Include="Web.config" />
@@ -474,10 +490,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <Content Include="Content\Lessons\Pdf\3296e512-7f9a-4b39-be7b-93aebeb61c99.pdf" />
-    <Content Include="Content\Lessons\Pdf\6fc0e588-85f8-4b2e-aabf-3f7b1017d864.pdf" />
-    <Content Include="Content\Lessons\Pdf\d7c806ba-de32-42bd-b0ad-437b5f5a03e0.pdf" />
-    <Content Include="Content\Lessons\Pdf\f3bb23d4-e3f4-4eaa-9b42-c6430d33f2c5.pdf" />
+    <Content Include="Content\Lessons\Pdf\03bc45f0-3bd3-4748-b2d3-8769838d0699.pdf" />
+    <Content Include="Content\Lessons\Pdf\127c6aa4-2aed-406e-8b4e-5932ae53c537.pdf" />
+    <Content Include="Content\Lessons\Pdf\3e07697b-0aad-453b-a0a1-b9bbdef35823.pdf" />
+    <Content Include="Content\Lessons\Pdf\49ee0226-9c75-48fa-98a3-4af221265a50.pdf" />
+    <Content Include="Content\Lessons\Pdf\97fa3f9e-f3ba-41b1-b94c-91cc6f3c4f56.pdf" />
+    <Content Include="Content\Lessons\Pdf\baed9f0a-d424-46fb-bb5c-b3e84f40af62.pdf" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\CourseCompletions\Create.cshtml" />
@@ -512,6 +530,7 @@
     <Content Include="Views\ClassSignUps\Details.cshtml" />
     <Content Include="Views\ClassSignUps\Edit.cshtml" />
     <Content Include="Views\ClassSignUps\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FSDP.DATA\FSDP.DATA.csproj">

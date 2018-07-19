@@ -15,6 +15,7 @@ namespace FSDP.UI.Controllers
         private FSDPDbEntities db = new FSDPDbEntities();
 
         // GET: ClassDates
+        [Authorize]
         public ActionResult Index()
         {
             var classDates = db.ClassDates.Include(c => c.StoreClass);
@@ -37,6 +38,7 @@ namespace FSDP.UI.Controllers
         //}
 
         // GET: ClassDates/Create
+        [Authorize(Roles = "Admin, Manager")]
         public ActionResult Create()
         {
             ViewBag.StoreClassID = new SelectList(db.StoreClasses, "StoreClassID", "ClassName");
@@ -48,6 +50,7 @@ namespace FSDP.UI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Manager")]
         public ActionResult Create([Bind(Include = "ClassDateID,StoreClassID,DateTime,ClassLimit")] ClassDate classDate)
         {
             if (ModelState.IsValid)
@@ -62,6 +65,7 @@ namespace FSDP.UI.Controllers
         }
 
         // GET: ClassDates/Edit/5
+        [Authorize(Roles = "Admin, Manager")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -82,6 +86,7 @@ namespace FSDP.UI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Manager")]
         public ActionResult Edit([Bind(Include = "ClassDateID,StoreClassID,DateTime,ClassLimit")] ClassDate classDate)
         {
             if (ModelState.IsValid)
@@ -95,6 +100,7 @@ namespace FSDP.UI.Controllers
         }
 
         // GET: ClassDates/Delete/5
+        [Authorize(Roles = "Admin, Manager")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -110,6 +116,7 @@ namespace FSDP.UI.Controllers
         }
 
         // POST: ClassDates/Delete/5
+        [Authorize(Roles = "Admin, Manager")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

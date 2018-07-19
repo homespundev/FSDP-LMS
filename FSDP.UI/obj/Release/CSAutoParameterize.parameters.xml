@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=SQL5037.site4now.net;Initial Catalog=DB_A2ADCC_fsdp;User Id=DB_A2ADCC_fsdp_admin;Password=19Jake88;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Student\\Documents\\Visual\ Studio\ 2015\\Projects\\FSDP\\src\\FSDP\.UI\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="FSDPDbEntities-Web.config Connection String" description="FSDPDbEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/FSDPdbModel.csdl|res://*/FSDPdbModel.ssdl|res://*/FSDPdbModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=SQL5037.site4now.net;Initial Catalog=DB_A2ADCC_fsdp;User Id=DB_A2ADCC_fsdp_admin;Password=19Jake88;multipleactiveresultsets=True;application name=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Student\\Documents\\Visual\ Studio\ 2015\\Projects\\FSDP\\src\\FSDP\.UI\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='FSDPDbEntities']/@connectionString" />
+  </parameter>
+</parameters>

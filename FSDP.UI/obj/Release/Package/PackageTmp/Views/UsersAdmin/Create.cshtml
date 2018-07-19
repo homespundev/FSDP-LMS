@@ -1,0 +1,74 @@
+﻿@model FSDP.UI.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Add  User";
+}
+
+<div class="container page">
+    @using (Html.BeginForm("Create", "UsersAdmin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <h1 class="text-center">@ViewBag.Title</h1>
+            <br />
+            @Html.ValidationSummary("", new { @class = "text-error" })
+            <div class="row justify-content-md-center">
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(m => m.FirstName, new { @class = "control-label" })
+                    <div>
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(m => m.LastName, new { @class = "control-label" })
+                    <div>
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                    <div>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                    <div>
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label" })
+                    <div>
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label class="control-label">
+                        Select User Role
+                    </label>
+                    <div>
+                        @foreach (var item in (SelectList)ViewBag.RoleId)
+                {
+                            <input type="radio" name="SelectedRoles" value="@item.Value" class="radio-inline" />
+                            @Html.Label(item.Value, new { @class = "control-label" })
+                        }
+                    </div>
+                </div>
+                <div class="form-group col-md-4 text-center">
+                    <span>
+                        <input type="submit" value="Add" class="btn btn-default" />
+                    </span>
+                </div>
+                <div class="offset-md-4 col-md-4">
+                    <span>
+                        @Html.ActionLink("Cancel", "Index", "UsersAdmin", new { @class = "btn btn-cancel" })
+                    </span>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
