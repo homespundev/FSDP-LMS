@@ -1,1 +1,2 @@
 FSDP.UI/Web.config
+FSDP.UI/App_Start/Startup.Auth.cs
